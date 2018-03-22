@@ -21,7 +21,7 @@ int main()
 
     for (i=0; i<4;i++)
     {
-        printf("\nIngrese un numero:");
+        printf("\nIngrese un numero: ");
         scanf("%d",&numero);
 
         acumulador=acumulador+numero;
