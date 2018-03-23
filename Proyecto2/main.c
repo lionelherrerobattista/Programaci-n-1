@@ -20,8 +20,8 @@ int main()
     int contadorNumeroPositivos=0;
     int contadorNumerosNegativos=0;
 
-    int porcentajeNumerosPositivos;
-    int porcentajeNumerosNegativos;
+    float porcentajeNumerosPositivos;
+    float porcentajeNumerosNegativos;
 
     int numeroMaximo;
     int numeroMinimo;
@@ -99,19 +99,21 @@ int main()
             cantidadDeNumerosMasCien++;
         }
 
-        printf("\nPara continuar escriba s: ");
+        printf("\nPara continuar ingresando numeros escriba s: ");
         respuesta=getche();
 
     }
 
+    //contadorNumerosTotal= contadorNumeroPositivos+contadorNumerosNegativos;
+
     printf("\nLa cantidad de numeros impares es: %d", contadorNumerosImpares);
     printf("\nLa cantidad de numeros pares es: %d",contadorNumerosPares);
 
-    porcentajeNumerosPositivos=(contadorNumeroPositivos*100)/contadorNumerosTotal;
-    printf("\nEl porcentaje de numeros positivos es: %d", porcentajeNumerosPositivos);
+    porcentajeNumerosPositivos=(float)(contadorNumeroPositivos*100)/contadorNumerosTotal;
+    printf("\nEl porcentaje de numeros positivos es: %f %%", porcentajeNumerosPositivos);
 
-    porcentajeNumerosNegativos= (contadorNumerosNegativos*100)/contadorNumerosTotal;
-    printf("\nEl porcentaje de numeros negativos es: %d", porcentajeNumerosNegativos);
+    porcentajeNumerosNegativos= 100 - porcentajeNumerosPositivos; //(contadorNumerosNegativos*100)/contadorNumerosTotal;
+    printf("\nEl porcentaje de numeros negativos es: %f %%", porcentajeNumerosNegativos);
 
     printf("\nEl numero maximo es: %d", numeroMaximo);
     printf("\nEl numero minimo es: %d", numeroMinimo);
