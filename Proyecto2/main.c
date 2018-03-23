@@ -1,14 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Se igresan numeros(distintos de cero), no se sabe cuantos.
-Se pide mostrar:
-    *Cantidad de pares e impares.
-    *Porcentaje de numeros positivos y negativos
-    *Maximo y minimo
-    *Maximo numero par
-    *Cantidad de numeros comprendidos entre 125 y 236.*/
-
 int main()
 {
     int numero;
@@ -26,6 +18,9 @@ int main()
     int numeroMaximo;
     int numeroMinimo;
 
+    int flag=0;
+    int flagPar = 0;
+
     int maximoNumeroPar;
 
     int cantidadDeNumerosMasCien=0;
@@ -42,23 +37,24 @@ int main()
             scanf("%d", &numero);
         }
 
-        contadorNumerosTotal++;
+        //contadorNumerosTotal++;
 
         if (numero%2==0)
         {
             contadorNumerosPares++;
 
-            if (contadorNumerosTotal==1)
+            if (flagPar==0 || numero > maximoNumeroPar)
             {
                 maximoNumeroPar=numero;
+                flagPar = 1;
             }
-            else
+            /*else
             {
                 if (numero > maximoNumeroPar)
                 {
                     maximoNumeroPar=numero;
                 }
-            }
+            }*/
         }
         else
         {
@@ -74,10 +70,22 @@ int main()
             contadorNumerosNegativos++;
         }
 
-        if (contadorNumerosTotal==1)
+        if (flag ==0 || numero>maximo)
+        {
+            maximo=numero;
+
+        }
+        if (flag == 0 || numero<minimo)
+        {
+            minimo=numero;
+            flag=1;
+        }
+        /*if (flag==0/*contadorNumerosTotal==1)
         {
             numeroMaximo = numero;
             numeroMinimo = numero;
+
+            flag = 1;
         }
         else
         {
@@ -92,7 +100,8 @@ int main()
                     numeroMinimo=numero;
                 }
             }
-        }
+        }*/
+
 
         if (numero>125 && numero<236)
         {
@@ -121,8 +130,5 @@ int main()
     printf("\nEl maximo numero par es: %d", maximoNumeroPar);
 
     printf("\nLa cantidad de numeros entre 125 y 236 es: %d", cantidadDeNumerosMasCien);
-
-
-
     return 0;
 }
