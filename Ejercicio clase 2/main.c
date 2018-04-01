@@ -40,4 +40,5 @@ int main()
     printf("El promedio de los numeros ingresados es: %.2f",promedio);
     printf("\nEl numero maximo es: %d",numeroMaximo);
     printf("\nEl numero minimo es: %d",numeroMinimo);
+    
 }
