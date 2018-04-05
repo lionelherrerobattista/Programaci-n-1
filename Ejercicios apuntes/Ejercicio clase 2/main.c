@@ -1,47 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+
 int main()
 {
     int numero;
     int i;
-    int maximo;
-    int minimo;
-    int acumulador;
+
+    int acumuladorNumeros=0;
     float promedio;
 
+    int numeroMaximo;
+    int numeroMinimo;
+    int flag=0;
 
-    printf("Ingrese un numero: ");
-    scanf("%d",&numero);
-
-    maximo = numero;
-    minimo = numero;
-    acumulador=numero;
-
-
-    for (i=0; i<4;i++)
+    for (i=0; i<5; i++)
     {
-        printf("\nIngrese un numero: ");
+        printf("Escriba un numero: ");
         scanf("%d",&numero);
 
-        acumulador=acumulador+numero;
+        acumuladorNumeros=acumuladorNumeros+numero;
 
-        if (numero<minimo)
+        //Junto ambas condiciones en un mismo if
+        if (flag==0 || numero > numeroMaximo)
         {
-            minimo=numero;
+            numeroMaximo=numero;
         }
-        else
+        if (flag==0 || numero < numeroMinimo)
         {
-         if (numero>maximo)
-         {
-             maximo=numero;
-         }
+            numeroMinimo=numero;
+            flag=1;
         }
+
     }
 
-    promedio=acumulador/5;
+    //Resultado entre int/int = a int
+    //por eso hay que convertirlo a float
+    promedio=(float)acumuladorNumeros/i;
 
-    printf("\nEl promedio de los numeros es: %.2f", promedio);
-    printf("\nEl numero maximo es: %d", maximo);
-    printf("\nEl numero minimo es: %d", minimo);
+    printf("El promedio de los numeros ingresados es: %.2f",promedio);
+    printf("\nEl numero maximo es: %d",numeroMaximo);
+    printf("\nEl numero minimo es: %d",numeroMinimo);
+    
 }
