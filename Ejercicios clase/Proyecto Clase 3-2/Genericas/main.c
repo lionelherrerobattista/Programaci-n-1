@@ -40,7 +40,7 @@ int validarEntero(int dato, int min, int max, char mensaje[]) //el dato que entr
 {
     while (dato<min || dato>max)
     {
-        printf("Error. Reingrese %s ", mensaje);
+        printf("Error. Reingrese %s ", mensaje); //muestra el mensaje de la función
         scanf("%d",&dato);
     }
     return dato;
