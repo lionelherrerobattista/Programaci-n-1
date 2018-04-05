@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Se igresan numeros(distintos de cero), no se sabe cuantos.
+Se pide mostrar:
+    *Cantidad de pares e impares.
+    *Porcentaje de numeros positivos y negativos
+    *Maximo y minimo
+    *Maximo numero par
+    *Cantidad de numeros comprendidos entre 125 y 236.*/
+
+
 int main()
 {
     int numero;
