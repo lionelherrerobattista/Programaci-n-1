@@ -46,7 +46,7 @@ void sumar2 (int n1, int n2)
     printf("La suma es: %d", suma);
 }
 
-/*Prototipo2 si quiero hacer una aplicación de escritorio no sirve.
+/*Prototipo3 si quiero hacer una aplicaciÃ³n de escritorio no sirve.
 La forma que se muestra la info es distinta. Debe ser totalmente indep. de las entradas
 y de las salidas.
 Atado a los numeros que ingrese el usuario por cosola.*/
