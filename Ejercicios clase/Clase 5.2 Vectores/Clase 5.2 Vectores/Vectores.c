@@ -95,6 +95,23 @@ int cantidadNumerosPositivos (int vec[], int tam)
     return contadorPositivos;
 }
 
+//Buscador de posición de caracter
+int buscarChar (char vec[], int tam, char caracter)
+{
+    int index = - 1;
+    int i;
+
+    for(i=0; i<tam; i++)
+    {
+        if (caracter==vec[i])
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
 
 
 
