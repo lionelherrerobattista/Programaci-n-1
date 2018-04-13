@@ -43,7 +43,7 @@ void cargarVector (int vec[],int tam)
     }
 }
 
-//busca un numero y devuelve la primera posición que aparece.
+//busca un numero y devuelve la primera posiciÃ³n que aparece.
 
 int buscarNumero (int vec[], int tam, int valor)
 {
@@ -59,6 +59,24 @@ int buscarNumero (int vec[], int tam, int valor)
         }
     }
     return index;
+}
+
+//Cantidad de numeros pares
+int cantidadNumerosPares (int vec[], int tam)
+{
+    int i;
+    int numerosPares=0;
+
+    for(i=0; i<tam; i++)
+    {
+        if (vec[i]%2==0 && vec[i]!=0 )
+        {
+            numerosPares++;
+        }
+    }
+    
+    return numerosPares;
+
 }
 
 
