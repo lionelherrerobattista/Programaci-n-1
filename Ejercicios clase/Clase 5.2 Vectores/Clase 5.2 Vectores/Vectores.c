@@ -79,6 +79,22 @@ int cantidadNumerosPares (int vec[], int tam)
 
 }
 
+//Cantidad de números positivos.
+int cantidadNumerosPositivos (int vec[], int tam)
+{
+    int contadorPositivos=0;
+    int i;
+
+    for(i=0; i<tam; i++)
+    {
+        if (vec[i]>0)
+        {
+            contadorPositivos++;
+        }
+    }
+    return contadorPositivos;
+}
+
 
 
 
