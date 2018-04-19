@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1523546599 source:d:\clase 5.2 vectores\clase 5.2 vectores\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Vectores.h"
+
+1523546675 d:\clase 5.2 vectores\clase 5.2 vectores\vectores.h
+
+1523546632 source:d:\clase 5.2 vectores\clase 5.2 vectores\vectores.c
+	"Vectores.h"
+	<stdio.h>
+
