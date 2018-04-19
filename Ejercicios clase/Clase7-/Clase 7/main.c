@@ -1,20 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define TAM 3
 
 float calcularPromedio(int, int);
+void mostrarAlumnos(int[], char[][30], int[], int[], float[], int);
 
 int main()
 {
-    int legajos[3];
-    char nombres[3][30];
-    int notaUno[3];
-    int notaDos[3];
-    float promedios[3];
+    int legajos[TAM];
+    char nombres[TAM][30];
+    int notaUno[TAM];
+    int notaDos[TAM];
+    float promedios[TAM];
 
 
     int i;
 
-    for (i=0; i<3; i++)
+    for (i=0; i<TAM; i++)
     {
         printf("Ingrese el legajo: ");
         scanf("%d",&legajos[i]);
@@ -29,14 +31,16 @@ int main()
 
     }
 
-    for(i=0; i<3;i++)
+    /*for(i=0; i<TAM;i++)
     {
         printf("\nLegajo: %d\n",legajos[i]);
         printf("Nombre: %s\n",nombres[i]);
         printf("Nota1: %d\n",notaUno[i]);
         printf("Nota2: %d\n",notaDos[i]);
         printf("Promedio: %.2f\n",promedios[i]);
-    }
+    }*/
+
+    mostrarAlumnos(legajos, nombres, notaUno, notaDos, promedios, TAM);
 
 
 
@@ -52,6 +56,21 @@ float calcularPromedio(int notaUno, int notaDos)
     resultado=(float)(notaUno+notaDos)/2;
 
     return resultado;
+}
+
+void mostrarAlumnos(int legajo[], char nombre[][30], int nota1[], int nota2[], float promedio[], int tam)
+{
+    int i;
+
+    for(i=0; i<tam;i++)
+    {
+        printf("\nLegajo: %d\n",legajo[i]);
+        printf("Nombre: %s\n",nombre[i]);
+        printf("Nota1: %d\n",nota1[i]);
+        printf("Nota2: %d\n",nota2[i]);
+        printf("Promedio: %.2f\n",promedio[i]);
+    }
+
 }
 
 
