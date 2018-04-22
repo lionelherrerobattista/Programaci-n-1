@@ -1,0 +1,5 @@
+legajo= 50,51,52,53,54
+nombre= juan,pedro,maria,jose,micaela,agustina
+nota=10,6,7,
+     8,4,2,5.50
+promedio=9,5,4.5
