@@ -1,28 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+typedef struct
+{
+    char calle[50];
+    int numero;
+    char localidad[50];
+    int piso;
+    char dpto;
+    int cp;
+}eDomicilio;
 
-/*Usuario                            Serie (1 usuario puede ver solo 1 serie)
-  int idUsuario  (pk)                   idSerie(pk)
-  char nombre                       nombre
-  int estado(alta, baja, mod)       genero
-  int idSerie     (fk)                cantidad de temporadas
-                                    estado
-
-1 BB Policial 5temp 1
-2 GOT fantasía 9    1
-3 ST terror    2    1
-
-10 Juan 1 | 2 GOT fantasìa 9 1
-11 María 1| 3 ST  terror   2 1
-12 Pedro 1| 2 GOT fantasìa 9 1
+typedef struct
+{
+    int legajo;
+    char nombre[50];
+    eDomicilio domicilio;
 
 
-Composición dentro del usuario
+}eAlumno;
 
-Grupos repetitivos: genera redundancia                           */
+typedef struct
+{
+    int legajo;
+    char nombre[50];
+    eDomicilio domicilio; //Composición
+}eProfesor;
 
 int main()
 {
-    printf("Hello world!\n");
+    eAlumno miAlumno;
+
+    miAlumno.legajo = 400;
+    miAlumno.domicilio.cp=1870;
+    miAlumno.legajo= 401;
+
+
+
+    printf("legajo: %d -- cp: %d", miAlumno.legajo, miAlumno.domicilio.cp);
     return 0;
 }
