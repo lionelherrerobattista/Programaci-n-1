@@ -48,7 +48,7 @@ int main()
 
     for(i=0; i<T; i++)
     {
-        if(vectorInt[i]!=0) //esta funcion hace el jarcodeo
+        if(vectorInt[i]!=0) //esta funcion hace el hardcodeo
         {
             printf("%d -- %s -- %.2f\n",vectorInt[i],vectorString[i],vectorFloat[i]);
         }
