@@ -63,8 +63,10 @@ void mostrarUsuarios (eUsuario usuarios[], int limite)
 {
     int i;
 
+    printf("  \n");
     for (i=0; i<limite; i++)
     {
+
         if (usuarios[i].estado==OCUPADO)
         {
             printf("%-10d %-10s \n",usuarios[i].idUsuario, usuarios[i].usuario);
@@ -100,10 +102,12 @@ void altaUsuario (eUsuario usuarios[], int limite)
 
     if (index>=0)
     {
-        printf("Ingrese un nombre de usuario: ");
+        printf("\nIngrese un nombre de usuario: ");
+        fflush(stdin);
         gets(usuarios[index].usuario);
 
-        printf("Ingrese una password: ");
+        printf("\nIngrese una password: ");
+        fflush(stdin);
         gets(usuarios[index].password);
 
         usuarios[index].idUsuario=siguienteId(usuarios, limite);
@@ -111,4 +115,123 @@ void altaUsuario (eUsuario usuarios[], int limite)
         usuarios[index].estado=OCUPADO;
     }
 
+}
+
+//modifica el usuario
+void modificarUsuario (eUsuario usuarios[], int limite)
+{
+    int id=0;
+    int i;
+
+    printf("\nIngrese el id del usuario que desea modificar: ");
+    scanf("%d", &id);
+
+    for (i=0; i<limite; i++)
+    {
+        if (usuarios[i].idUsuario==id)
+        {
+            printf("\nIngrese un nombre de usuario: ");
+            fflush(stdin);
+            gets(usuarios[i].usuario);
+
+            printf("\nIngrese una password: ");
+            fflush(stdin);
+            gets(usuarios[i].password);
+        }
+    }
+}
+
+//baja de usuarios
+void bajaUsuario (eUsuario usuarios[], int limite)
+{
+    int id;
+    int i;
+
+    printf("Ingrese el id del usuario que quiere dar de baja: ");
+    scanf("%d",&id);
+
+    for (i=0; i<limite; i++)
+    {
+        if (usuarios[i].idUsuario==id)
+        {
+           usuarios[i].estado=LIBRE;
+        }
+    }
+}
+
+void altaProducto (eUsuario usuarios[], int limiteUsuarios, eProducto productos[], int limiteProductos)
+{
+    int id;
+    int index;
+
+
+    printf("Ingrese su id de usuario: ");
+    scanf("%d", &id);
+
+
+    index=buscarProductoLibre(productos, limiteProductos);
+
+    if (index>=0)
+    {
+        printf("\nIngrese el nombre del producto: ");
+        fflush(stdin);
+        gets(productos[index].nombre);
+
+        printf("\nIngrese un precio: ");
+        scanf("%f", &productos[index].precio);
+
+        printf("\nIngrese stock: ");
+        scanf("%d", &productos[index].stock);
+
+        productos[index].idProducto=siguienteIdProducto(productos, limiteProductos);
+
+        productos[index].idUsuario=id;
+
+        productos[index].estado=OCUPADO;
+
+    }
+    else
+    {
+        printf("No hay lugar.");
+    }
+
+}
+
+//busco un index libre para el producto
+int buscarProductoLibre(eProducto productos[], int limite)
+{
+    int i;
+    int retorno=-2;
+
+    for (i=0; i<limite; i++)
+    {
+        if(productos[i].estado==LIBRE)
+        {
+            retorno=i;
+            break;
+        }
+    }
+
+    return retorno;
+
+}
+
+//id+1 para el producto
+int siguienteIdProducto(eProducto productos[], int limite)
+{
+    int retorno=0;
+    int i;
+
+    for(i=0; i<limite; i++)
+    {
+        if(productos[i].estado==OCUPADO)
+        {
+            if(productos[i].idProducto>retorno)
+            {
+                retorno=productos[i].idProducto;
+            }
+        }
+    }
+
+    return retorno;
 }

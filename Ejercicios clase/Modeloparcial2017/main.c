@@ -8,16 +8,50 @@
 
 int main()
 {
+    int opcion;
+
     eUsuario listaDeUsuarios[TAMUSUARIO];
 
     inicializarUsario(listaDeUsuarios, TAMUSUARIO);
     inicializarUsuariosHardCode(listaDeUsuarios, TAMUSUARIO);
 
-    mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+    do
+    {
+        printf("\n1.ALTAS\n2.MODIFICACIONES\n3.BAJAS\n4.PUBLICAR PRODUCTO\n9.SALIR\n \nElija una opcion: ");
+        scanf("%d", &opcion);
 
-    altaUsuario(listaDeUsuarios, TAMUSUARIO);
+        switch (opcion)
+        {
+            case 1:
 
-    mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+                    altaUsuario(listaDeUsuarios, TAMUSUARIO);
+                    mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+                    break;
+
+            case 2:
+                    modificarUsuario(listaDeUsuarios, TAMUSUARIO);
+                    mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+                    break;
+
+            case 3:
+                    bajaUsuario(listaDeUsuarios, TAMUSUARIO);
+                    mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+
+
+
+        }
+
+
+
+
+    } while (opcion!=9);
+
+
+
+
+
+
+
 
 
     return 0;
