@@ -11,9 +11,16 @@ int main()
     int opcion;
 
     eUsuario listaDeUsuarios[TAMUSUARIO];
+    eProducto listaDeProductos[TAMPRODUCTO];
 
     inicializarUsario(listaDeUsuarios, TAMUSUARIO);
     inicializarUsuariosHardCode(listaDeUsuarios, TAMUSUARIO);
+
+    inicializarProductos(listaDeProductos, TAMPRODUCTO);
+    inicializarProductosHardCode(listaDeProductos, TAMPRODUCTO);
+
+    mostrarProductosDelUsuario(listaDeProductos,TAMPRODUCTO);
+
 
     do
     {
@@ -36,7 +43,8 @@ int main()
             case 3:
                     bajaUsuario(listaDeUsuarios, TAMUSUARIO);
                     mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
-
+            case 4:
+                    altaProducto(listaDeProductos, TAMPRODUCTO);
 
 
         }

@@ -21,13 +21,18 @@ typedef struct
 
 void inicializarUsario (eUsuario[], int);
 void inicializarUsuariosHardCode (eUsuario[], int);
+void inicializarProductos (eProducto [], int);
+
+void inicializarProductosHardCode (eProducto[], int);
 void mostrarUsuarios (eUsuario [], int);
+void mostrarProductosDelUsuario(eProducto[], int);
+
 int buscarLibre (eUsuario[], int);
 void altaUsuario (eUsuario[], int);
 int siguienteId (eUsuario[], int);
 void modificarUsuario (eUsuario[], int);
 void bajaUsuario (eUsuario[], int);
-void altaProducto (eUsuario[], int, eProducto[], int);
+void altaProducto (eProducto[], int);
 int buscarProductoLibre(eProducto[], int);
 int siguienteIdProducto(eProducto[], int);
 
