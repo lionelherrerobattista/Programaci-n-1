@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1525440090 source:d:\l\modeloparcial2017\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1525441159 d:\l\modeloparcial2017\funciones.h
+
+1525440215 source:d:\l\modeloparcial2017\funciones.c
+	<stdlib.h>
+	<stdio.h>
+	"funciones.h"
+	<strings.h>
+
