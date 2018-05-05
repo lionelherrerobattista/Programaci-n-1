@@ -4,7 +4,9 @@ typedef struct
     int idUsuario;
     char usuario[50];
     char password[50];
+    float calificacion;
     int estado;
+
 
 }eUsuario;
 
@@ -26,6 +28,8 @@ void inicializarProductos (eProducto [], int);
 void inicializarProductosHardCode (eProducto[], int);
 void mostrarUsuarios (eUsuario [], int);
 void mostrarProductosDelUsuario(eProducto[], int);
+void mostrarProductos(eProducto[], int);
+
 
 int buscarLibre (eUsuario[], int);
 void altaUsuario (eUsuario[], int);
@@ -35,6 +39,11 @@ void bajaUsuario (eUsuario[], int);
 void altaProducto (eProducto[], int);
 int buscarProductoLibre(eProducto[], int);
 int siguienteIdProducto(eProducto[], int);
+
+void modificarProductos(eProducto[], int);
+void cancelarPublicacion (eProducto[], int);
+
+
 
 
 

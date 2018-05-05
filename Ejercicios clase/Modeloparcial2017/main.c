@@ -19,13 +19,14 @@ int main()
     inicializarProductos(listaDeProductos, TAMPRODUCTO);
     inicializarProductosHardCode(listaDeProductos, TAMPRODUCTO);
 
-    mostrarProductosDelUsuario(listaDeProductos,TAMPRODUCTO);
+
 
 
     do
     {
-        printf("\n1.ALTAS\n2.MODIFICACIONES\n3.BAJAS\n4.PUBLICAR PRODUCTO\n9.SALIR\n \nElija una opcion: ");
+        printf("\n1.ALTAS\n2.MODIFICACIONES\n3.BAJAS\n4.PUBLICAR PRODUCTO\n5.MODIFICAR PUBLICACION\n6.CANCELAR PUBLICACION\n7.\n8.LISTAR PUBLICACIONES DEL USUARIO\n9.LISTAR PUBLICACIONES\n11.SALIR\n \nElija una opcion: ");
         scanf("%d", &opcion);
+        printf(" \n");
 
         switch (opcion)
         {
@@ -43,8 +44,28 @@ int main()
             case 3:
                     bajaUsuario(listaDeUsuarios, TAMUSUARIO);
                     mostrarUsuarios(listaDeUsuarios, TAMUSUARIO);
+                    break;
             case 4:
                     altaProducto(listaDeProductos, TAMPRODUCTO);
+                    break;
+            case 5:
+                    modificarProductos(listaDeProductos, TAMPRODUCTO);
+                    break;
+            case 6:
+                    cancelarPublicacion(listaDeProductos, TAMPRODUCTO);
+                    break;
+
+            case 7:
+                    break;
+
+            case 8:
+                    mostrarProductosDelUsuario(listaDeProductos, TAMPRODUCTO);
+                    break;
+
+            case 9:
+                    mostrarProductos(listaDeProductos, TAMPRODUCTO);
+                    break;
+
 
 
         }
@@ -52,7 +73,7 @@ int main()
 
 
 
-    } while (opcion!=9);
+    } while (opcion!=11);
 
 
 

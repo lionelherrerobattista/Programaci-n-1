@@ -36,6 +36,7 @@ void inicializarUsuariosHardCode (eUsuario usuarios[], int limite)
     int id[15] = {1000,1001,1002,1003,1004, 1005,1006,1007,1008,1009, 1010,1011,1012,1013,1014};
     char nombre[][50]= {"Juan","Maria","Pedro","Vanesa","Jose","Luisa","Laura","Marcelo","German","Victoria","Dafne","Antonela","Gisele","Dario","Pedro"};
     char password [][50] = {"casa", "perro", "gato", "auto", "moto"};
+    float calificacion [15] = {5,3.5,2,1.5,3,3,4.33,2.15,1,5,4.22,3.33,4,2.12,1};
 
     int i;
 
@@ -44,6 +45,7 @@ void inicializarUsuariosHardCode (eUsuario usuarios[], int limite)
         usuarios[i].idUsuario=id[i];
         strcpy(usuarios[i].usuario, nombre[i]);
         strcpy(usuarios[i].password, password[i]);
+        usuarios[i].calificacion=calificacion[i];
         usuarios[i].estado=OCUPADO;
     }
 
@@ -52,8 +54,8 @@ void inicializarUsuariosHardCode (eUsuario usuarios[], int limite)
 void inicializarProductosHardCode (eProducto productos[], int limite)
 {
     int id[15] = {1000,1001,1002,1003,1004, 1005,1006,1007,1008,1009, 1010,1011,1012,1013,1014};
-    char nombre[][50]= {"Remera nike","Pantalon Kevingston","Samsung S8","Iphone X","Silla Gamer","Pintura plástica","Mochila","Smart TV","Notebook Asus","Destornillador","Bacha cocina","Lámpara","Cochecito","Cartera","Heladera"};
-    int idUsuario [15]= {1000,1000,1001,1001,1001, 1002,1003, 1004,1005,1005,1006,1007,1008,1009,1010};
+    char nombre[][50]= {"Remera Nike","Pantalon Kevingston","Samsung S8","Iphone X","Silla Gamer","Pintura plástica","Mochila","Smart TV","Notebook Asus","Destornillador","Bacha cocina","Lámpara","Cochecito","Cartera","Heladera"};
+    int idUsuario [15]= {1000,1000,1001,1001,1002, 1002,1003, 1004,1005,1005,1006,1007,1008,1009,1010};
     float precio[15]={600,1200.50, 19999.99,30000,3600,1069,900.56,10500,19999,2000,8000,350,3500,1032,60000};
     int stock[15]={300,200,50,135,20,500,100,5,32,65,3,10,20,54,64};
 
@@ -98,7 +100,7 @@ void mostrarUsuarios (eUsuario usuarios[], int limite)
 {
     int i;
 
-    printf("%-10s %-10s\n","Id:","Nombre:");
+    printf("\n%-10s %-10s\n","Id:","Nombre:");
     for (i=0; i<limite; i++)
     {
 
@@ -141,7 +143,7 @@ void altaUsuario (eUsuario usuarios[], int limite)
         fflush(stdin);
         gets(usuarios[index].usuario);
 
-        printf("\nIngrese una password: ");
+        printf("Ingrese una password: ");
         fflush(stdin);
         gets(usuarios[index].password);
 
@@ -209,14 +211,14 @@ void altaProducto (eProducto productos[], int limiteProductos)
 
     if (index>=0)
     {
-        printf("\nIngrese el nombre del producto: ");
+        printf("\nIngrese el nombre del producto a publicar: ");
         fflush(stdin);
         gets(productos[index].nombre);
 
-        printf("\nIngrese un precio: ");
+        printf("\nIngrese el precio: ");
         scanf("%f", &productos[index].precio);
 
-        printf("\nIngrese stock: ");
+        printf("\nIngrese el stock: ");
         scanf("%d", &productos[index].stock);
 
         productos[index].idProducto=siguienteIdProducto(productos, limiteProductos);
@@ -228,8 +230,10 @@ void altaProducto (eProducto productos[], int limiteProductos)
     }
     else
     {
-        printf("No hay lugar.");
+        printf("\nNo hay lugar.");
     }
+
+    printf("\nSe ha guardado el producto");
 
 }
 
@@ -269,7 +273,7 @@ int siguienteIdProducto(eProducto productos[], int limite)
         }
     }
 
-    return retorno;
+    return retorno+1;
 }
 
 //Mostrar producto con usuario
@@ -281,10 +285,10 @@ void mostrarProductosDelUsuario(eProducto productos[], int limiteProductos)
     printf("Ingrese su id de usuario: ");
     scanf("%d",&id);
 
-    printf("%-5s %-20s %-20s %-20s\n","Id:","Nombre:","Precio:","Stock:");
+    printf("\n%-5s %-20s %-20s %-20s\n","Id:","Nombre:","Precio:","Stock:");
     for (i=0; i<limiteProductos; i++)
     {
-        if (productos[i].idUsuario==id)
+        if (productos[i].idUsuario==id && productos[i].estado==OCUPADO)
         {
 
             printf("%-5d %-20s %-20.2f %-20d \n",productos[i].idProducto, productos[i].nombre, productos[i].precio, productos[i].stock);
@@ -292,5 +296,146 @@ void mostrarProductosDelUsuario(eProducto productos[], int limiteProductos)
         }
 
     }
+}
+
+void mostrarProductos(eProducto productos[], int limiteProductos)
+{
+
+    int i;
+
+    printf("\n%-20s %-20s %-20s %-20s %-20s\n","Id producto:","Nombre:","Precio:","Stock:","Id usuario:");
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].estado==OCUPADO)
+        {
+
+            printf("%-20d %-20s %-20.2f %-20d %-20d \n",productos[i].idProducto, productos[i].nombre, productos[i].precio, productos[i].stock, productos[i].idUsuario);
+
+        }
+
+    }
+}
+
+void modificarProductos(eProducto productos[], int limiteProductos)
+{
+    int id;
+    int idProd;
+    int i;
+
+    printf("\nIngrese su id de usuario: ");
+    scanf("%d",&id);
+
+    printf("\n%-5s %-20s %-20s %-20s\n","Id:","Nombre:","Precio:","Stock:");
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idUsuario==id && productos[i].estado==OCUPADO)
+        {
+
+            printf("%-5d %-20s %-20.2f %-20d \n",productos[i].idProducto, productos[i].nombre, productos[i].precio, productos[i].stock);
+
+        }
+    }
+
+    printf("\nIngrese el id del producto que desea modificar: ");
+    scanf("%d",&idProd);
+
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idProducto==idProd && productos[i].estado==OCUPADO)
+        {
+            printf("\nIngrese el nuevo precio: ");
+            scanf("%f", &productos[i].precio);
+
+            printf("\nIngrese el nuevo stock: ");
+            scanf("%d", &productos[i].stock);
+            break;
+
+        }
+    }
+
+    printf("\nSe ha modificado el producto.");
+    printf("\n%-5s %-20s %-20s %-20s\n","Id:","Nombre:","Precio:","Stock:");
+
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idUsuario==id && productos[i].estado==OCUPADO)
+        {
+
+            printf("%-5d %-20s %-20.2f %-20d \n",productos[i].idProducto, productos[i].nombre, productos[i].precio, productos[i].stock);
+
+        }
+    }
+
+}
+
+void cancelarPublicacion (eProducto productos[], int limiteProductos)
+{
+    int id;
+    int idProd;
+    int i;
+
+    printf("\nIngrese su id de usuario: ");
+    scanf("%d",&id);
+
+    printf("\n%-5s %-20s %-20s %-20s\n","Id:","Nombre:","Precio:","Stock:");
+
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idUsuario==id && productos[i].estado==OCUPADO)
+        {
+
+            printf("%-5d %-20s %-20.2f %-20d \n",productos[i].idProducto, productos[i].nombre, productos[i].precio, productos[i].stock);
+
+        }
+    }
+
+    printf("\nIngrese el id del producto que desea cancelar: ");
+    scanf("%d",&idProd);
+
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idProducto==idProd)
+        {
+            productos[i].estado=LIBRE;
+        }
+    }
+
+}
+
+void comprarProducto (eProducto productos[], int limiteProductos, eUsuario usuarios[], int limiteUsuarios)
+{
+    int idProd;
+    int i;//productos
+    int j;//usuarios
+
+    mostrarProductos(productos, limiteProductos);
+
+    printf("Ingrese el id del producto que desea comprar: ");
+    scanf("%d",&idProd);
+
+    for (i=0; i<limiteProductos; i++)
+    {
+        if (productos[i].idProducto==idProd && productos[i].stock>0)
+        {
+            productos[i].stock=productos[i].stock-1;
+            printf("\nSe ha realizado la compra.");
+
+            for (j=0; j<limiteUsuarios;j++)
+            {
+                if (productos[i].idUsuario==usuarios[j].idUsuario)
+                {
+                    printf("\nIngrese una calificación (de 1 a 5) para el vendedor: ");
+                    scanf("%d",&usuarios[j].calificacion);
+
+                }
+
+
+            }
+
+        }
+    }
+
+
+
 }
 
