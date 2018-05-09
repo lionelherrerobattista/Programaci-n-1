@@ -77,6 +77,8 @@ void inicializarProductosHardCode (eProducto productos[], int limite)
 
 }
 
+//Comprueba que es número entero
+
 //asigno id+1
 int siguienteId(eUsuario usuarios[], int limite)
 {

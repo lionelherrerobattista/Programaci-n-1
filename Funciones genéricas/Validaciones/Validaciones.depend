@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1525903511 source:c:\users\lion_\desktop\validaciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+
