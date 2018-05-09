@@ -36,7 +36,9 @@ void inicializarUsuariosHardCode (eUsuario usuarios[], int limite)
     int id[15] = {1000,1001,1002,1003,1004, 1005,1006,1007,1008,1009, 1010,1011,1012,1013,1014};
     char nombre[][50]= {"Juan","Maria","Pedro","Vanesa","Jose","Luisa","Laura","Marcelo","German","Victoria","Dafne","Antonela","Gisele","Dario","Pedro"};
     char password [][50] = {"casa", "perro", "gato", "auto", "moto"};
-    float calificacion [15] = {5,3.5,2,1.5,3,3,4.33,2.15,1,5,4.22,3.33,4,2.12,1};
+    int calificacion[5]={30,13,4,10,70};
+    int cantidadVentas[5]={14,3,1,2,20};
+
 
     int i;
 
@@ -45,7 +47,8 @@ void inicializarUsuariosHardCode (eUsuario usuarios[], int limite)
         usuarios[i].idUsuario=id[i];
         strcpy(usuarios[i].usuario, nombre[i]);
         strcpy(usuarios[i].password, password[i]);
-        usuarios[i].calificacion=calificacion[i];
+        usuarios[i].acumuladorCalificacion=calificacion[i];
+        usuarios[i].cantidadVentas=cantidadVentas[i];
         usuarios[i].estado=OCUPADO;
     }
 
@@ -407,6 +410,7 @@ void comprarProducto (eProducto productos[], int limiteProductos, eUsuario usuar
     int idProd;
     int i;//productos
     int j;//usuarios
+    int calificacion;
 
     mostrarProductos(productos, limiteProductos);
 
@@ -425,7 +429,9 @@ void comprarProducto (eProducto productos[], int limiteProductos, eUsuario usuar
                 if (productos[i].idUsuario==usuarios[j].idUsuario)
                 {
                     printf("\nIngrese una calificación (de 1 a 5) para el vendedor: ");
-                    scanf("%d",&usuarios[j].calificacion);
+                    scanf("%d",&calificacion);
+                    usuarios[j].acumuladorCalificacion=usuarios[j].acumuladorCalificacion+calificacion;
+                    usuarios[j].cantidadVentas=usuarios[j].cantidadVentas+1;
 
                 }
 
@@ -435,7 +441,26 @@ void comprarProducto (eProducto productos[], int limiteProductos, eUsuario usuar
         }
     }
 
-
-
 }
+
+void listarUsuarios(eUsuario usuarios[], int limiteUsuarios)
+{
+    int i;
+    float promedioCalificacion;
+
+    printf("%-10s %-10s %-10s\n","Id:","Nombre:","Calificacion promedio:");
+
+    for(i=0;i<limiteUsuarios;i++)
+    {
+        if (usuarios[i].estado==OCUPADO)
+        {
+            promedioCalificacion=(float)usuarios[i].acumuladorCalificacion/usuarios[i].cantidadVentas;
+
+            printf("%-10d %-10s %-10.2f\n",usuarios[i].idUsuario, usuarios[i].usuario, promedioCalificacion);
+
+        }
+
+    }
+}
+
 

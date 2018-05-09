@@ -24,7 +24,7 @@ int main()
 
     do
     {
-        printf("\n1.ALTAS\n2.MODIFICACIONES\n3.BAJAS\n4.PUBLICAR PRODUCTO\n5.MODIFICAR PUBLICACION\n6.CANCELAR PUBLICACION\n7.\n8.LISTAR PUBLICACIONES DEL USUARIO\n9.LISTAR PUBLICACIONES\n11.SALIR\n \nElija una opcion: ");
+        printf("\n1.ALTAS\n2.MODIFICACIONES\n3.BAJAS\n4.PUBLICAR PRODUCTO\n5.MODIFICAR PUBLICACION\n6.CANCELAR PUBLICACION\n7.COMPRAR PRODUCTO\n8.LISTAR PUBLICACIONES DEL USUARIO\n9.LISTAR PUBLICACIONES\n10.LISTAR USUARIOS\n11.SALIR\n \nElija una opcion: ");
         scanf("%d", &opcion);
         printf(" \n");
 
@@ -56,6 +56,7 @@ int main()
                     break;
 
             case 7:
+                    comprarProducto(listaDeProductos, TAMPRODUCTO, listaDeUsuarios, TAMUSUARIO);
                     break;
 
             case 8:
@@ -65,6 +66,12 @@ int main()
             case 9:
                     mostrarProductos(listaDeProductos, TAMPRODUCTO);
                     break;
+
+            case 10:
+                    listarUsuarios(listaDeUsuarios, TAMUSUARIO);
+                    break;
+
+
 
 
 
