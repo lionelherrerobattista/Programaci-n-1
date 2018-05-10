@@ -58,7 +58,7 @@ void inicializarAutosHardCode(eAutos autos[], int limite)
 {
     int id[]= {1,2,3,4,5,6,7,8,9,10};
     char patente[][20]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
-    int marca[]= {1,3,3,2,2,3,3,4,3,1};
+    int marca[]= {ALPHA_ROMEO,AUDI,AUDI,FERRARI,FERRARI,AUDI,AUDI,OTRO,AUDI,ALPHA_ROMEO};
     int propietario[]= {2,1,2,1,3,3,4,1,4,3};
 
 
@@ -318,8 +318,11 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
 {
     int i;//autos
     int j;//propietarios
+    char marca[][20]={"ALPHA_ROMEO","FERRARI","AUDI","OTRO"};
 
-    printf("\n%-10s %-10s %-10s %-10s\n","Id:","Patente:","Marca:","Propietario:");
+
+
+    printf("\n%-15s %-15s %-15s %-15s\n","Id:","Patente:","Marca:","Propietario:");
 
 
     for(i=0; i<limiteAutos; i++)
@@ -329,7 +332,7 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
             if(autos[i].idPropietario==propietario[j].idPropietario && autos[i].estado==OCUPADO)
             {
 
-                printf("%-10d %-10s %-10d %-10s\n", autos[i].idAuto, autos[i].patente, autos[i].marca, propietario[j].nombreApellido);
+                printf("%-15d %-15s %-15s %-15s\n", autos[i].idAuto, autos[i].patente, marca[autos[i].marca-1], propietario[j].nombreApellido);
 
             }
 
@@ -339,7 +342,7 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
     }
 }
 
-void egresoAutomovil ()
+/*void egresoAutomovil ()
 {
 
     int id;
@@ -380,9 +383,10 @@ void egresoAutomovil ()
             printf("\nNo se encontro el id.");
     }
 
-}
-}
+}*/
 
+
+/*
 int devolverHorasEstadia()
 {
     int horas;
@@ -393,7 +397,7 @@ int devolverHorasEstadia()
 
     return horas ;
 
-}
+}*/
 
 
 

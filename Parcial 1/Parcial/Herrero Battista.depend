@@ -12,3 +12,16 @@
 	<stdlib.h>
 	<strings.h>
 
+1525966591 source:c:\users\lio\desktop\labo\parcial 1\parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Propietarios.h"
+
+1525966589 c:\users\lio\desktop\labo\parcial 1\parcial\propietarios.h
+
+1525968316 source:c:\users\lio\desktop\labo\parcial 1\parcial\propietarios.c
+	<stdio.h>
+	"Propietarios.h"
+	<stdlib.h>
+	<strings.h>
+
