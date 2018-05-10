@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1525963239 source:d:\herrerobattista\herrero battista\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Propietarios.h"
+
+1525962528 d:\herrerobattista\herrero battista\propietarios.h
+
+1525963532 source:d:\herrerobattista\herrero battista\propietarios.c
+	<stdio.h>
+	"Propietarios.h"
+	<stdlib.h>
+	<strings.h>
+
