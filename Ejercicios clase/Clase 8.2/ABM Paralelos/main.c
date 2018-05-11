@@ -100,9 +100,9 @@ int main()
         case 5:
             for (i=0; i<TAM-1; i++)
             {
-                for(j=0; j<TAM;j++)
+                for(j=i+1; j<TAM;j++)
                 {
-                    if(stricmp(nombre[i],nombre[j])<0)
+                    if(stricmp(nombre[i],nombre[j])>0)
                     {
                         strcpy(auxiliarChar[i],nombre[i]);
                         strcpy(nombre[i],nombre[j]);
