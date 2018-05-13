@@ -25,3 +25,16 @@
 	<stdlib.h>
 	<strings.h>
 
+1526238058 source:c:\users\lio\desktop\l\parcial_1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Propietarios.h"
+
+1526238011 c:\users\lio\desktop\l\parcial_1\propietarios.h
+
+1526238011 source:c:\users\lio\desktop\l\parcial_1\propietarios.c
+	<stdio.h>
+	"Propietarios.h"
+	<stdlib.h>
+	<strings.h>
+

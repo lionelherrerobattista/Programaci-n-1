@@ -16,6 +16,7 @@ typedef struct
     char patente[50];
     int marca;
     int idPropietario;
+    float estadia;
     int estado;
 
 }eAutos;
@@ -145,3 +146,22 @@ int siguienteIdAuto (eAutos[], int);
  *
  */
 void mostrarAutos(ePropietarios[], int, eAutos[], int);
+
+void egresoAutomovil(eAutos[] ,int, ePropietarios[]);
+
+float valorEstadia (int);
+
+int devolverHorasEstadia();
+
+void mostrarRecaudacionTotal(eAutos[], int);
+
+void mostrarEstadiaPorMarca(eAutos[], int);
+
+void mostrarPropietarioConAutos(ePropietarios[],int, eAutos[],int);
+
+void motrarAutoPorMarca(eAutos[],int, ePropietarios[],int, int);
+
+void autosOrdenadosPorPatente(eAutos[],int, ePropietarios[], int);
+
+
+

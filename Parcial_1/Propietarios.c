@@ -30,6 +30,7 @@ void inicializarAutos (eAutos autos[], int limite)
     {
         autos[i].estado=LIBRE;
         autos[i].idAuto=0;
+        autos[i].estadia=0;
     }
 }
 
@@ -342,13 +343,16 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
     }
 }
 
-/*void egresoAutomovil ()
+void egresoAutomovil (eAutos automovil[],int limite, ePropietarios propietarios[])
 {
 
     int id;
-    int i;
+    int i;//automovil
+    int j;//propietario
     int flag=0;
+
     char respuesta;
+
 
     printf("\nIngrese el id del auto que egresa: ");
     scanf("%d",&id);
@@ -356,9 +360,9 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
 
     for (i=0; i<limite;i++)
     {
-        if (propietarios[i].idPropietario==id)
+        if (automovil[i].idAuto==id)
         {
-            printf("\nEsta seguro que quiere dar de baja? (s/n)");
+            printf("\nEsta seguro? (s/n)");
             fflush(stdin);
             respuesta=getchar();
 
@@ -366,15 +370,33 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
             {
                 for (i=0; i<limite; i++)
                 {
-                    if (propietarios[i].idPropietario==id)
+                    if (automovil[i].idAuto==id)
                     {
-                       propietarios[i].estado=LIBRE;
+                       automovil[i].estado=LIBRE;
+                       automovil[i].estadia=valorEstadia(automovil[i].marca);
+
+                       for(j=0;j<limite; j++)
+                       {
+                           if (automovil[i].idPropietario==propietarios[j].idPropietario)
+                           {
+
+                               printf("\n%-15s %-15s %-15s %-15s\n", "Propietario:","Patente:","Marca:","Valor estadia:");
+                               printf("%-15s %-15s %-15d %-15.2f\n", propietarios[j].nombreApellido, automovil[i].patente, automovil[i].marca, automovil[i].estadia);
+
+                           }
+                       }
+
+
+
+
                     }
                 }
             }
 
             flag=1;
         }
+
+
 
     }
 
@@ -383,10 +405,44 @@ void mostrarAutos(ePropietarios propietario[], int limitePropietario, eAutos aut
             printf("\nNo se encontro el id.");
     }
 
-}*/
 
 
-/*
+}
+
+float valorEstadia (int marca)
+{
+    float estadia;
+
+
+    if (marca==ALPHA_ROMEO)
+    {
+        estadia=150*devolverHorasEstadia();
+    }
+    else
+    {
+        if (marca==FERRARI)
+        {
+            estadia=175*devolverHorasEstadia();
+        }
+        else
+        {
+            if(marca==AUDI)
+            {
+                estadia=200*devolverHorasEstadia();
+            }
+            else
+            {
+                estadia=250*devolverHorasEstadia();
+            }
+        }
+    }
+
+    return estadia;
+
+}
+
+
+
 int devolverHorasEstadia()
 {
     int horas;
@@ -397,7 +453,171 @@ int devolverHorasEstadia()
 
     return horas ;
 
-}*/
+}
+
+void mostrarRecaudacionTotal(eAutos automoviles[], int limite)
+{
+    int i;
+    float recaudacionTotal=0;
+
+    for (i=0;i<limite;i++)
+    {
+        if (automoviles[i].estado==LIBRE)
+        {
+            recaudacionTotal=recaudacionTotal+automoviles[i].estadia;
+        }
+
+    }
+
+    printf("La recaudacion total es de: %.2f",recaudacionTotal);
+
+}
+
+void mostrarEstadiaPorMarca(eAutos automoviles[], int limite)
+{
+    int i;
+    float estadiaAlpha=0;
+    float estadiaFerrari=0;
+    float estadiaAudi=0;
+    float estadiaOtro=0;
+
+    for (i=0;i<limite;i++)
+    {
+        if(automoviles[i].marca==ALPHA_ROMEO)
+        {
+            estadiaAlpha=estadiaAlpha+automoviles[i].estadia;
+        }
+        else
+        {
+            if(automoviles[i].marca==FERRARI)
+            {
+                estadiaFerrari=estadiaFerrari+automoviles[i].estadia;
+            }
+            else
+            {
+                if(automoviles[i].marca==AUDI)
+                {
+                    estadiaAudi=estadiaAudi+automoviles[i].estadia;
+                }
+                else
+                {
+                    estadiaOtro=estadiaOtro+automoviles[i].estadia;
+                }
+            }
+        }
+    }
+
+    printf("\nALPHA_ROMEO: %.2f\nFERRARI: %.2f\nAUDI: %.2f\nOTRO: %.2f\n",estadiaAlpha,estadiaFerrari,estadiaAudi,estadiaOtro);
+}
+
+void mostrarPropietarioConAutos(ePropietarios propietario[],int limitePropietarios, eAutos automoviles[],int limiteAutos)
+{
+    int i;
+    int j;
+    int id;
+    int flag=0;
+    char marca[][20]={"ALPHA_ROMEO","FERRARI","AUDI","OTRO"};
+
+    printf("Ingrese el id del propietario: ");
+    scanf("%d", &id);
+
+
+    for (i=0;i<limitePropietarios;i++)
+    {
+        if (propietario[i].idPropietario==id && propietario[i].estado==OCUPADO)
+        {
+            printf("\nNombre: %s\n",propietario[i].nombreApellido);
+            printf("\n%-10s %-10s\n","Patente:","Marca:");
+
+            for (j=0;j<limiteAutos;j++)
+            {
+                if (propietario[i].idPropietario==automoviles[j].idPropietario && automoviles[j].estadia==OCUPADO)
+                {
+                    printf("%-10s %-10s\n",automoviles[j].patente,marca[automoviles[j].marca-1]);
+                }
+            }
+
+            flag=1;
+        }
+    }
+
+    if (flag==0)
+    {
+        printf("\nNo se encontro el id.\n");
+    }
+}
+
+void motrarAutoPorMarca (eAutos automoviles[],int limiteAutos, ePropietarios propietarios[],int limitePropietarios, int marca)
+{
+    int i;//automoviles
+    int j;//propietarios
+    int flag=0;
+
+    printf("\n%-5s %-10s %-10s %-10s\n","ID:","Nombre:","Direccion:","Nro. de Tarjeta:");
+
+    for (i=0; i<limiteAutos; i++)
+    {
+        if (automoviles[i].marca==marca && automoviles[i].estado==OCUPADO)
+        {
+            for (j=0;j<limitePropietarios;j++)
+            {
+                if (automoviles[i].idPropietario==propietarios[j].idPropietario)
+                {
+                    printf("%-5d %-10s %-10s %-10s\n",propietarios[j].idPropietario, propietarios[j].nombreApellido, propietarios[j].direccion, propietarios[j].numeroTarjeta);
+                }
+            }
+
+            flag=1;
+        }
+    }
+
+    if (flag==0)
+    {
+        printf("No se encontraron usuarios.");
+    }
+
+
+}
+
+void autosOrdenadosPorPatente(eAutos automoviles[],int limiteAutos, ePropietarios propietarios[], int limitePropietarios)
+{
+    int i;//autos
+    int j;
+    char marca[][20]={"ALPHA_ROMEO","FERRARI","AUDI","OTRO"};
+
+    eAutos auxiliar;
+
+    for (i=0; i<limiteAutos-1; i++)
+    {
+        for (j=i+1;j<limiteAutos;j++)
+        {
+              if(stricmp(automoviles[i].patente,automoviles[j].patente)>0)
+              {
+                  auxiliar=automoviles[i];
+                  automoviles[i]=automoviles[j];
+                  automoviles[j]=auxiliar;
+              }
+
+        }
+
+    }
+
+    printf("%-15s %-15s %-15s %-15s\n","ID:","Patente:","Marca:","Propietario:");
+
+    for (i=0; i<limiteAutos; i++)
+    {
+
+        for (j=0;j<limitePropietarios;j++)
+        {
+            if (automoviles[i].idPropietario==propietarios[j].idPropietario)
+            {
+                printf("%-15d %-15s %-15s %-15s\n",automoviles[i].idAuto, automoviles[i].patente, marca[automoviles[i].marca-1], propietarios[j].nombreApellido);
+            }
+        }
+
+
+    }
+}
 
 
 
