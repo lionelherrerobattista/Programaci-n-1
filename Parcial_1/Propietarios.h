@@ -147,23 +147,79 @@ int siguienteIdAuto (eAutos[], int);
  */
 void mostrarAutos(ePropietarios[], int, eAutos[], int);
 
+/** \brief Registra el egreso del automovil y muestra el valor de la estadía
+ *
+ * \param eAutos[] lista de autos
+ * \param int limite de autos
+ * \param ePropietarios[] lista de propietarios
+ * \return void
+ *
+ */
 void egresoAutomovil(eAutos[] ,int, ePropietarios[]);
 
-float valorEstadia (int);
+/** \brief Calcula el valor de la estadía
+ *
+ * \param int numero que indica la marca del automóvil
+ * \return float valor de la estadía
+ *
+ */
+float valorEstadia(int);
 
 int devolverHorasEstadia();
 
+/** \brief Muestra la recaudación total del estacionamiento
+ *
+ * \param eAutos[] lista de autos
+ * \param int limite de autos
+ * \return void
+ *
+ */
 void mostrarRecaudacionTotal(eAutos[], int);
 
+/** \brief Muestra el valor de la estadía de acuerdo a la marca del auto
+ *
+ * \param eAutos[] lista de autos
+ * \param int límite de autos
+ * \return void
+ *
+ */
 void mostrarEstadiaPorMarca(eAutos[], int);
 
+/** \brief Muestra la lista de propietarios con su auto
+ *
+ * \param ePropietarios[] lista de propietarios
+ * \param int límite de propietarios
+ * \param eAutos[] lista de autos
+ * \param int límite de autos
+ * \return void
+ *
+ */
 void mostrarPropietarioConAutos(ePropietarios[],int, eAutos[],int);
 
-void motrarAutoPorMarca(eAutos[],int, ePropietarios[],int, int);
+/** \brief Muestra los autos de acuerdo con la marca que se elija
+ *
+ * \param eAutos[] lista de autos
+ * \param int limite de autos
+ * \param ePropietarios[] lista de propietarios
+ * \param int límite de propietarios
+ * \param int número que hace referencia a la marca del auto
+ * \return void
+ *
+ */
+void mostrarAutoPorMarca(eAutos[],int, ePropietarios[],int, int);
 
+/** \brief Ordena a los autos por patente y los muestra
+ *
+ * \param eAutos[] lista de autos
+ * \param int límite de autos
+ * \param ePropietarios[] lista de propietarios
+ * \param int límite de propietarios
+ * \return void
+ *
+ */
 void autosOrdenadosPorPatente(eAutos[],int, ePropietarios[], int);
 
-/** \brief Valida que sea un carácter
+/** \brief Valida que el tipo de dato ingresado sea un char
  *
  * \param auxiliar[] char auxiliar para comprobar el char
  * \return int >0 si es char sino 0
@@ -171,6 +227,12 @@ void autosOrdenadosPorPatente(eAutos[],int, ePropietarios[], int);
  */
 int esChar(char auxiliar[]);
 
+/** \brief Valida que el tipo de dato ingresado sea un int
+ *
+ * \param auxiliar[] char auxiliar para comprobar el dato de tipo int
+ * \return int >0 si es int, =0 si no es int
+ *
+ */
 int esInt(char auxiliar[]);
 
 

@@ -67,7 +67,7 @@ int main()
                     break;
             case 9:
                     printf("\nPropietarios con Audi:\n");
-                    motrarAutoPorMarca(listaDeAutos, TAMAUTOS, listaDePropietarios, TAMPROPIETARIOS, AUDI);
+                    mostrarAutoPorMarca(listaDeAutos, TAMAUTOS, listaDePropietarios, TAMPROPIETARIOS, AUDI);
                     break;
             case 10:
                     autosOrdenadosPorPatente(listaDeAutos, TAMAUTOS, listaDePropietarios, TAMPROPIETARIOS);

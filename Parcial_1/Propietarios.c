@@ -624,7 +624,7 @@ void mostrarPropietarioConAutos(ePropietarios propietario[],int limitePropietari
     }
 }
 
-void motrarAutoPorMarca (eAutos automoviles[],int limiteAutos, ePropietarios propietarios[],int limitePropietarios, int marca)
+void mostrarAutoPorMarca (eAutos automoviles[],int limiteAutos, ePropietarios propietarios[],int limitePropietarios, int marca)
 {
     int i;//automoviles
     int j;//propietarios
