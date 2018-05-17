@@ -2,6 +2,8 @@
 #include "Propietarios.h"
 #include <stdlib.h>
 #include <strings.h>
+#include <ctype.h>
+#include <conio.h>
 
 #define LIBRE 1
 #define OCUPADO 0
@@ -95,28 +97,115 @@ void mostrarPropietarios (ePropietarios propietarios[], int limite)
 void altaPropietario (ePropietarios propietarios[], int limite)
 {
     int index;
+    int validacion=0;
+    int validacionlargo=0;
+    char auxiliarValidacion[50];
 
 
     index=buscarLibre(propietarios, limite);
 
     if (index>=0)
     {
-        printf("\nIngrese su nombre y apellido: ");
+        printf("\nIngrese el nombre: ");
         fflush(stdin);
-        gets(propietarios[index].nombreApellido);
+        gets(auxiliarValidacion);
+        validacion=esChar(auxiliarValidacion);
+
+        while (validacion==0)
+        {
+                printf("\nError. Ingrese el nombre otra vez: ");
+                fflush(stdin);
+                gets(auxiliarValidacion);
+                validacion=esChar(auxiliarValidacion);
+        }
+
+        strcpy(propietarios[index].nombreApellido,auxiliarValidacion);
+
+        validacion=0;
 
         printf("Ingrese su direccion: ");
         fflush(stdin);
-        gets(propietarios[index].direccion);
+        gets(auxiliarValidacion);
+        validacion=esChar(auxiliarValidacion);
+
+        while (validacion==0)
+        {
+                printf("\nError. Ingrese la direccion otra vez: ");
+                fflush(stdin);
+                gets(auxiliarValidacion);
+                validacion=esChar(auxiliarValidacion);
+        }
+
+        strcpy(propietarios[index].direccion,auxiliarValidacion);
+
+        validacion=0;
 
         printf("Ingrese su numero de tarjeta: ");
         fflush(stdin);
-        gets(propietarios[index].numeroTarjeta);
+        gets(auxiliarValidacion);
+        validacion=esInt(auxiliarValidacion);
+
+
+        while (validacion==0)
+        {
+            printf("\nError. Ingrese la edad nuevamente: ");
+            fflush(stdin);
+            gets(auxiliarValidacion);
+            validacion=esInt(auxiliarValidacion);
+        }
+
+        propietarios[index].numeroTarjeta=atoi(auxiliarValidacion);
 
         propietarios[index].idPropietario=siguienteId(propietarios, limite);
 
         propietarios[index].estado=OCUPADO;
     }
+}
+
+int esChar (char auxiliar[])
+{
+    int i;
+    int retorno;
+    int limite;
+
+    limite=strlen(auxiliar);
+
+    for (i=0;i<limite;i++)
+    {
+        retorno=isalpha(auxiliar[i]);
+
+        if (retorno==0)
+        {
+            break;
+        }
+    }
+
+
+
+    return retorno;
+
+}
+
+int esInt(char auxiliar[])
+{
+    int i;
+    int retorno;
+    int limite;
+
+    limite=strlen(auxiliar);
+
+    for (i=0;i<limite;i++)
+    {
+        retorno=isdigit(auxiliar[i]);
+
+        if (retorno==0)
+        {
+            break;
+        }
+    }
+
+    return retorno;
+
 }
 
 int buscarLibre (ePropietarios propietarios[], int limite)
