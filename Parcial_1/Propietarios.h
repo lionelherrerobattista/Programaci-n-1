@@ -163,5 +163,15 @@ void motrarAutoPorMarca(eAutos[],int, ePropietarios[],int, int);
 
 void autosOrdenadosPorPatente(eAutos[],int, ePropietarios[], int);
 
+/** \brief Valida que sea un carácter
+ *
+ * \param auxiliar[] char auxiliar para comprobar el char
+ * \return int >0 si es char sino 0
+ *
+ */
+int esChar(char auxiliar[]);
+
+int esInt(char auxiliar[]);
+
 
 

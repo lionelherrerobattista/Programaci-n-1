@@ -98,7 +98,6 @@ void altaPropietario (ePropietarios propietarios[], int limite)
 {
     int index;
     int validacion=0;
-    int validacionlargo=0;
     char auxiliarValidacion[50];
 
 
@@ -113,48 +112,23 @@ void altaPropietario (ePropietarios propietarios[], int limite)
 
         while (validacion==0)
         {
-                printf("\nError. Ingrese el nombre otra vez: ");
-                fflush(stdin);
-                gets(auxiliarValidacion);
-                validacion=esChar(auxiliarValidacion);
+            printf("\nError. Ingrese el nombre otra vez: ");
+            fflush(stdin);
+            gets(auxiliarValidacion);
+            validacion=esChar(auxiliarValidacion);
         }
 
         strcpy(propietarios[index].nombreApellido,auxiliarValidacion);
 
-        validacion=0;
-
         printf("Ingrese su direccion: ");
         fflush(stdin);
-        gets(auxiliarValidacion);
-        validacion=esChar(auxiliarValidacion);
+        gets(propietarios[index].direccion);
 
-        while (validacion==0)
-        {
-                printf("\nError. Ingrese la direccion otra vez: ");
-                fflush(stdin);
-                gets(auxiliarValidacion);
-                validacion=esChar(auxiliarValidacion);
-        }
-
-        strcpy(propietarios[index].direccion,auxiliarValidacion);
-
-        validacion=0;
 
         printf("Ingrese su numero de tarjeta: ");
         fflush(stdin);
-        gets(auxiliarValidacion);
-        validacion=esInt(auxiliarValidacion);
+        gets(propietarios[index].numeroTarjeta);
 
-
-        while (validacion==0)
-        {
-            printf("\nError. Ingrese la edad nuevamente: ");
-            fflush(stdin);
-            gets(auxiliarValidacion);
-            validacion=esInt(auxiliarValidacion);
-        }
-
-        propietarios[index].numeroTarjeta=atoi(auxiliarValidacion);
 
         propietarios[index].idPropietario=siguienteId(propietarios, limite);
 
@@ -253,6 +227,7 @@ void modificarPropietario (ePropietarios propietarios[], int limite)
     int flag=0;
     int respuesta;
 
+
     printf("\nIngrese el id del propietario que desea modificar: ");
     scanf("%d", &id);
 
@@ -272,12 +247,15 @@ void modificarPropietario (ePropietarios propietarios[], int limite)
                 {
                     if (propietarios[i].idPropietario==id)
                     {
-                        printf("\nIngrese su numero de tarjeta: ");
+                        printf("Ingrese su numero de tarjeta: ");
                         fflush(stdin);
                         gets(propietarios[i].numeroTarjeta);
+
+
                     }
                 }
             }
+
             flag=1;
         }
 
@@ -347,12 +325,22 @@ void altaAuto (eAutos autos[], int limite)
         fflush(stdin);
         gets(autos[index].patente);
 
-        printf("\nIngrese marca: ");
+        printf("\nIngrese la marca: ");
         printf("\n1.ALPHA_ROMEO");
         printf("\n2.FERRARI");
         printf("\n3.AUDI");
         printf("\n4.OTRO\n");
         scanf("%d", &autos[index].marca);
+
+        while (autos[index].marca<1 || autos[index].marca>4)
+        {
+            printf("\nError. Ingrese la marca nuevamente: ");
+            printf("\n1.ALPHA_ROMEO");
+            printf("\n2.FERRARI");
+            printf("\n3.AUDI");
+            printf("\n4.OTRO\n");
+            scanf("%d", &autos[index].marca);
+        }
 
 
         printf("Ingrese su id: ");
