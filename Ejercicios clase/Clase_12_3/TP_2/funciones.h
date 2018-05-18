@@ -109,7 +109,7 @@ void mostrarPersonas(EPersona*,EPersona, int);
  * \return void
  *
  */
-void borrarPersona(EPersona[], int);
+void borrarPersona(EPersona*, int);
 
 /** \brief Realiza un gráfico de la cantidad de personas distribuidas en 3 rangos etarios <18 18-35 >35
  *
@@ -118,7 +118,7 @@ void borrarPersona(EPersona[], int);
  * \return void
  *
  */
-void graficoEdad(EPersona[], int);
+void graficoEdad(EPersona*, int);
 
 
 

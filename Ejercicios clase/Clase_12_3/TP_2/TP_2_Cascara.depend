@@ -35,3 +35,18 @@
 	<conio.h>
 	"funciones.h"
 
+1526653210 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\ejercicios clase\clase_12_3\tp_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1526653653 c:\users\alumno\desktop\nueva carpeta\programacion-1\ejercicios clase\clase_12_3\tp_2\funciones.h
+
+1526653624 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\ejercicios clase\clase_12_3\tp_2\funciones.c
+	<stdlib.h>
+	<stdio.h>
+	<strings.h>
+	<ctype.h>
+	<conio.h>
+	"funciones.h"
+

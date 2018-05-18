@@ -244,7 +244,7 @@ void mostrarPersonas (EPersona* personas,EPersona auxiliar, int limite)
     }
 }
 
-void borrarPersona (EPersona personas[], int limite)
+void borrarPersona (EPersona* personas, int limite)
 {
     int id;
     int i;
@@ -263,9 +263,9 @@ void borrarPersona (EPersona personas[], int limite)
     {
         for (i=0; i<limite; i++)
         {
-            if (personas[i].id==id)
+            if ((personas+i)->id==id)
             {
-               personas[i].estado=LIBRE;
+               (personas+i)->estado=LIBRE;
                flag=1;
             }
         }
@@ -280,7 +280,7 @@ void borrarPersona (EPersona personas[], int limite)
 
 }
 
-void graficoEdad (EPersona personas[], int limite)
+void graficoEdad (EPersona* personas, int limite)
 {
     int i;
     int j;
@@ -291,15 +291,15 @@ void graficoEdad (EPersona personas[], int limite)
     printf(" \n");
     for (i=0; i<limite; i++)
     {
-        if (personas[i].estado==OCUPADO)
+        if ((personas+i)->estado==OCUPADO)
         {
-            if (personas[i].edad>35)
+            if ((personas+i)->edad>35)
             {
                 edades[2]=edades[2]+1;
             }
             else
             {
-                if (personas[i].edad>=18 && personas[i].edad<=35)
+                if ((personas+i)->edad>=18 && (personas+i)->edad<=35)
                 {
                    edades[1]=edades[1]+1;
                 }
