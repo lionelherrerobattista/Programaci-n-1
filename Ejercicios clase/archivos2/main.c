@@ -112,13 +112,24 @@ void funcion3B()
     FILE* miArchivo;
     eDato d= {1,'B'};//escribir este dato en un archivo binario
 
-    miArchivo = fopen("miBinario.dat","wb");//tambien se puede usar la extensión .bin o no ponerle nada wb-modo de escritra binaria
+    /*miArchivo = fopen("miBinario.dat","wb");//tambien se puede usar la extensión .bin o no ponerle nada wb-modo de escritra binaria
 
     if (miArchivo!=NULL)
     {
         fwrite(&d,sizeof(eDato),1,miArchivo);
         fclose(miArchivo);
+    }*/
+
+    miArchivo = fopen("miBinario.dat","rb");//tambien se puede usar la extensión .bin o no ponerle nada wb-modo de escritra binaria
+
+    if (miArchivo!=NULL)
+    {
+        fwrite(&d,sizeof(eDato),1,miArchivo);
+        fclose(miArchivo);
+
+        printf("%d---%c",d.a,d.b);
     }
+
 
 }
 
