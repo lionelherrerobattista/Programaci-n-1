@@ -16,7 +16,7 @@ int ePersona_getId(ePersona*);
 char* ePersona_getNombre(ePersona*);
 
 //malloc
-void* asignarMemoria(ePersona*);
+ePersona* newPersona();
 
 int main()
 {
@@ -24,7 +24,9 @@ int main()
     ePersona* pPersona;
     //pPersona= &miPersona;
     //printf("%p\n",pPersona);
-    pPersona=asignarMemoria(pPersona); //(ePersona*) malloc(sizeof(ePersona));
+    pPersona=newPersona(); //(ePersona*) malloc(sizeof(ePersona));
+
+    ePersona* otro=newPersona();//Construyo espacio en persona
     //printf("%p\n",pPersona);
 
     if(pPersona!=NULL)
@@ -97,10 +99,10 @@ char* ePersona_getNombre(ePersona* this)
     return ret;
 }
 
-void* asignarMemoria(ePersona* this)
+ePersona* newPersona()
 {
-    ePersona* retorno;
-    retorno=(ePersona*) malloc(sizeof(this));
+    ePersona* persona;
+    persona=(ePersona*) malloc(sizeof(ePersona));
 
-    return retorno;
+    return persona;
 }
