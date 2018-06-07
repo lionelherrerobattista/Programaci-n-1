@@ -79,6 +79,7 @@ int main()
 
 
     /*//constructor destructor, parser employee. Lee empleados y los carga dentro del vector. parser en apunte
-
+    //getters y setters para todos los campos
+    //leer datos desde el parser
     return 0;
 }
