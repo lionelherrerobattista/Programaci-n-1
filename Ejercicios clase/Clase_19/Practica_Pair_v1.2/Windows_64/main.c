@@ -55,8 +55,8 @@ int main()
     printf("Size lista: %d\n",empleadosCargados);//imprimo el tamaño en pantalla
 
     comparacion=employee_compare(e1,e2);//compara dos empleados, despues lo paso a la funcion sort
-    printf("%d",comparacion);
-    al_sort(lista,employee_compare(e1,e2),1);
+    printf("Comparacion: %d\n",comparacion);
+    al_sort(lista,(employee_compare),0);//le paso la funcion sin los parametros, estoy pasandole la dirección de memoria
 
     for(i=0;i<empleadosCargados;i++)
     {

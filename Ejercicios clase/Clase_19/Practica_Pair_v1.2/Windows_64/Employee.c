@@ -7,12 +7,12 @@
 
 int employee_compare(void* pEmployeeA,void* pEmployeeB)
 {
-    Employee* empleado1;
+    Employee* empleado1;//crear puntero de tipo empleado
     Employee* empleado2;
 
     int comparacion=0;
 
-    empleado1=pEmployeeA;
+    empleado1=pEmployeeA;//asignar el puntero
     empleado2=pEmployeeB;
 
     comparacion=stricmp(empleado1->name,empleado2->name);
