@@ -70,3 +70,27 @@
 	"Employee.h"
 	<string.h>
 
+1528379718 source:d:\l\programacion-1\ejercicios clase\clase_19\practica_pair_v1.2\windows_64\employee.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+	"string.h"
+
+1528378111 d:\l\programacion-1\ejercicios clase\clase_19\practica_pair_v1.2\windows_64\arraylist.h
+
+1477571236 d:\l\programacion-1\ejercicios clase\clase_19\practica_pair_v1.2\windows_64\employee.h
+
+1464384470 source:d:\l\programacion-1\ejercicios clase\clase_19\practica_pair_v1.2\windows_64\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1528380420 source:d:\l\programacion-1\ejercicios clase\clase_19\practica_pair_v1.2\windows_64\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+	<string.h>
+

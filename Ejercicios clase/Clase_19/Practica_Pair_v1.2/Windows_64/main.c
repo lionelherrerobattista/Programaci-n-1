@@ -19,7 +19,7 @@ int main()
 {
     int empleadosCargados;
     int i;
-    int comparacion;
+
 
     ArrayList* lista;//gestiona direcciones de memoria
     lista=al_newArrayList(); //Creo lista de cosas. Le pedimos memoria al sistema operativo, para el dato que hay que guardar
@@ -54,9 +54,19 @@ int main()
     empleadosCargados=al_len(lista);//devuelve el tamaño de la lista
     printf("Size lista: %d\n",empleadosCargados);//imprimo el tamaño en pantalla
 
-    comparacion=employee_compare(e1,e2);//compara dos empleados, despues lo paso a la funcion sort
-    printf("Comparacion: %d\n",comparacion);
+    printf("\n----Antes del ordenamiento-----");
+
+    for(i=0;i<empleadosCargados;i++)
+    {
+        //tomar un elemento
+        empleadoAuxiliar=(Employee*)al_get(lista,i);//apunta a la misma direccion de e1. Hacer casteo a empleado
+        employee_print(empleadoAuxiliar);//muestro el empleado
+
+    }
+
     al_sort(lista,(employee_compare),0);//le paso la funcion sin los parametros, estoy pasandole la dirección de memoria
+
+    printf("\n----Despues del ordenamiento----");
 
     for(i=0;i<empleadosCargados;i++)
     {
@@ -68,9 +78,7 @@ int main()
 
 
 
-    /*//crear otro empleado y agregarlo a la lista
-    empleadoAuxiliar=(Employee*)al_get(lista,1);
-    employee_print(empleadoAuxiliar);*/
+    /*//constructor destructor, parser employee. Lee empleados y los carga dentro del vector. parser en apunte
 
     return 0;
 }
