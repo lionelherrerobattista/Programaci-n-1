@@ -34,9 +34,9 @@ int main(void)
         //startTesting(3);//prueba al_delete
         //startTesting(4);//prueba al_len
         //startTesting(5);prueba al_get
-        startTesting(6);//prueba al_contains
-        /*startTesting(7);
-        startTesting(8);
+        //startTesting(6);//prueba al_contains
+        startTesting(7);
+        /*startTesting(8);
         startTesting(9);
         startTesting(10);
         startTesting(11);

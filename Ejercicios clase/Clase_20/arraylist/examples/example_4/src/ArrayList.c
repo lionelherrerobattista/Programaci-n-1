@@ -137,6 +137,7 @@ int al_len(ArrayList* this)
     if(this!=NULL)
     {
         returnAux=this->size;//devuelvo el tamaño de la lista
+
     }
 
 
@@ -208,6 +209,30 @@ int al_contains(ArrayList* this, void* pElement)
 int al_set(ArrayList* this, int index,void* pElement)
 {
     int returnAux = -1;
+
+    if(this!=NULL && pElement!=NULL)
+    {
+        if(index>0 && index<=this->size)
+        {
+            if(index==this->size)
+            {
+                this->add(this,pElement);
+            }
+            else
+            {
+                if(index<this->size)
+                {
+                    *((this->pElements)+index)=pElement;
+
+                }
+
+
+
+            }
+            returnAux=0;
+
+        }
+    }
 
     return returnAux;
 }
