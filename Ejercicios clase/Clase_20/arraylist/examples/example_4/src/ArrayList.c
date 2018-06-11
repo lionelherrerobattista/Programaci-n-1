@@ -121,6 +121,7 @@ int al_deleteArrayList(ArrayList* this)
 {
     int returnAux = -1;
 
+
     return returnAux;
 }
 
@@ -132,6 +133,12 @@ int al_deleteArrayList(ArrayList* this)
 int al_len(ArrayList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL)
+    {
+        returnAux=this->size;//devuelvo el tamaño de la lista
+    }
+
 
     return returnAux;
 }
@@ -146,6 +153,9 @@ int al_len(ArrayList* this)
 void* al_get(ArrayList* this, int index)
 {
     void* returnAux = NULL;
+
+
+
 
     return returnAux;
 }
@@ -162,8 +172,28 @@ void* al_get(ArrayList* this, int index)
 int al_contains(ArrayList* this, void* pElement)
 {
     int returnAux = -1;
+    int i;
 
-    return returnAux;
+    if(this!=NULL && pElement!=NULL)
+    {
+        for(i=0;i<this->size;i++)//itero para buscar el valor en pElements
+        {
+            if(*((this->pElements)+i)==pElement)//busco que el valor guardado en pElements *()sea igual al que pasa pElement
+            {
+                returnAux=1;
+                break;
+            }
+            else
+            {
+                returnAux=0;//No lo encuentra
+            }
+
+        }
+
+    }
+
+
+    return returnAux; //-1 si alguno de los punteros es NULL
 }
 
 

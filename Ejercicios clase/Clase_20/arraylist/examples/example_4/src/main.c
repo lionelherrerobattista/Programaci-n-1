@@ -29,13 +29,13 @@
 int main(void)
 {
         //probar los tests hasta que llegue al 100%
-        startTesting(1);//prueba al_newArray
-        /*startTesting(2);
-        startTesting(3);
-        startTesting(4);
-        startTesting(5);
-        startTesting(6);
-        startTesting(7);
+        //startTesting(1);//prueba al_newArray
+        //startTesting(2);//prueba al_add
+        //startTesting(3);//prueba al_delete
+        //startTesting(4);//prueba al_len
+        //startTesting(5);prueba al_get
+        startTesting(6);//prueba al_contains
+        /*startTesting(7);
         startTesting(8);
         startTesting(9);
         startTesting(10);
