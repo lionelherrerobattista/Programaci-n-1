@@ -222,11 +222,9 @@ int al_set(ArrayList* this, int index,void* pElement)
             {
                 if(index<this->size)
                 {
-                    *((this->pElements)+index)=pElement;
+                    *((this->pElements)+index)=pElement; //le agrego el elemento
 
                 }
-
-
 
             }
             returnAux=0;
@@ -247,6 +245,16 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
+
+     if(this!=NULL && pElement!=NULL)
+    {
+        if(index>=0 && index<=this->size)
+        {
+
+            returnAux=0;
+
+        }
+    }
 
     return returnAux;
 }
@@ -422,6 +430,16 @@ int expand(ArrayList* this,int index)
 int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
+
+     if(this!=NULL && pElement!=NULL)
+    {
+        if(index>0 && index<=this->size)
+        {
+
+            returnAux=0;
+
+        }
+    }
 
     return returnAux;
 }
