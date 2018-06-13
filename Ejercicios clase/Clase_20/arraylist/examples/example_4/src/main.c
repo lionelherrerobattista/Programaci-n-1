@@ -31,14 +31,14 @@ int main(void)
         //probar los tests hasta que llegue al 100%
         //startTesting(1);//prueba al_newArray 100%
         //startTesting(2);//prueba al_add 100%
-        //startTesting(3);//prueba al_delete 0%
+        //startTesting(3);//prueba al_delete 100%
         //startTesting(4);//prueba al_len 100%
-        //startTesting(5);prueba al_get 100%
+        startTesting(5);//prueba al_get 50%
         //startTesting(6);//prueba al_contains 100%
         //startTesting(7);//prueba al_set 60%
-        /*startTesting(8);
-        startTesting(9);
-        startTesting(10);
+        //startTesting(8);//prueba al_remove 100%
+        //startTesting(9);//prueba al_clear 100%
+        /*startTesting(10);
         startTesting(11);
         startTesting(12);
         startTesting(13);

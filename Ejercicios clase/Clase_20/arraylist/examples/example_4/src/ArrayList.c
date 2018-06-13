@@ -121,6 +121,12 @@ int al_deleteArrayList(ArrayList* this)
 {
     int returnAux = -1;
 
+    if(this!=NULL)
+    {
+        free(this);
+        returnAux=0;
+    }
+
 
     return returnAux;
 }
@@ -155,8 +161,13 @@ void* al_get(ArrayList* this, int index)
 {
     void* returnAux = NULL;
 
-
-
+    if(this!=NULL)
+    {
+        if(index>=0 && index<=this->size)//el indice puede ser == 0
+        {
+            returnAux=*((this->pElements)+index);//devuelvo el valor de la lista de elementos
+        }
+    }
 
     return returnAux;
 }
@@ -179,7 +190,7 @@ int al_contains(ArrayList* this, void* pElement)
     {
         for(i=0;i<this->size;i++)//itero para buscar el valor en pElements
         {
-            if(*((this->pElements)+i)==pElement)//busco que el valor guardado en pElements *()sea igual al que pasa pElement
+            if(*((this->pElements)+i)==pElement)//busco que el valor *() guardado en el array de punteros pElements en la posición "i" sea igual al que pasa pElement
             {
                 returnAux=1;
                 break;
@@ -214,19 +225,9 @@ int al_set(ArrayList* this, int index,void* pElement)
     {
         if(index>0 && index<=this->size)
         {
-            if(index==this->size)
-            {
-                this->add(this,pElement);
-            }
-            else
-            {
-                if(index<this->size)
-                {
-                    *((this->pElements)+index)=pElement; //le agrego el elemento
 
-                }
+            *((this->pElements)+index)=pElement; //le agrego el elemento
 
-            }
             returnAux=0;
 
         }
@@ -246,10 +247,13 @@ int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
 
-     if(this!=NULL && pElement!=NULL)
+
+     if(this!=NULL)
     {
-        if(index>=0 && index<=this->size)
+        if(index>=0 && index<=this->size) //el indice se encuentra entre los valores del tamñano del array
         {
+            free((this->pElements)+index);//libero los elementos del array en el indice indicado
+            this->size--;//le saco uno al tamaño de la lista
 
             returnAux=0;
 
@@ -269,6 +273,13 @@ int al_remove(ArrayList* this,int index)
 int al_clear(ArrayList* this)
 {
     int returnAux = -1;
+
+    if(this!=NULL)
+    {
+        free(this);//limpio la lista
+        al_newArrayList(); //creo la lista de nuevo sino está todo vacío
+        returnAux=0;
+    }
 
     return returnAux;
 }
@@ -431,7 +442,7 @@ int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
 
-     if(this!=NULL && pElement!=NULL)
+    /* if(this!=NULL && pElement!=NULL)
     {
         if(index>0 && index<=this->size)
         {
@@ -439,7 +450,7 @@ int contract(ArrayList* this,int index)
             returnAux=0;
 
         }
-    }
+    }*/
 
     return returnAux;
 }
