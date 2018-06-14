@@ -355,11 +355,13 @@ int al_indexOf(ArrayList* this, void* pElement)
 
     if(this!=NULL && pElement!=NULL)
     {
+        //Recorro pElements
         for(i=0;i<this->size;i++)
         {
-            if(*((this->pElements)+i)==pElement)
+            if(*(this->pElements+i)==pElement)//comparo si los datos son iguales
             {
-                returnAux=i;
+                returnAux=i;//devuelvo la posición
+                break;//para que no siga iterando
             }
         }
     }
@@ -379,15 +381,16 @@ int al_isEmpty(ArrayList* this)
 
     if(this!=NULL)
     {
+        //Me fijo en el valor de size
         if(this->size>0)
         {
-            returnAux=0;
+            returnAux=0;//no está vacía
         }
         else
         {
             if(this->size==0)
             {
-                returnAux=1;
+                returnAux=1;//está vacía
             }
         }
     }
@@ -410,11 +413,12 @@ void* al_pop(ArrayList* this,int index)
 
     if(this!=NULL)
     {
-        if(index>=0 && index<=this->size)
+        if(index>=0 && index<this->size)
         {
-            returnAux=*((this->pElements)+index);
-            free(this->pElements+index);
-            this->size--;
+            returnAux=*(this->pElements+index);
+            contract(this,index);
+            /*free(this->pElements+index);
+            this->size--;*/
         }
     }
 
@@ -433,6 +437,34 @@ void* al_pop(ArrayList* this,int index)
 ArrayList* al_subList(ArrayList* this,int from,int to)
 {
     void* returnAux = NULL;
+
+
+    int i;
+
+
+    if(this!=NULL)
+    {
+        if((from<this->size && from >=0) && (to<this->size && to>=0))
+        {
+            if(from<to)
+            {
+                //Creo una nueva lista:
+                returnAux=al_newArrayList();
+                //Le agrego los elementos desde from hasta to
+                for(i=from;i<to;i++)
+                {
+                    if(al_add(returnAux,this->pElements+i))
+                    {
+                        al_deleteArrayList(returnAux);
+                        returnAux=NULL;
+                    }
+
+                }
+
+            }
+
+        }
+    }
 
     return returnAux ;
 }
@@ -592,6 +624,25 @@ int resizeUp(ArrayList* this)
 int expand(ArrayList* this,int index)
 {
     int returnAux = -1;
+    void* aux=NULL;
+    int i;
+
+    if(this!=NULL)
+    {
+        if(index>=0 && index<this->size)
+        {
+
+            al_add(this,aux);//agrego un espacio al final
+            for(i=this->size-1;i>index;i--)
+            {
+                *(this->pElements+i)=this->pElements+(i-1);
+            }
+
+
+            returnAux=0;
+
+        }
+    }
 
     return returnAux;
 }
@@ -610,12 +661,12 @@ int contract(ArrayList* this,int index)
 
     if(this!=NULL)
     {
-        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamñano del array
+        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamaño del array
         {
 
-            for(i=index;i<this->size;i++)
+            for(i=index;i<this->size-1;i++)
             {
-                this->pElements[i]=this->pElements+(i+1);//piso el elemento anterior desde index(el que quiero borrar)
+                *(this->pElements+i)=*(this->pElements+(i+1));//piso el elemento anterior desde index(el que quiero borrar)
 
             }
 
