@@ -72,14 +72,21 @@ ArrayList* al_newArrayList(void)
 int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero agregar
 {
     int returnAux = -1;
-    int flag = 0;
+    //int flag = 0;
 
     //verifico que los punteros no lleguen NULL
     //Esto se pasa a funcion resizeUP
     if(this!=NULL && pElement!=NULL)//con que uno de los dos sea NULL ya hace que no funcione
     {
+        if(!(resizeUp(this)))
+        {
+            *(this->pElements+this->size)=pElement;//guardo en la dirección de memoria 0. Uso size, que siempre apunta al siguiente elemento
+            this->size++;
+            returnAux=0;
+        }
 
 
+        /*Otra forma:
         if(resizeUp(this))//si no da cero es null y entra
             {
                 flag=1;//es nulo, no se cumple el aumento de espacio
@@ -87,13 +94,12 @@ int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero
 
         if(flag==0)//para no repetir el agregado
         {
-            *(this->pElements+this->size)=pElement;//guardo en la dirección de memoria 0. Uso size, que siempre apunta al siguiente elemento
+            *(this->pElements+this->size)=pElement;
             this->size++;
-            //tengo que pedir memoria
+
 
             returnAux=0;
-
-        }
+        }*/
 
     }
 
@@ -453,11 +459,7 @@ ArrayList* al_subList(ArrayList* this,int from,int to)
                 //Le agrego los elementos desde from hasta to
                 for(i=from;i<to;i++)
                 {
-                    if(al_add(returnAux,this->pElements+i))
-                    {
-                        al_deleteArrayList(returnAux);
-                        returnAux=NULL;
-                    }
+                    al_add(returnAux,this->pElements+i);
 
                 }
 
@@ -595,8 +597,6 @@ int resizeUp(ArrayList* this)
 
                 returnAux=0;
             }
-
-
         }
         else
         {
@@ -604,9 +604,6 @@ int resizeUp(ArrayList* this)
             returnAux=0;
 
         }
-
-
-
 
     }
 
