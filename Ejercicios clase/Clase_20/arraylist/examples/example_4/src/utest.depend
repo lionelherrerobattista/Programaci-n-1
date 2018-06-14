@@ -202,15 +202,19 @@
 	"../../inc/ArrayList.h"
 	"../../inc/Employee.h"
 
-1528981003 source:d:\l\programacion-1\ejercicios clase\clase_20\arraylist\examples\example_4\src\arraylist.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"../inc/ArrayList.h"
-
 1528977098 source:d:\l\programacion-1\ejercicios clase\clase_20\arraylist\examples\example_4\src\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"../inc/Employee.h"
+
+1528982803 source:d:\l\programacion-1\ejercicios clase\clase_20\arraylist\examples\example_4\src\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../testing/inc/main_test.h"
+	"../inc/ArrayList.h"
+	"../inc/Employee.h"
+
+1528977098 d:\l\programacion-1\ejercicios clase\clase_20\arraylist\examples\example_4\testing\inc\main_test.h
 

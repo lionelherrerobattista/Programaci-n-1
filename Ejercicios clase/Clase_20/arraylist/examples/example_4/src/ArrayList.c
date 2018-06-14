@@ -246,14 +246,28 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
+    //void* aux;
 
 
-     if(this!=NULL)
+
+
+    if(this!=NULL)
     {
         if(index>=0 && index<=this->size) //el indice se encuentra entre los valores del tamñano del array
         {
-            free((this->pElements)+index);//libero los elementos del array en el indice indicado
-            this->size--;//le saco uno al tamaño de la lista
+
+            for(i=index;i<this->size;i++)
+            {
+                this->pElements[i]=this->pElements+(i+1);//piso el elemento anterior desde index(el que quiero borrar)
+
+            }
+
+            this->size--;//le saco uno al tamaño de la
+
+            //free((this->pElements)+index);//si libero pierdo los datos
+
+            this->reservedSize = this->reservedSize - AL_INCREMENT;//lo que habia mas lo quiero sumar
 
             returnAux=0;
 
@@ -276,6 +290,8 @@ int al_clear(ArrayList* this)
 
     if(this!=NULL)
     {
+        //solo puedo liberar lo que construí (malloc)
+        free(this->pElements);//limpio los elementos
         free(this);//limpio la lista
         al_newArrayList(); //creo la lista de nuevo sino está todo vacío
         returnAux=0;
@@ -490,16 +506,39 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
 int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux = -1;
-   /* void* aux;
+    void* aux;
+    int i;
+    int j;
 
     if(this!=NULL && pFunc!=NULL)
     {
-        if(pfunc=1)
+        for(i=0;i<(this->size)-1;i++)
         {
-            aux=
+            for(j=i+1;i<this->size;j++)
+            {
+                if(pfunc(this->pElements[i],this->pElements[j])>0 && order==1)
+                {
+                    aux=this->pElements+i;
+                    this->pElements[i]=this->pElements[j];
+                    this->pElements[j]=aux;
+                }
+                else
+                {
+                    if(pfunc(this->pElements+i,this->pElements+j)<0 && order==0)
+                    {
+                        aux=this->pElements+i;
+                        this->pElements[i]=this->pElements[j];
+                        this->pElements[j]=aux;
+                    }
+
+            }
+
+            }
+
 
         }
-    }*/
+    }
+
 
     return returnAux;
 }
@@ -563,7 +602,7 @@ int expand(ArrayList* this,int index)
 int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
-    int i;
+    /*int i;
 
     if(this!=NULL)
     {
@@ -578,7 +617,7 @@ int contract(ArrayList* this,int index)
             returnAux=0;
 
         }
-    }
+    }*/
 
     return returnAux;
 }
