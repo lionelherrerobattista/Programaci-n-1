@@ -78,15 +78,12 @@ int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero
     //Esto se pasa a funcion resizeUP
     if(this!=NULL && pElement!=NULL)//con que uno de los dos sea NULL ya hace que no funcione
     {
-        if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
-        {
 
-            if(resizeUp(this))//si no da cero es null y entra
+
+        if(resizeUp(this))//si no da cero es null y entra
             {
                 flag=1;//es nulo, no se cumple el aumento de espacio
             }
-
-        }
 
         if(flag==0)//para no repetir el agregado
         {
@@ -99,8 +96,6 @@ int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero
         }
 
     }
-
-
 
     return returnAux;
 }
@@ -156,9 +151,9 @@ void* al_get(ArrayList* this, int index)
 
     if(this!=NULL)
     {
-        if(index>=0 && index<=this->size)//el indice puede ser == 0
+        if(index>=0 && index<this->size)//el indice puede ser == 0
         {
-            returnAux=*(this->pElements+index);//devuelvo el valor de la lista de elementos
+            returnAux=*(this->pElements+index);//devuelvo el elemento almacenado de la lista de elementos
         }
     }
 
@@ -239,40 +234,18 @@ int al_set(ArrayList* this, int index,void* pElement)
 int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
-    int i;
-    void* aux;
-
-
+    //int i;
+    //void* aux;
 
 
     if(this!=NULL)
     {
-        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamñano del array
+        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamaño del array
         {
-
-            for(i=index;i<this->size;i++)
+            if(!contract(this,index))
             {
-                this->pElements[i]=this->pElements+(i+1);//piso el elemento anterior desde index(el que quiero borrar)
-
+                returnAux=0;
             }
-
-            this->size--;//le saco uno al tamaño de la lista
-
-            //free((this->pElements)+index);//si libero pierdo los datos
-
-            this->reservedSize = this->reservedSize - AL_INCREMENT;//necesita menos espacio
-
-            //Libero el espacio en memoria adicional:
-            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize - AL_INCREMENT));//necesito espacio en memoria para espacio a void
-            //verfico que el auxiliar no sea nulo
-            if(aux!=NULL)
-            {
-                this->pElements = aux;
-            }
-
-
-            returnAux=0;
-
         }
     }
 
@@ -313,10 +286,20 @@ int al_clear(ArrayList* this)
 ArrayList* al_clone(ArrayList* this)
 {
     ArrayList* returnAux = NULL;
+    void* aux;
+    int i;
 
     if(this!=NULL)
     {
-        returnAux=this;
+
+        aux=al_newArrayList();//creo una nueva lista y la asigno a aux
+        for(i=0;i<this->size;i++)
+        {
+          al_add(returnAux,*(this->pElements+i));//le agrego todos los elementos
+        }
+
+        //aux=this;//NO! COPIO DIR DE MEMORIA DE LA LISTA copio las listas en un auxiliar
+        returnAux=aux; //devuelvo
     }
 
     return returnAux;
@@ -335,16 +318,20 @@ ArrayList* al_clone(ArrayList* this)
 int al_push(ArrayList* this, int index, void* pElement)
 {
     int returnAux = -1;
-    void** aux;
-    //int i;
+    void* aux=NULL;
+    int i;
 
     if(this!=NULL && pElement!=NULL)
     {
-        if(index>=0 && index<=this->size)
+        if(index>=0 && index<this->size)
         {
-            aux=this->pElements+index;
-            al_add(this, aux);
-            this->pElements[index]=pElement;
+
+            al_add(this,aux);//agrego un espacio al final
+            for(i=this->size-1;i>index;i--)
+            {
+                *(this->pElements+i)=this->pElements+(i-1);
+            }
+            *(this->pElements+index)=pElement;
 
             returnAux=0;
 
@@ -563,16 +550,32 @@ int resizeUp(ArrayList* this)
     if(this!=NULL)//verifico que no sea NULL
     {
 
-        aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
-        //verfico que el auxiliar no sea nulo
-        if(aux!=NULL)
+        if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
         {
-            this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
-            //tengo que modificar el reserved size
-            this->reservedSize = this->reservedSize + AL_INCREMENT;//lo que habia mas lo quiero sumar
+
+            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
+            //verfico que el auxiliar no sea nulo
+            if(aux!=NULL)
+            {
+                this->pElements = aux;//le paso el puntero auxiliar con más espacio
+                //tengo que modificar el reserved size
+                this->reservedSize = this->reservedSize + AL_INCREMENT;//Aumento el espacio reservado
+
+                returnAux=0;
+            }
+
+
+        }
+        else
+        {
+            //si hay espacio
+            returnAux=0;
+
         }
 
-        returnAux=0;
+
+
+
     }
 
 
@@ -603,25 +606,38 @@ int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
     void* aux;
+    int i;
 
     if(this!=NULL)
     {
-
-
-        aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
-
-        if(aux!=NULL)
+        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamñano del array
         {
-            this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
-            //tengo que modificar el reserved size
-            this->reservedSize = this->reservedSize - (AL_INCREMENT*index);//lo que habia mas lo quiero sumar
-            this->size=this->size-index;
+
+            for(i=index;i<this->size;i++)
+            {
+                this->pElements[i]=this->pElements+(i+1);//piso el elemento anterior desde index(el que quiero borrar)
+
+            }
+
+            this->size--;//le saco uno al tamaño de la lista
+
+            //free((this->pElements)+index);//si libero pierdo los datos
+
+            this->reservedSize = this->reservedSize - AL_INCREMENT;//necesita menos espacio
+
+            //Libero el espacio en memoria adicional:
+            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize - AL_INCREMENT));
+            //verfico que el auxiliar no sea nulo
+            if(aux!=NULL)
+            {
+                this->pElements = aux;
+            }
+
+
+            returnAux=0;
+
         }
-
-        returnAux=0;
-
     }
-
 
     return returnAux;
 }

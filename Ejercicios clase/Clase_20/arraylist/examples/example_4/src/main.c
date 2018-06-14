@@ -36,9 +36,9 @@ int main(void)
         //startTesting(5);//prueba al_get 100%
         //startTesting(6);//prueba al_contains 100%
         //startTesting(7);//prueba al_set 100%
-        startTesting(8);//prueba al_remove 100%
+        //startTesting(8);//prueba al_remove 100%
         //startTesting(9);//prueba al_clear 100%
-        //startTesting(10);//prueba al_clone 100%
+        startTesting(10);//prueba al_clone 100%
         //startTesting(11);//prueba al_push 100% -mover todos un espacio
         //startTesting(12);//prueba al_indexOf 100%
         //startTesting(13);//prueba al_isEmpty 100%
