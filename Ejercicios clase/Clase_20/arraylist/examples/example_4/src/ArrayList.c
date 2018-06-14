@@ -519,17 +519,17 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
             {
                 for(j=i+1;j<this->size;j++)
                 {
-                    if(pFunc(this->pElements[i],this->pElements[j])>0 && order==0)
+                    if(pFunc(this->pElements[i],this->pElements[j])==1 && order==1)
                     {
-                        aux=this->pElements+i;
+                        aux=this->pElements[i];
                         this->pElements[i]=this->pElements[j];
                         this->pElements[j]=aux;
                     }
                     else
                     {
-                        if(pFunc(this->pElements+i,this->pElements+j)<0 && order==1)
+                        if(pFunc(this->pElements+i,this->pElements+j)==-1 && order==0)
                         {
-                            aux=this->pElements+i;
+                            aux=this->pElements[i];
                             this->pElements[i]=this->pElements[j];
                             this->pElements[j]=aux;
                         }
@@ -603,6 +603,27 @@ int expand(ArrayList* this,int index)
 int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
+    void* aux;
+
+    if(this!=NULL)
+    {
+
+
+        aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
+
+        if(aux!=NULL)
+        {
+            this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
+            //tengo que modificar el reserved size
+            this->reservedSize = this->reservedSize - (AL_INCREMENT*index);//lo que habia mas lo quiero sumar
+            this->size=this->size-index;
+        }
+
+        returnAux=0;
+
+    }
+
+
     /*int i;
 
     if(this!=NULL)
