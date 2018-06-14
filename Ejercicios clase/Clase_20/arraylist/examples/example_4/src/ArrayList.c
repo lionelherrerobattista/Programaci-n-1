@@ -512,30 +512,31 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 
     if(this!=NULL && pFunc!=NULL)
     {
-        for(i=0;i<(this->size)-1;i++)
+        if(order==0 || order==1)
         {
-            for(j=i+1;i<this->size;j++)
+
+            for(i=0;i<this->size-1;i++)
             {
-                if(pfunc(this->pElements[i],this->pElements[j])>0 && order==1)
+                for(j=i+1;j<this->size;j++)
                 {
-                    aux=this->pElements+i;
-                    this->pElements[i]=this->pElements[j];
-                    this->pElements[j]=aux;
-                }
-                else
-                {
-                    if(pfunc(this->pElements+i,this->pElements+j)<0 && order==0)
+                    if(pFunc(this->pElements[i],this->pElements[j])>0 && order==0)
                     {
                         aux=this->pElements+i;
                         this->pElements[i]=this->pElements[j];
                         this->pElements[j]=aux;
                     }
-
+                    else
+                    {
+                        if(pFunc(this->pElements+i,this->pElements+j)<0 && order==1)
+                        {
+                            aux=this->pElements+i;
+                            this->pElements[i]=this->pElements[j];
+                            this->pElements[j]=aux;
+                        }
+                    }
+                }
             }
-
-            }
-
-
+            returnAux=0;
         }
     }
 
