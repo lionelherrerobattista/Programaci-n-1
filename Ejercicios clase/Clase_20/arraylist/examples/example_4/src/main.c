@@ -35,7 +35,7 @@ int main(void)
         //startTesting(4);//prueba al_len 100%
         //startTesting(5);//prueba al_get 100%
         //startTesting(6);//prueba al_contains 100%
-        //startTesting(7);//prueba al_set 100%
+        startTesting(7);//prueba al_set 100%
         //startTesting(8);//prueba al_remove 100%
         //startTesting(9);//prueba al_clear 100%
         //startTesting(10);//prueba al_clone 100%
@@ -45,7 +45,7 @@ int main(void)
         //startTesting(14);//prueba al_pop 100%
         //startTesting(15);//al_subList %60
         //startTesting(16);//al_containsAll %100
-        startTesting(17);//al_sort 80%
+        //startTesting(17);//al_sort 80%
 
     return 0;
 }

@@ -72,7 +72,6 @@ ArrayList* al_newArrayList(void)
 int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero agregar
 {
     int returnAux = -1;
-    void** aux;//pElement es un doble puntero a void
     int flag = 0;
 
     //verifico que los punteros no lleguen NULL
@@ -81,23 +80,17 @@ int al_add(ArrayList* this, void* pElement)//puntero a void, elemento que quiero
     {
         if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
         {
-            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
-            //verfico que el auxiliar no sea nulo
-            if(aux!=NULL)
+
+            if(resizeUp(this))//si no da cero es null y entra
             {
-                this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
-                //tengo que modificar el reserved size
-                this->reservedSize = this->reservedSize + AL_INCREMENT;//lo que habia mas lo quiero sumar
+                flag=1;//es nulo, no se cumple el aumento de espacio
             }
-            else
-            {
-                flag=1;//es nulo, no se cumple
-            }
+
         }
 
         if(flag==0)//para no repetir el agregado
         {
-            this->pElements[this->size]=pElement;//guardo en la dirección de memoria 0. Uso size, que siempre apunta al siguiente elemento
+            *(this->pElements+this->size)=pElement;//guardo en la dirección de memoria 0. Uso size, que siempre apunta al siguiente elemento
             this->size++;
             //tengo que pedir memoria
 
@@ -165,7 +158,7 @@ void* al_get(ArrayList* this, int index)
     {
         if(index>=0 && index<=this->size)//el indice puede ser == 0
         {
-            returnAux=*((this->pElements)+index);//devuelvo el valor de la lista de elementos
+            returnAux=*(this->pElements+index);//devuelvo el valor de la lista de elementos
         }
     }
 
@@ -190,7 +183,7 @@ int al_contains(ArrayList* this, void* pElement)
     {
         for(i=0;i<this->size;i++)//itero para buscar el valor en pElements
         {
-            if(*((this->pElements)+i)==pElement)//busco que el valor *() guardado en el array de punteros pElements en la posición "i" sea igual al que pasa pElement
+            if(*(this->pElements+i)==pElement)//busco que el valor *() guardado en el array de punteros pElements en la posición "i" sea igual al que pasa pElement
             {
                 returnAux=1;
                 break;
@@ -223,10 +216,10 @@ int al_set(ArrayList* this, int index,void* pElement)
 
     if(this!=NULL && pElement!=NULL)
     {
-        if(index>=0 && index<=this->size)
+        if(index>=0 && index<this->size)
         {
 
-            this->pElements[index]=pElement; //le agrego el elemento
+            *(this->pElements+index)=pElement; //le agrego el elemento
 
             returnAux=0;
 
@@ -522,7 +515,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                     if(pFunc(this->pElements[i],this->pElements[j])==1 && order==1)
                     {
                         aux=this->pElements[i];
-                        this->pElements[i]=this->pElements[j];
+                        *(this->pElements+i)=this->pElements[j];
                         this->pElements[j]=aux;
                     }
                     else
@@ -557,23 +550,20 @@ int resizeUp(ArrayList* this)
     void** aux;//pElement es un doble puntero a void
 
 
-    //verifico el puntero no llegue NULL
-    if(this!=NULL)//con que uno de los dos sea NULL ya hace que no funcione
-    {
-        if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
-        {
-            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
-            //verfico que el auxiliar no sea nulo
-            if(aux!=NULL)
-            {
-                this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
-                //tengo que modificar el reserved size
-                this->reservedSize = this->reservedSize + AL_INCREMENT;//lo que habia mas lo quiero sumar
-            }
 
-            returnAux=0;
+    if(this!=NULL)//verifico que no sea NULL
+    {
+
+        aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
+        //verfico que el auxiliar no sea nulo
+        if(aux!=NULL)
+        {
+            this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
+            //tengo que modificar el reserved size
+            this->reservedSize = this->reservedSize + AL_INCREMENT;//lo que habia mas lo quiero sumar
         }
 
+        returnAux=0;
     }
 
 
