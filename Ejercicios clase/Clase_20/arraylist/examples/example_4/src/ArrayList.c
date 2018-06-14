@@ -223,10 +223,9 @@ int al_set(ArrayList* this, int index,void* pElement)
 
     if(this!=NULL && pElement!=NULL)
     {
-        if(index>0 && index<=this->size)
+        if(index>=0 && index<=this->size)
         {
 
-            free(this->pElements+index);
             this->pElements[index]=pElement; //le agrego el elemento
 
             returnAux=0;
@@ -280,6 +279,7 @@ int al_clear(ArrayList* this)
         free(this);//limpio la lista
         al_newArrayList(); //creo la lista de nuevo sino está todo vacío
         returnAux=0;
+
     }
 
     return returnAux;
@@ -317,12 +317,16 @@ ArrayList* al_clone(ArrayList* this)
 int al_push(ArrayList* this, int index, void* pElement)
 {
     int returnAux = -1;
+    void** aux;
+    //int i;
 
     if(this!=NULL && pElement!=NULL)
     {
         if(index>=0 && index<=this->size)
         {
-            this->pElements[index]=&pElement;
+            aux=this->pElements+index;
+            al_add(this, aux);
+            this->pElements[index]=pElement;
 
             returnAux=0;
 
@@ -513,8 +517,7 @@ int resizeUp(ArrayList* this)
     void** aux;//pElement es un doble puntero a void
 
 
-    //verifico que los punteros no lleguen NULL
-    //Esto se pasa a funcion resizeUP
+    //verifico el puntero no llegue NULL
     if(this!=NULL)//con que uno de los dos sea NULL ya hace que no funcione
     {
         if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
@@ -560,16 +563,22 @@ int expand(ArrayList* this,int index)
 int contract(ArrayList* this,int index)
 {
     int returnAux = -1;
+    int i;
 
-    /* if(this!=NULL && pElement!=NULL)
+    if(this!=NULL)
     {
         if(index>0 && index<=this->size)
         {
+            for(i=this->size;i>=index;i--)
+            {
+                free(this->pElements+i);
+
+            }
 
             returnAux=0;
 
         }
-    }*/
+    }
 
     return returnAux;
 }
