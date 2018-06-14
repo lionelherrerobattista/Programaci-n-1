@@ -510,6 +510,30 @@ int resizeUp(ArrayList* this)
 {
     int returnAux = -1;
 
+    void** aux;//pElement es un doble puntero a void
+
+
+    //verifico que los punteros no lleguen NULL
+    //Esto se pasa a funcion resizeUP
+    if(this!=NULL)//con que uno de los dos sea NULL ya hace que no funcione
+    {
+        if(this->size == this->reservedSize)//si esta agotada la capacidad de la memoria, hago el realloc para que no se pise
+        {
+            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize + AL_INCREMENT));//necesito espacio en memoria para espacio a void
+            //verfico que el auxiliar no sea nulo
+            if(aux!=NULL)
+            {
+                this->pElements = aux;//que doble puntero apunte a donde apunta el auxiliar
+                //tengo que modificar el reserved size
+                this->reservedSize = this->reservedSize + AL_INCREMENT;//lo que habia mas lo quiero sumar
+            }
+
+            returnAux=0;
+        }
+
+    }
+
+
     return returnAux;
 
 }
