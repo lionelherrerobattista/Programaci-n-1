@@ -240,14 +240,14 @@ int al_remove(ArrayList* this,int index)
 {
     int returnAux = -1;
     int i;
-    //void* aux;
+    void* aux;
 
 
 
 
     if(this!=NULL)
     {
-        if(index>=0 && index<=this->size) //el indice se encuentra entre los valores del tamñano del array
+        if(index>=0 && index<this->size) //el indice se encuentra entre los valores del tamñano del array
         {
 
             for(i=index;i<this->size;i++)
@@ -256,11 +256,20 @@ int al_remove(ArrayList* this,int index)
 
             }
 
-            this->size--;//le saco uno al tamaño de la
+            this->size--;//le saco uno al tamaño de la lista
 
             //free((this->pElements)+index);//si libero pierdo los datos
 
-            this->reservedSize = this->reservedSize - AL_INCREMENT;//lo que habia mas lo quiero sumar
+            this->reservedSize = this->reservedSize - AL_INCREMENT;//necesita menos espacio
+
+            //Libero el espacio en memoria adicional:
+            aux = (void**) realloc(this->pElements, sizeof(void*)* (this->reservedSize - AL_INCREMENT));//necesito espacio en memoria para espacio a void
+            //verfico que el auxiliar no sea nulo
+            if(aux!=NULL)
+            {
+                this->pElements = aux;
+            }
+
 
             returnAux=0;
 
