@@ -624,22 +624,5 @@ int contract(ArrayList* this,int index)
     }
 
 
-    /*int i;
-
-    if(this!=NULL)
-    {
-        if(index>0 && index<=this->size)
-        {
-            for(i=this->size;i>=index;i--)
-            {
-                free(this->pElements+i);
-
-            }
-
-            returnAux=0;
-
-        }
-    }*/
-
     return returnAux;
 }
