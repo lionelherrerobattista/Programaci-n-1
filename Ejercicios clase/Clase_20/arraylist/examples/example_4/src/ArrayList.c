@@ -329,15 +329,15 @@ int al_push(ArrayList* this, int index, void* pElement)
 
     if(this!=NULL && pElement!=NULL)
     {
-        if(index>=0 && index<this->size)
+        if(index>=0 && index<=this->size)
         {
 
-            al_add(this,aux);//agrego un espacio al final
+            al_add(this,pElement);//agrego un espacio al final
             for(i=this->size-1;i>index;i--)
             {
-                *(this->pElements+i)=this->pElements+(i-1);
+                *(this->pElements+i)=al_get(this,i-1);
             }
-            *(this->pElements+index)=pElement;
+            al_set(this,index,pElement);
 
             returnAux=0;
 
