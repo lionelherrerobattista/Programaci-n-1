@@ -324,7 +324,7 @@ ArrayList* al_clone(ArrayList* this)
 int al_push(ArrayList* this, int index, void* pElement)
 {
     int returnAux = -1;
-    void* aux=NULL;
+
     int i;
 
     if(this!=NULL && pElement!=NULL)
@@ -419,7 +419,7 @@ void* al_pop(ArrayList* this,int index)
 
     if(this!=NULL)
     {
-        if(index>=0 && index<this->size)
+        if(index>=0 && index<=this->size)
         {
             returnAux=*(this->pElements+index);
             contract(this,index);
@@ -443,23 +443,23 @@ void* al_pop(ArrayList* this,int index)
 ArrayList* al_subList(ArrayList* this,int from,int to)
 {
     void* returnAux = NULL;
-
-
+    void* aux;
     int i;
-
 
     if(this!=NULL)
     {
-        if((from<this->size && from >=0) && (to<this->size && to>=0))
+        if((from<this->size && from >=0) && (to<=this->size && to>=0))
         {
-            if(from<to)
+            if(from<=to)
             {
                 //Creo una nueva lista:
                 returnAux=al_newArrayList();
                 //Le agrego los elementos desde from hasta to
                 for(i=from;i<to;i++)
                 {
-                    al_add(returnAux,this->pElements+i);
+                    aux=al_get(this,i);//tomo el elemento
+                    //al_add(returnAux,this->pElements+i);
+                    al_add(returnAux,aux);//lo agrego al vector nuevo
 
                 }
 
@@ -545,7 +545,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                     if(pFunc(this->pElements[i],this->pElements[j])==1 && order==1)
                     {
                         aux=this->pElements+i;
-                        *(this->pElements+i)=this->pElements[j];
+                        *(this->pElements+i)=this->pElements+j;
                         *(this->pElements+j)=aux;
                     }
                     else

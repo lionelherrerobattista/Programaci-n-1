@@ -39,13 +39,13 @@ int main(void)
         //startTesting(8);//prueba al_remove 100%
         //startTesting(9);//prueba al_clear 100%
         //startTesting(10);//prueba al_clone 100%
-        startTesting(11);//prueba al_push 80%
+        //startTesting(11);//prueba al_push 100%
         //startTesting(12);//prueba al_indexOf 100%
         //startTesting(13);//prueba al_isEmpty 100%
-        //startTesting(14);//prueba al_pop 80%
-        //startTesting(15);//al_subList %80
+        //startTesting(14);//prueba al_pop 100%
+        //startTesting(15);//al_subList %100
         //startTesting(16);//al_containsAll %100
-        //startTesting(17);//al_sort 80%
+        startTesting(17);//al_sort 80%
 
     return 0;
 }
