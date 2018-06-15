@@ -505,7 +505,7 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
 
         }
 
-        if(contador==this->size)
+        if(contador==this2->size)
         {
             returnAux=1;
         }
@@ -544,7 +544,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                 {
                     if(order==1)
                     {
-                        if(pFunc(this->pElements+i,this->pElements+j)==1)
+                        if((*pFunc)(*(this->pElements+i),*(this->pElements+j))==1)//Le la dirección de memoria que está adentro del puntero
                         {
 
                             aux=*(this->pElements+i);
@@ -556,7 +556,7 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                     {
                         if(order==0)
                         {
-                            if(pFunc(this->pElements+i,this->pElements+j)==-1)//si el primero es menor y orden de mayor a menor
+                            if((*pFunc)(*(this->pElements+i),*(this->pElements+j))==-1)//si el primero es menor y orden de mayor a menor
                             {
 
                                 aux=*(this->pElements+i);
