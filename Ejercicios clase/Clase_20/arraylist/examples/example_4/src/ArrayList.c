@@ -542,21 +542,45 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
             {
                 for(j=i+1;j<this->size;j++)
                 {
-                    if(pFunc(this->pElements[i],this->pElements[j])==1 && order==1)
+                    if(order==1)
                     {
-                        aux=this->pElements+i;
-                        *(this->pElements+i)=this->pElements+j;
+                        if(pFunc(this->pElements+i,this->pElements+j)==1)
+                        {
+
+                            aux=*(this->pElements+i);
+                            *(this->pElements+i)=*(this->pElements+j);
+                            *(this->pElements+j)=aux;
+                        }
+                    }
+                    else
+                    {
+                        if(order==0)
+                        {
+                            if(pFunc(this->pElements+i,this->pElements+j)==-1)//si el primero es menor y orden de mayor a menor
+                            {
+
+                                aux=*(this->pElements+i);
+                                *(this->pElements+i)=*(this->pElements+j);
+                                *(this->pElements+j)=aux;
+                            }
+                        }
+                    }
+
+                    /*if(pFunc(this->pElements+i,this->pElements+j)==1 && order==1)//si el 1º es mayor == 1 y orden de menor a mayor
+                    {
+                        aux=*(this->pElements+i);
+                        *(this->pElements+i)=*(this->pElements+j);
                         *(this->pElements+j)=aux;
                     }
                     else
                     {
-                        if(pFunc(this->pElements+i,this->pElements+j)==-1 && order==0)
+                        if(pFunc(this->pElements+i,this->pElements+j)==-1 && order==0)//si el primero es menor y orden de mayor a menor
                         {
-                            aux=this->pElements+i;
-                            *(this->pElements+i)=this->pElements+j;
+                            aux=*(this->pElements+i);
+                            *(this->pElements+i)=*(this->pElements+j);
                             *(this->pElements+j)=aux;
                         }
-                    }
+                    }*/
                 }
             }
             returnAux=0;
