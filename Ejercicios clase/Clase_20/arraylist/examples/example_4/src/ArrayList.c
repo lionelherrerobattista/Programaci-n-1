@@ -273,8 +273,9 @@ int al_clear(ArrayList* this)
     {
         //solo puedo liberar lo que construí (malloc)
         free(this->pElements);//limpio los elementos
-        free(this);//limpio la lista
-        al_newArrayList(); //creo la lista de nuevo sino está todo vacío
+        //free(this);//limpio la lista
+        this->size=0;
+        //al_newArrayList(); //creo la lista de nuevo sino está todo vacío
         returnAux=0;
 
     }
@@ -335,6 +336,7 @@ int al_push(ArrayList* this, int index, void* pElement)
             al_add(this,pElement);//agrego un espacio al final
             for(i=this->size-1;i>index;i--)
             {
+                //tomo el elemento y lo pongo en la posición
                 *(this->pElements+i)=al_get(this,i-1);
             }
             al_set(this,index,pElement);
@@ -421,7 +423,7 @@ void* al_pop(ArrayList* this,int index)
     {
         if(index>=0 && index<=this->size)
         {
-            returnAux=*(this->pElements+index);
+            returnAux=al_get(this,index);//tomo el elemento y lo devuelvo *(this->pElements+index);
             contract(this,index);
             /*free(this->pElements+index);
             this->size--;*/
