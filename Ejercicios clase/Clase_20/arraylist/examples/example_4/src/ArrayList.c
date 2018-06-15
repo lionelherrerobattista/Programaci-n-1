@@ -544,17 +544,17 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
                 {
                     if(pFunc(this->pElements[i],this->pElements[j])==1 && order==1)
                     {
-                        aux=this->pElements[i];
+                        aux=this->pElements+i;
                         *(this->pElements+i)=this->pElements[j];
-                        this->pElements[j]=aux;
+                        *(this->pElements+j)=aux;
                     }
                     else
                     {
                         if(pFunc(this->pElements+i,this->pElements+j)==-1 && order==0)
                         {
-                            aux=this->pElements[i];
-                            this->pElements[i]=this->pElements[j];
-                            this->pElements[j]=aux;
+                            aux=this->pElements+i;
+                            *(this->pElements+i)=this->pElements+j;
+                            *(this->pElements+j)=aux;
                         }
                     }
                 }

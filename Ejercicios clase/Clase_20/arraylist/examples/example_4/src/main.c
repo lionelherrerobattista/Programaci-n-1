@@ -43,9 +43,9 @@ int main(void)
         //startTesting(12);//prueba al_indexOf 100%
         //startTesting(13);//prueba al_isEmpty 100%
         //startTesting(14);//prueba al_pop 80%
-        startTesting(15);//al_subList %80
+        //startTesting(15);//al_subList %80
         //startTesting(16);//al_containsAll %100
-        //startTesting(17);//al_sort 80%
+        startTesting(17);//al_sort 80%
 
     return 0;
 }
