@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "Funciones.h"
+#include "ArrayList.h"
 
-int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux)
+int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux,ArrayList* listaPropietarios)
 {
     FILE *pFile;
     int r;
@@ -26,11 +27,12 @@ int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux)
             r= fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
             if(r==4)
             {
-                ePropietarios_setId(propietarioAux,atoi(var1));
-                ePropietarios_setNombre(propietarioAux,var2);
-                ePropietarios_setTarjeta(propietarioAux,var3);
-                ePropietarios_setDireccion(propietarioAux,var4);
-
+                    propietarioAux=nuevoPropietario();
+                    ePropietarios_setId(propietarioAux,atoi(var1));
+                    ePropietarios_setNombre(propietarioAux,var2);
+                    ePropietarios_setTarjeta(propietarioAux,var3);
+                    ePropietarios_setDireccion(propietarioAux,var4);
+                    al_add(listaPropietarios,propietarioAux);
             }
         }while(!feof(pFile));
 
@@ -44,6 +46,13 @@ int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux)
 
 }
 
+void mostrarPropietario(ePropietarios* this)
+{
+    printf("%-10s %-10s %-10s %-10s\n","Id","Nombre","Tarjeta","Direccion");
+    printf("%-10d %-10s %-10s %-10s\n",this->id,this->nombre,this->tarjeta,this->direccion);
+}
+
+//setters
 int ePropietarios_setId(ePropietarios* this, int id)
 {
     int retorno=-1;
@@ -105,4 +114,12 @@ int ePropietarios_setEstado(ePropietarios* this, int estado)
         this->estado=estado;
     }
     return retorno;
+}
+
+ePropietarios* nuevoPropietario()
+{
+    ePropietarios* propietario;
+    propietario=(ePropietarios*) malloc(sizeof(ePropietarios));
+
+    return propietario;
 }
