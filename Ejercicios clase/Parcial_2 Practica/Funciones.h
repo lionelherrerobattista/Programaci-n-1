@@ -6,13 +6,13 @@ typedef struct
     char nombre[50];
     char tarjeta[50];
     char direccion[50];
-    int estado;
-
 }ePropietarios;
 
-int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux,ArrayList* listaPropietarios);
+int parseArchivo (char* nombreArchivo, ePropietarios* propietarioAux, ArrayList* listaPropietarios);
 
 void mostrarPropietario(ePropietarios* this);
+
+void pedirPropietario(ePropietarios* propietario);
 
 //Setters
 int ePropietarios_setId(ePropietarios* this, int id);

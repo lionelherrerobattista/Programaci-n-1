@@ -54,7 +54,7 @@ ArrayList* al_newArrayList(void);
 
 
 /** \brief  Add an element to arrayList and if is
- *          nessesary resize the array
+ *          necessary resize the array
  * \param pList ArrayList* Pointer to arrayList
  * \param pElement void* Pointer to element
  * \return int Return (-1) if Error [pList or pElement are NULL pointer] - (0) if Ok
@@ -71,7 +71,7 @@ int al_add(ArrayList* this,void* pElement);
 int al_deleteArrayList(ArrayList* this);
 
 
-/** \brief  Delete arrayList
+/** \brief  Size of arrayList
  * \param pList ArrayList* Pointer to arrayList
  * \return int Return length of array or (-1) if Error [pList is NULL pointer]
  *

@@ -4,10 +4,12 @@
 #include "Funciones.h"
 #include "ArrayList.h"
 
-int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux,ArrayList* listaPropietarios)
+int parseArchivo (char* nombreArchivo, ePropietarios* pPropietarios, ArrayList* listaPropietarios)
 {
     FILE *pFile;
+
     int r;
+    int i=0;
     char var1[50];
     char var2[50];
     char var3[50];
@@ -27,12 +29,19 @@ int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux,ArrayList* l
             r= fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",var1,var2,var3,var4);
             if(r==4)
             {
-                    propietarioAux=nuevoPropietario();
-                    ePropietarios_setId(propietarioAux,atoi(var1));
-                    ePropietarios_setNombre(propietarioAux,var2);
-                    ePropietarios_setTarjeta(propietarioAux,var3);
-                    ePropietarios_setDireccion(propietarioAux,var4);
-                    al_add(listaPropietarios,propietarioAux);
+                //Cargo todos los datos en la lista
+                ePropietarios_setId(pPropietarios+i,atoi(var1));
+                ePropietarios_setNombre(pPropietarios+i,var2);
+                ePropietarios_setTarjeta(pPropietarios+i,var3);
+                ePropietarios_setDireccion(pPropietarios+i,var4);
+                al_add(listaPropietarios,pPropietarios+i);
+                i++;
+                /*propietarioAux=nuevoPropietario();
+                ePropietarios_setId(propietarioAux,atoi(var1));
+                ePropietarios_setNombre(propietarioAux,var2);
+                ePropietarios_setTarjeta(propietarioAux,var3);
+                ePropietarios_setDireccion(propietarioAux,var4);
+                al_add(listaPropietarios,propietarioAux);*/
             }
         }while(!feof(pFile));
 
@@ -48,7 +57,7 @@ int parseArchivo (char* nombreArchivo,ePropietarios* propietarioAux,ArrayList* l
 
 void mostrarPropietario(ePropietarios* this)
 {
-    printf("%-10s %-10s %-10s %-10s\n","Id","Nombre","Tarjeta","Direccion");
+
     printf("%-10d %-10s %-10s %-10s\n",this->id,this->nombre,this->tarjeta,this->direccion);
 }
 
@@ -104,7 +113,7 @@ int ePropietarios_setDireccion(ePropietarios* this, char* direccion)
 
 }
 
-int ePropietarios_setEstado(ePropietarios* this, int estado)
+/*int ePropietarios_setEstado(ePropietarios* this, int estado)
 {
     int retorno=-1;
 
@@ -114,7 +123,7 @@ int ePropietarios_setEstado(ePropietarios* this, int estado)
         this->estado=estado;
     }
     return retorno;
-}
+}*/
 
 ePropietarios* nuevoPropietario()
 {
@@ -122,4 +131,23 @@ ePropietarios* nuevoPropietario()
     propietario=(ePropietarios*) malloc(sizeof(ePropietarios));
 
     return propietario;
+}
+
+void pedirPropietario(ePropietarios* propietario)
+{
+    char nombre[50];
+    char tarjeta[50];
+    char direccion[50];
+
+    printf("Ingrese el nombre:\n");
+    gets(nombre);
+    ePropietarios_setNombre(propietario,nombre);
+    printf("Ingrese la tarjeta:\n");
+    gets(tarjeta);
+    ePropietarios_setTarjeta(propietario,tarjeta);
+    printf("Ingrese la direccion:\n");
+    gets(direccion);
+    ePropietarios_setDireccion(propietario,direccion);
+    ePropietarios_setId(propietario, 8);
+
 }

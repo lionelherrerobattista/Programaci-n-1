@@ -424,7 +424,7 @@ void* al_pop(ArrayList* this,int index)
         if(index>=0 && index<=this->size)
         {
             returnAux=al_get(this,index);//tomo el elemento y lo devuelvo *(this->pElements+index);
-            contract(this,index);
+            al_remove(this,index);
             /*free(this->pElements+index);
             this->size--;*/
         }
