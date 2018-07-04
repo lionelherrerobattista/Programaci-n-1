@@ -13,10 +13,10 @@ eEmpleados* nuevoEmpleado()
     return aux;
 }
 
-void mostrarEmpleado(eEmpleados* this)
+void mostrarEmpleado(ArrayList* this, int index)
 {
 
-    printf("%-15d %-15s %-15.2f %-15d %-15s\n",this->id,this->nombre,this->sueldo,this->edad,this->profesion);
+    printf("%-15d %-15s %-15.2f %-15d %-15s\n",eEmpleados_getId(this, index),this->nombre,this->sueldo,this->edad,this->profesion);
 }
 
 void mostrarLista(ArrayList* this)
@@ -34,7 +34,7 @@ void mostrarLista(ArrayList* this)
     for(i=0;i<totalEmpleados;i++)
     {
         empleadoAuxiliar=al_get(this,i);
-        mostrarEmpleado(empleadoAuxiliar);
+        mostrarEmpleado(empleadoAuxiliar,totalEmpleados);
     }
 }
 
@@ -117,6 +117,22 @@ int eEmpleados_setProfesion(eEmpleados* this, char* profesion)
         retorno=1;
         strcpy(this->profesion,profesion);
     }
+    return retorno;
+}
+
+//Getters
+
+int eEmpleados_getId(ArrayList* this, int index)
+{
+    int retorno;
+
+    retorno=-1;
+
+    if(this!=NULL)
+    {
+        retorno=al_get(this, index);
+    }
+
     return retorno;
 }
 

@@ -19,6 +19,9 @@ int eEmpleados_setSueldo(eEmpleados* this, float sueldo);
 int eEmpleados_setEdad(eEmpleados* this, int edad);
 int eEmpleados_setProfesion(eEmpleados* this, char* profesion);
 
-void mostrarEmpleado(eEmpleados* this);
+void mostrarEmpleado(ArrayList* this, int index);
 void mostrarLista(ArrayList* this);
+//getters
+int eEmpleados_getId(ArrayList* this, int index);
+
 
