@@ -30,6 +30,8 @@ char* eEmpleados_getProfesion(ArrayList* this, int index);
 int functionFilter(void* item);
 ArrayList* filtarLista(ArrayList* this);
 void crearArchivo(ArrayList* this);
+char* getProfesion(void* item);
+int borrarEmpleado(eEmpleados* this);
 
 
 

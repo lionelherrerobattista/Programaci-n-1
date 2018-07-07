@@ -13,6 +13,19 @@ eEmpleados* nuevoEmpleado()
     return aux;
 }
 
+int borrarEmpleado(eEmpleados* this)
+{
+    int retorno=-1;
+    if (this!=NULL)
+    {
+        free(this);
+        retorno=0;
+    }
+
+    return retorno;
+
+}
+
 void mostrarEmpleado(ArrayList* this, int index)
 {
 
@@ -184,6 +197,41 @@ int eEmpleados_getEdad(ArrayList* this, int index)
     return retorno;
 }
 
+int getEdad(void* item)
+{
+    //Tengo que pasar el puntero a void a un auxiliar
+    //sino no puedo usar operador flecha
+    int retorno;
+    eEmpleados* auxiliar;
+
+    if(item!=NULL)
+    {
+        //Hay que parsearlo a estructura
+        auxiliar=(eEmpleados*)item;
+
+        retorno=auxiliar->edad;
+    }
+
+    return retorno;
+}
+
+char* getProfesion(void* item)
+{
+    //Tengo que pasar el puntero a void a un auxiliar
+    //sino no puedo usar operador flecha
+    eEmpleados* auxiliar;
+    char* retorno=NULL;
+
+    if(item!=NULL)
+    {
+        //Hay que parsearlo a estructura
+        auxiliar=(eEmpleados*)item;
+        retorno=auxiliar->profesion;
+    }
+
+    return retorno;
+}
+
 char* eEmpleados_getProfesion(ArrayList* this, int index)
 {
     char* retorno= NULL;
@@ -192,7 +240,7 @@ char* eEmpleados_getProfesion(ArrayList* this, int index)
 
     if(this != NULL)
     {
-        auxiliar=al_get(this, index);
+        auxiliar=this->get(this, index);
         retorno=auxiliar->profesion;
     }
     return retorno;
@@ -202,15 +250,12 @@ char* eEmpleados_getProfesion(ArrayList* this, int index)
 int functionFilter(void* item)
 {
     int retorno=0;
-    //Tengo que pasar el puntero a void a un auxiliar
-    //sino no puedo usar operador flecha
-    eEmpleados* auxiliar;
+
 
     if(item!=NULL)
     {
-        auxiliar=item;
 
-        if(strcmpi(auxiliar->profesion,"programador")==0 && auxiliar->edad>30)
+        if(strcmpi(getProfesion(item),"programador")==0 && getEdad(item)>30)
         {
             retorno=1;
         }
