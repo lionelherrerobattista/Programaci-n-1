@@ -16,7 +16,7 @@ eEmpleados* nuevoEmpleado()
 void mostrarEmpleado(ArrayList* this, int index)
 {
 
-    printf("%-15d %-15s %-15.2f %-15d %-15s\n",eEmpleados_getId(this, index),this->nombre,this->sueldo,this->edad,this->profesion);
+    printf("%-15d %-15s %-15.2f %-15d %-15s\n",eEmpleados_getId(this, index),eEmpleados_getNombre(this,index),eEmpleados_getSueldo(this,index),eEmpleados_getEdad(this,index),eEmpleados_getProfesion(this,index));
 }
 
 void mostrarLista(ArrayList* this)
@@ -24,17 +24,13 @@ void mostrarLista(ArrayList* this)
     int i;
     int totalEmpleados;
 
-    eEmpleados* empleadoAuxiliar;
-    empleadoAuxiliar=nuevoEmpleado();
-
     totalEmpleados=al_len(this);
 
     printf("\n%-15s %-15s %-15s %-15s %-15s\n","Id:","Nombre:","Sueldo:","Edad:","Profesion:");
 
     for(i=0;i<totalEmpleados;i++)
     {
-        empleadoAuxiliar=al_get(this,i);
-        mostrarEmpleado(empleadoAuxiliar,totalEmpleados);
+        mostrarEmpleado(this,i);
     }
 }
 
@@ -125,16 +121,157 @@ int eEmpleados_setProfesion(eEmpleados* this, char* profesion)
 int eEmpleados_getId(ArrayList* this, int index)
 {
     int retorno;
+    eEmpleados* auxiliar;
+    auxiliar=nuevoEmpleado();
 
     retorno=-1;
 
-    if(this!=NULL)
+    if(this!=NULL && auxiliar!=NULL)
     {
-        retorno=al_get(this, index);
+        auxiliar=al_get(this, index);
+        retorno=auxiliar->id;
     }
 
     return retorno;
 }
+
+
+char* eEmpleados_getNombre(ArrayList* this, int index)
+{
+    char* retorno= NULL;
+    eEmpleados* auxiliar;
+    auxiliar=nuevoEmpleado();
+
+    if(this != NULL)
+    {
+        auxiliar=al_get(this, index);
+        retorno=auxiliar->nombre;
+    }
+    return retorno;
+}
+
+float eEmpleados_getSueldo(ArrayList* this, int index)
+{
+    float retorno;
+    eEmpleados* auxiliar;
+    auxiliar=nuevoEmpleado();
+
+    retorno=-1;
+
+    if(this!=NULL && auxiliar!=NULL)
+    {
+        auxiliar=al_get(this, index);
+        retorno=auxiliar->sueldo;
+    }
+
+    return retorno;
+}
+
+int eEmpleados_getEdad(ArrayList* this, int index)
+{
+    int retorno;
+    eEmpleados* auxiliar;
+    auxiliar=nuevoEmpleado();
+
+    retorno=-1;
+
+    if(this!=NULL && auxiliar!=NULL)
+    {
+        auxiliar=al_get(this, index);
+        retorno=auxiliar->edad;
+    }
+
+    return retorno;
+}
+
+char* eEmpleados_getProfesion(ArrayList* this, int index)
+{
+    char* retorno= NULL;
+    eEmpleados* auxiliar;
+    auxiliar=nuevoEmpleado();
+
+    if(this != NULL)
+    {
+        auxiliar=al_get(this, index);
+        retorno=auxiliar->profesion;
+    }
+    return retorno;
+}
+
+//Función que filtra
+int functionFilter(void* item)
+{
+    int retorno=0;
+    //Tengo que pasar el puntero a void a un auxiliar
+    //sino no puedo usar operador flecha
+    eEmpleados* auxiliar;
+
+    if(item!=NULL)
+    {
+        auxiliar=item;
+
+        if(strcmpi(auxiliar->profesion,"programador")==0 && auxiliar->edad>30)
+        {
+            retorno=1;
+        }
+    }
+
+    return retorno;
+}
+
+ArrayList* filtarLista(ArrayList* this)
+{
+    ArrayList* listaFiltrada;
+
+    //Utilizo la función al_filter
+    listaFiltrada=al_filter(this,*functionFilter);
+
+    return listaFiltrada;
+}
+
+//Crear archivo
+void crearArchivo(ArrayList* this)
+{
+    FILE* miArchivo;
+
+    char buffer[500]={};
+    char bufferAux[500]={};
+
+    int i;
+
+
+    miArchivo = fopen("out.csv","w");
+
+    for(i=0;i<al_len(this);i++)
+    {
+        //strcpy para vaciar el buffer en la nueva iteración
+        sprintf(bufferAux,"%d",eEmpleados_getId(this,i));
+        strcpy(buffer,bufferAux);
+        strcat(buffer,", ");
+        strcat(buffer,eEmpleados_getNombre(this,i));
+        strcat(buffer,", ");
+        sprintf(bufferAux,"%f",eEmpleados_getSueldo(this,i));
+        strcat(buffer,bufferAux);
+        strcat(buffer,", ");
+        sprintf(bufferAux,"%d",eEmpleados_getEdad(this,i));
+        strcat(buffer,bufferAux);
+        strcat(buffer,", ");
+        strcat(buffer,eEmpleados_getProfesion(this,i));
+
+
+        fprintf(miArchivo,"\n%s",buffer);
+
+    }
+
+
+
+    fclose(miArchivo);
+
+}
+
+
+
+
 
 /*int cargarEmpleado(ArrayList* listado, int id,char* dni)
 {

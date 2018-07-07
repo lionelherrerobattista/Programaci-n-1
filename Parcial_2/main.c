@@ -15,5 +15,9 @@ int main()
 
     mostrarLista(listaEmpleados);
 
+    mostrarLista(filtarLista(listaEmpleados));
+
+    crearArchivo(filtarLista(listaEmpleados));
+
     return 0;
 }

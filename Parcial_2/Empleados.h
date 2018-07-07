@@ -23,5 +23,13 @@ void mostrarEmpleado(ArrayList* this, int index);
 void mostrarLista(ArrayList* this);
 //getters
 int eEmpleados_getId(ArrayList* this, int index);
+char* eEmpleados_getNombre(ArrayList* this, int index);
+float eEmpleados_getSueldo(ArrayList* this, int index);
+int eEmpleados_getEdad(ArrayList* this, int index);
+char* eEmpleados_getProfesion(ArrayList* this, int index);
+int functionFilter(void* item);
+ArrayList* filtarLista(ArrayList* this);
+void crearArchivo(ArrayList* this);
+
 
 
