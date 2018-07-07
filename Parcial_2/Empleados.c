@@ -239,33 +239,41 @@ void crearArchivo(ArrayList* this)
 
     int i;
 
-
-    miArchivo = fopen("out.csv","w");
-
-    for(i=0;i<al_len(this);i++)
+    if(this!=NULL)
     {
-        //strcpy para vaciar el buffer en la nueva iteración
-        sprintf(bufferAux,"%d",eEmpleados_getId(this,i));
-        strcpy(buffer,bufferAux);
-        strcat(buffer,", ");
-        strcat(buffer,eEmpleados_getNombre(this,i));
-        strcat(buffer,", ");
-        sprintf(bufferAux,"%f",eEmpleados_getSueldo(this,i));
-        strcat(buffer,bufferAux);
-        strcat(buffer,", ");
-        sprintf(bufferAux,"%d",eEmpleados_getEdad(this,i));
-        strcat(buffer,bufferAux);
-        strcat(buffer,", ");
-        strcat(buffer,eEmpleados_getProfesion(this,i));
+        miArchivo = fopen("out.csv","w");
+
+        if(miArchivo!=NULL)
+        {
+            for(i=0;i<al_len(this);i++)
+            {
+                //funcion que escribe el int en una string
+                sprintf(bufferAux,"%d",eEmpleados_getId(this,i));
+                //strcpy para vaciar el buffer en la nueva iteración
+                strcpy(buffer,bufferAux);
+                strcat(buffer,", ");
+                strcat(buffer,eEmpleados_getNombre(this,i));
+                strcat(buffer,", ");
+                sprintf(bufferAux,"%f",eEmpleados_getSueldo(this,i));
+                strcat(buffer,bufferAux);
+                strcat(buffer,", ");
+                sprintf(bufferAux,"%d",eEmpleados_getEdad(this,i));
+                strcat(buffer,bufferAux);
+                strcat(buffer,", ");
+                strcat(buffer,eEmpleados_getProfesion(this,i));
 
 
-        fprintf(miArchivo,"\n%s",buffer);
+                fprintf(miArchivo,"\n%s",buffer);
+
+            }
+
+
+
+            fclose(miArchivo);
+
+        }
 
     }
-
-
-
-    fclose(miArchivo);
 
 }
 
