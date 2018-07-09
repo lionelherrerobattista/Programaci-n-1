@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1530909500 source:c:\users\lio\desktop\prueba\practica_parcial_2017\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1530909500 c:\users\lio\desktop\prueba\practica_parcial_2017\arraylist.h
+
+1531107954 source:c:\users\lio\desktop\prueba\practica_parcial_2017\personas.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"personas.h"
+	"ArrayList.h"
+
+1531108311 c:\users\lio\desktop\prueba\practica_parcial_2017\personas.h
+	"ArrayList.h"
+
+1531108242 source:c:\users\lio\desktop\prueba\practica_parcial_2017\main.c
+	<stdio.h>
+	<stdlib.h>
+	"personas.h"
+	"ArrayList.h"
+
