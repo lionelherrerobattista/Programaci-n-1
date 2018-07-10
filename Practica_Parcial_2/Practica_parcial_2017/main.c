@@ -12,15 +12,21 @@ int main()
     int contadorTramiteUrgente=0;
     int contadorTramiteRegular=0;
 
-    //Creo dos listas 1 para los tramites urgentes y 1 paraa regulares
+    //Creo dos listas 1 para los tramites urgentes y 1 para regulares
     ArrayList* listaTramitesUrgentes;
     ArrayList* listaTramitesRegulares;
+    //Dos listas para los tramites atendidos
+    ArrayList* listaAtendidosUrgentes;
+    ArrayList* listaAtendidosRegulares;
 
     //creo la lista
     listaTramitesUrgentes=al_newArrayList();
     listaTramitesRegulares=al_newArrayList();
 
-    //Estructura para los tramites
+    listaAtendidosUrgentes=al_newArrayList();
+    listaAtendidosRegulares=al_newArrayList();
+
+
 
 
 
@@ -42,10 +48,13 @@ int main()
         switch(opcion)
         {
             case 1:
+                //Cuento los tramites urgentes
                 contadorTramiteUrgente++;
 
                 printf("Ingrese su DNI: ");
+                //limpio el buffer
                 fflush(stdin);
+                //se ingresa el dni y se guarda en la string
                 gets(dni);
 
                 cargarTramite(listaTramitesUrgentes,contadorTramiteUrgente,dni);
@@ -53,10 +62,38 @@ int main()
                 break;
 
             case 2:
+                contadorTramiteRegular++;
+
+                printf("Ingrese su DNI: ");
+                fflush(stdin);
+                gets(dni);
+
+                cargarTramite(listaTramitesRegulares,contadorTramiteRegular,dni);
 
                 break;
 
             case 3:
+                //Tramite siguiente(tienen prioridad los urgentes)
+                if(!(listaTramitesUrgentes->isEmpty(listaTramitesUrgentes)))//si la lista NO está vacía
+                {
+                    //agarrar el siguiente tramite urgente y mostrarlo
+                    printf("-----CLIENTE A SER ATENDIDO(URGENTE)-----\n");
+                    atenderTramite(listaTramitesUrgentes,listaAtendidosUrgentes);
+
+                }
+                else
+                {
+                    if(!(listaTramitesRegulares->isEmpty(listaTramitesRegulares)))
+                    {
+                        printf("-----CLIENTE A SER ATENDIDO(REGULAR)-----\n");
+                        atenderTramite(listaTramitesRegulares,listaAtendidosRegulares);
+                    }
+                    else
+                    {
+                        printf("No hay tramites por atender\n");
+                    }
+                }
+
 
                 break;
 

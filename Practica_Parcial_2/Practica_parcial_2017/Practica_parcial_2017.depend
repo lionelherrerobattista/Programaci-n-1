@@ -23,3 +23,27 @@
 	"personas.h"
 	"ArrayList.h"
 
+1531250252 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1531250252 c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\arraylist.h
+
+1531254775 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"personas.h"
+	"ArrayList.h"
+
+1531254775 c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.h
+	"ArrayList.h"
+
+1531254715 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\main.c
+	<stdio.h>
+	<stdlib.h>
+	"personas.h"
+	"ArrayList.h"
+

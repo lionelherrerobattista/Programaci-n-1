@@ -149,3 +149,27 @@ int mostrarListaTramites(ArrayList* this)
     return mostro=-1;
 
 }
+
+int atenderTramite(ArrayList* this,ArrayList* listaAtendidos)
+{
+    int atendio=-1;
+
+    eTramite* tramiteActual;
+
+    if(this!=NULL && listaAtendidos!=NULL)
+    {
+        //Saco el tramite de la lista de pendientes
+        tramiteActual=(eTramite*)this->pop(this,0);
+        //Agrego el trámite a la lista de atendidos
+        listaAtendidos->add(listaAtendidos,tramiteActual);
+        //Muestro el trámite
+        mostrarTramite(tramiteActual);
+
+        atendio=0;
+
+    }
+
+    return atendio;
+
+}
+
