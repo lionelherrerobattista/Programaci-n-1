@@ -173,3 +173,26 @@ int atenderTramite(ArrayList* this,ArrayList* listaAtendidos)
 
 }
 
+//Funcion que compara
+int compararPorDni(void* tramiteA, void* tramiteB)
+{
+    eTramite* tramiteUno;
+    eTramite* tramiteDos;
+
+    int comparacion;
+
+    if(tramiteA!=NULL && tramiteB!=NULL)
+    {
+        tramiteUno=tramiteA;
+        tramiteDos=tramiteB;
+
+        comparacion=strcmp(getDni(tramiteUno),getDni(tramiteDos));
+    }
+
+    return comparacion;
+
+}
+
+
+
+

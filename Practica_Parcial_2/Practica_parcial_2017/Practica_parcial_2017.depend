@@ -31,17 +31,17 @@
 
 1531250252 c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\arraylist.h
 
-1531254775 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.c
+1531275694 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
 	"personas.h"
 	"ArrayList.h"
 
-1531254775 c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.h
+1531275591 c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\personas.h
 	"ArrayList.h"
 
-1531254715 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\main.c
+1531275591 source:c:\users\lio\desktop\new folder\programacion-1\practica_parcial_2\practica_parcial_2017\main.c
 	<stdio.h>
 	<stdlib.h>
 	"personas.h"

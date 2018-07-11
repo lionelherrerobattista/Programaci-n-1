@@ -60,34 +60,34 @@
 	"Empleados.h"
 	"ArrayList.h"
 
-1530909500 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\arraylist.c
+1531250252 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\arraylist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"ArrayList.h"
 
-1530909500 c:\users\lio\desktop\new folder\programacion-1\parcial_2\arraylist.h
+1531250252 c:\users\lio\desktop\new folder\programacion-1\parcial_2\arraylist.h
 
-1530920258 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\main.c
+1531250252 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayList.h"
 	"Empleados.h"
 	"Parser.h"
 
-1530980398 c:\users\lio\desktop\new folder\programacion-1\parcial_2\empleados.h
+1531250252 c:\users\lio\desktop\new folder\programacion-1\parcial_2\empleados.h
 	"ArrayList.h"
 
-1530909500 c:\users\lio\desktop\new folder\programacion-1\parcial_2\parser.h
+1531250252 c:\users\lio\desktop\new folder\programacion-1\parcial_2\parser.h
 
-1530909500 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\parser.c
+1531250252 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
 	"Empleados.h"
 	"ArrayList.h"
 
-1530980922 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\empleados.c
+1531250252 source:c:\users\lio\desktop\new folder\programacion-1\parcial_2\empleados.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>

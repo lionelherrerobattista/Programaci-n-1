@@ -78,3 +78,5 @@ int mostrarTramite(eTramite* this);
 int mostrarListaTramites(ArrayList* this);
 
 int atenderTramite(ArrayList* this,ArrayList* listaAtendidos);
+
+int compararPorDni(void* tramiteA, void* tramiteB);

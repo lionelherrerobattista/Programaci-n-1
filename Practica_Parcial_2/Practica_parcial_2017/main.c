@@ -93,19 +93,46 @@ int main()
                         printf("No hay tramites por atender\n");
                     }
                 }
-
-
                 break;
 
             case 4:
 
-                printf("------Tramites urgentes------\n\n");
-                mostrarListaTramites(listaTramitesUrgentes);
+                if(!(listaTramitesUrgentes->isEmpty(listaTramitesUrgentes)))
+                {
+                    printf("----------Tramites urgentes------------\n\n");
+                    mostrarListaTramites(listaTramitesUrgentes);
+                }
+                else
+                {
+                    printf("No hay tramites urgentes\n");
+                }
 
+                if(!(listaTramitesRegulares->isEmpty(listaTramitesRegulares)))
+                {
+                    printf("----------Tramites regulares-----------\n\n");
+                    mostrarListaTramites(listaTramitesRegulares);
+                }
+                else
+                {
+                    printf("No hay tramites regulares\n");
+                }
                 break;
 
             case 5:
+                if(!(listaAtendidosUrgentes->isEmpty(listaAtendidosUrgentes)))
+                {
+                    printf("----------Tramites urgentes------------\n\n");
+                    listaAtendidosUrgentes->sort(listaAtendidosUrgentes,compararPorDni,0);
+                    mostrarListaTramites(listaAtendidosUrgentes);
 
+                }
+
+                if(!(listaAtendidosRegulares->isEmpty(listaAtendidosRegulares)))
+                {
+                    printf("----------Tramites regulares------------\n\n");
+                    listaAtendidosRegulares->sort(listaAtendidosRegulares,compararPorDni,0);
+                    mostrarListaTramites(listaAtendidosRegulares);
+                }
                 break;
             case 6:
                 seguir='n';
