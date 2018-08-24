@@ -18,6 +18,8 @@ int main()
     float promedioNumerosPositivos=0;
     float promedioNumerosNegativos=0;
 
+    int diferenciaPositivosNegativos=0;
+
 
     do
     {
@@ -49,33 +51,41 @@ int main()
 
 
 
+        do
+        {
         printf("Desea continuar s/n:");
         fflush(stdin);
         scanf("%c",&respuesta);
+        }while(respuesta!='s' && respuesta!='n');
 
 
     }while(respuesta=='s');
 
-    printf("\nSuma numeros positivos: %d\n",sumaNumerosPositivos);
-    printf("Suma numeros negativos: %d\n",sumaNumerosNegativos);
-    printf("Cantidad numeros positivos: %d\n",contadorNumerosPositivos);
-    printf("Cantidad numeros negativos: %d\n",contadorNumerosNegativos);
-    printf("Cantidad ceros: %d\n",contadorCeros);
-    printf("Cantidad numeros pares: %d\n",contadorNumerosPares);
+    printf("\n1-Suma numeros negativos: %d\n",sumaNumerosNegativos);
+    printf("2-Suma numeros positivos: %d\n",sumaNumerosPositivos);
+    printf("3-Cantidad numeros positivos: %d\n",contadorNumerosPositivos);
+    printf("4-Cantidad numeros negativos: %d\n",contadorNumerosNegativos);
+    printf("5-Cantidad ceros: %d\n",contadorCeros);
+    printf("6-Cantidad numeros pares: %d\n",contadorNumerosPares);
 
     if(contadorNumerosPositivos>0)
     {
         promedioNumerosPositivos=sumaNumerosPositivos/contadorNumerosPositivos;
     }
 
-    printf("Promedio numeros positivos: %.2f\n",promedioNumerosPositivos);
+    printf("7-Promedio numeros positivos: %.2f\n",promedioNumerosPositivos);
 
 
-    if(contadorNumerosNegativos<0)
+    if(contadorNumerosNegativos>0)
     {
         promedioNumerosNegativos=sumaNumerosNegativos/contadorNumerosNegativos;
     }
-    printf("Promedio numeros negativos: %.2f\n", promedioNumerosNegativos);
+    printf("8-Promedio numeros negativos: %.2f\n", promedioNumerosNegativos);
+
+    diferenciaPositivosNegativos=sumaNumerosPositivos-sumaNumerosNegativos;
+    printf("9-Diferencia entre positivos y negativos: %d",diferenciaPositivosNegativos);
+
+
 
 
 
