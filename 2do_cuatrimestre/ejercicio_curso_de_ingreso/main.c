@@ -4,7 +4,7 @@
 int main()
 {
     int numeroUsuario;
-    char respuesta='n';
+    char respuesta;//no hace falta inicializar con do while
 
     int sumaNumerosNegativos=0;
     int sumaNumerosPositivos=0;
@@ -53,9 +53,9 @@ int main()
 
         do
         {
-        printf("Desea continuar s/n:");
-        fflush(stdin);
-        scanf("%c",&respuesta);
+            printf("Desea continuar s/n:");
+            fflush(stdin);//setbuf(stdin,NULL);
+            scanf("%c",&respuesta);
         }while(respuesta!='s' && respuesta!='n');
 
 
