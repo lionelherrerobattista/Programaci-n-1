@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1536259454 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\clase_5\arrays_3_carga_aleatoria\main.c
+	<stdio.h>
+	<stdlib.h>
+

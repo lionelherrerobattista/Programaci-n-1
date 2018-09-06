@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1536257887 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\clase_5\arrays_2_carga_secuencial\main.c
+	<stdio.h>
+	<stdlib.h>
+
