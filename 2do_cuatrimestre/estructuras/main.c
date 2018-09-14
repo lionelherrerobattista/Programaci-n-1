@@ -1,21 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct
-{
-    int legajo;
-    char nombre[50];
-    float promedio;
-    char direccion[50];
-
-}eAlumno;
-
-void mostrarAlumno(eAlumno);
+#include "alumno.h"
+#define TAM 3
 
 
-//Cargo un alumno
-eAlumno cargarAlumno();
 
 int main()
 {
@@ -24,10 +13,14 @@ int main()
     //eAlumno miAlumno = {14,"pepe",3.45};
 
     //creo una estructura con los datos vacios
-    eAlumno otroAlumno;
+    eAlumno listaDeAlumnos[TAM];
+
+    cargarListado(listaDeAlumnos,TAM);
+    mostrarListado(listaDeAlumnos,TAM);
+
 
     //cargo los datos de un Alumno por funcion
-    otroAlumno = cargarAlumno();
+
 
 
 
@@ -42,35 +35,7 @@ int main()
     otroAlumno = miAlumno;*/
 
     //solo paso la estructura que quiero mostrar
-    mostrarAlumno(otroAlumno);
+
 
     return 0;
-}
-
-void mostrarAlumno(eAlumno alumnoParametro)
-{
-
-    printf("%d--%s--%f--%s",alumnoParametro.legajo,alumnoParametro.nombre,alumnoParametro.promedio,alumnoParametro.direccion);
-
-}
-
-eAlumno cargarAlumno()
-{
-    eAlumno miAlumno;
-
-    printf("Ingrese el legajo: ");
-    scanf("%d", &miAlumno.legajo);
-
-    printf("Ingrese el nombre: ");
-    fflush(stdin);
-    gets(miAlumno.nombre);
-
-    printf("Ingrese el promedio: ");
-    scanf("%f", &miAlumno.promedio);
-
-    printf("Ingrese la direccion: ");
-    fflush(stdin);
-    gets(miAlumno.direccion);
-
-    return miAlumno;
 }
