@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1530142613 source:c:\users\lion_\desktop\parcial 2\parcial_2 practica\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1530137134 c:\users\lion_\desktop\parcial 2\parcial_2 practica\arraylist.h
+
+1530153884 source:c:\users\lion_\desktop\parcial 2\parcial_2 practica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Funciones.h"
+
+1530153620 c:\users\lion_\desktop\parcial 2\parcial_2 practica\funciones.h
+	"ArrayList.h"
+
+1530153719 source:c:\users\lion_\desktop\parcial 2\parcial_2 practica\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"Funciones.h"
+	"ArrayList.h"
+
