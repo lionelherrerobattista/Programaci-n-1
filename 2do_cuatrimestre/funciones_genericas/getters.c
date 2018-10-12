@@ -7,6 +7,7 @@ int pedirInt(char mensaje[], int min, int max)
     printf("%s: ",mensaje);
     gets(auxiliar);
 
+
     numero = validarInt(esInt(auxiliar), min, max, mensaje);
 
     return numero;
