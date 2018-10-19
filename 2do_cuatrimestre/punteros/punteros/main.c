@@ -11,38 +11,41 @@ typedef struct
 
 }eEstructura;
 
-eEstructura* cargarEstructura (eEstructura this);
+eEstructura* cargarEstructura ();
 
 
 int main()
 {
-    eEstructura nuevaEstructura;
     eEstructura* punteroEstructura;
 
-    punteroEstructura = cargarEstructura(nuevaEstructura);
+    punteroEstructura = cargarEstructura();
+    //Controlo que no me devuelva NULL por afuera de la función
+    if(punteroEstructura==NULL)
+    {
+        printf("No hay espacio en memoria");
+    }
+    else
+    {
+        printf("%d--%c", punteroEstructura->numero,punteroEstructura->caracter);
+    }
 
-    printf("%d", punteroEstructura->numero);
-    printf("%c", punteroEstructura->caracter);
+
 
     return 0;
 }
 
-eEstructura* cargarEstructura(eEstructura this)
+//Constructor:
+eEstructura* cargarEstructura()
 {
-    eEstructura nuevaEstructura;
     eEstructura* punteroEstructura;
 
-    punteroEstructura= &nuevaEstructura;
+    punteroEstructura= (eEstructura*) malloc(sizeof(eEstructura));
 
-    printf("Ingrese un numero: ");
-    scanf("%d", punteroEstructura->numero);
-
-    printf("Ingrese un caracter: ");
-    fflush(stdin);
-    scanf("%c", punteroEstructura->caracter);
-
-    printf("%d--%c", punteroEstructura->numero, punteroEstructura->caracter);
-
+    if(punteroEstructura != NULL)
+    {
+        punteroEstructura->numero = 2;
+        punteroEstructura->caracter = 'a';
+    }
 
     return punteroEstructura;
 

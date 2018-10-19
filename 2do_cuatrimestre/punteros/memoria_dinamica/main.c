@@ -45,7 +45,7 @@ int main()
             }
 
             printf("\nACA MUESTRO 3\n");
-            vector = realloc(vector,sizeof(int)*3); //achico el vector a 3
+            vector = (int*) realloc(vector,sizeof(int)*3); //achico el vector a 3
             for(i=0;i<3;i++)
             {
                 printf("%d\n", *(vector+i));
