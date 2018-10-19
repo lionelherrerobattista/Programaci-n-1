@@ -29,8 +29,10 @@ int main()
 
 eEstructura* cargarEstructura(eEstructura this)
 {
+    eEstructura nuevaEstructura;
     eEstructura* punteroEstructura;
-    punteroEstructura= &this;
+
+    punteroEstructura= &nuevaEstructura;
 
     printf("Ingrese un numero: ");
     scanf("%d", punteroEstructura->numero);
@@ -38,6 +40,8 @@ eEstructura* cargarEstructura(eEstructura this)
     printf("Ingrese un caracter: ");
     fflush(stdin);
     scanf("%c", punteroEstructura->caracter);
+
+    printf("%d--%c", punteroEstructura->numero, punteroEstructura->caracter);
 
 
     return punteroEstructura;
