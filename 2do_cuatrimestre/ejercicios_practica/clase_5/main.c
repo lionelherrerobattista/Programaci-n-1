@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define TAM 5
 
 //Solicitar al usuario 5 números,
@@ -13,6 +14,10 @@ int obtenerMaximo(int lista[]);
 int obtenerMinimo(int lista[]);
 float calcularPromedio(int lista[], int largo);
 int modificarLista(int lista[], int largo);
+int getInt(int* pResultado);
+int esNumerica(char* cadena);
+
+int getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
 
 int main()
 {
@@ -200,5 +205,77 @@ int modificarLista(int lista[], int largo)
 
 
     return flag;
+}
 
+//Obtener numero y validar
+int getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
+{
+    int flag;
+    int numero; //donde voy a guardar el numero
+
+    while(reintentos>0)
+    {
+        printf(mensaje);
+        if(getInt(&numero)==1)
+        {
+            if(numero<=maximo && numero>=minimo)
+            break;
+        }
+
+        fflush(stdin);
+        reintentos--;
+        printf(mensajeError);
+    }
+
+    if(reintentos==0)
+    {
+        flag=0; //Se acabaron los intentos
+    }
+    else
+    {
+        flag=1;//Se verifico el numero
+        *pResultado = numero; //Se carga el numero
+    }
+
+    return flag;
+
+}
+
+int getInt(int* pResultado)
+{
+    int retorno=0;
+    char buffer[64];
+
+    fgets(buffer,sizeof(buffer),stdin); //stdin para que lea desde consola, segundo argum. limite de buffer
+    buffer[strlen(buffer)-1]='\0';//para reemplazar el ultimo \n que queda con fgets
+
+    if(esNumerica(buffer))
+    {
+        *pResultado = atoi(buffer);//Pasa la cadena a numero
+        retorno=1;
+    }
+
+
+    return retorno;
+}
+
+int esNumerica(char* cadena)
+{
+    int retorno=-1;
+    int i=0;
+
+    if(cadena!=NULL)
+    {
+        while(cadena[i]!='\0')
+        {
+            if(cadena[i]<'0' || cadena[i]>'9') //Si no es un numero rompe
+                break;
+            i++;
+        }
+
+        if(cadena[i]=='\0')
+            retorno=1;
+    }
+
+    return retorno;
 }
