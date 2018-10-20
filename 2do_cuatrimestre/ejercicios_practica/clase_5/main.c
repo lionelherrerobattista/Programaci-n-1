@@ -14,8 +14,8 @@ int obtenerMaximo(int lista[]);
 int obtenerMinimo(int lista[]);
 float calcularPromedio(int lista[], int largo);
 int modificarLista(int lista[], int largo);
-int getInt(int* pResultado);
-int esNumerica(char* cadena);
+int getInt();
+int esNumero(char cadena[]);
 
 int getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
 
@@ -28,6 +28,8 @@ int main()
     printf("Ingrese 5 numeros:\n");
     if(cargarListaSecuencial(numeros, TAM)==1)
     {
+        printf("-----------------------------\n");
+
         printf("Carga exitosa\n");
     }
 
@@ -43,7 +45,16 @@ int main()
         printf("\n-----------------------------");
 
         printf("\nIngrese una opcion:");
-        scanf("%d", &opcion);
+        opcion=getInt();
+        while(opcion<1 || opcion>6)
+        {
+            printf("-----------------------------");
+            printf("\nLa opcion no es valida");
+            printf("\nIngrese una opcion:");
+            opcion=getInt();
+
+
+        }
         printf("-----------------------------");
 
         switch(opcion)
@@ -65,7 +76,9 @@ int main()
                 printf("\nNumeros ingresados:\n");
                 if(modificarLista(numeros,TAM)==1)
                 {
+                    printf("-----------------------------\n");
                     printf("Se modifico el numero con exito\n");
+
                 }
                 break;
 
@@ -84,7 +97,7 @@ int cargarListaSecuencial(int lista[], int largo)
     //Carga secuencial
     for(i=0;i<largo;i++)
     {
-        scanf("%d",&lista[i]);
+        lista[i]= getInt();
 
     }
 
@@ -188,18 +201,20 @@ int modificarLista(int lista[], int largo)
 
 
     printf("\nIngrese el indice: ");
-    scanf("%d", &indice);
+    indice=getInt();
 
     while(indice-1>=largo || indice-1<0)
     {
+        printf("-----------------------------\n");
         printf("Error no es un indice valido.");
         printf("\nIngrese el indice: ");
-        scanf("%d", &indice);
+        indice=getInt();
 
     }
 
+    printf("-----------------------------\n");
     printf("Ingrese el nuevo dato: ");
-    scanf("%d", &lista[indice-1]);
+    lista[indice-1]=getInt();
 
     flag=1;//Se modifico
 
@@ -207,7 +222,53 @@ int modificarLista(int lista[], int largo)
     return flag;
 }
 
-//Obtener numero y validar
+//Validar la cadena
+
+int getInt()
+{
+    int numeroValidado;
+    char buffer[64];
+
+    fflush(stdin);
+    fgets(buffer,sizeof(buffer),stdin); //stdin para que lea desde consola, segundo argum. limite de buffer
+    buffer[strlen(buffer)-1]='\0';//para reemplazar el ultimo \n que queda con fgets
+
+    while(esNumero(buffer)==0)
+    {
+        printf("-----------------------------\n");
+        printf("Error. Debe ingresar un numero: ");
+        fgets(buffer,sizeof(buffer),stdin);
+        buffer[strlen(buffer)-1]='\0';
+    }
+
+    numeroValidado= atoi(buffer);//Pasa la cadena a int
+
+
+    return numeroValidado;
+}
+
+int esNumero(char cadena[])
+{
+    int i=0;
+    int flag=0;//No es numero
+
+    while(cadena[i] != '\0')
+    {
+        if(cadena[i]<'0' || cadena[i]>'9') //Si no es un numero rompe
+                break;
+            i++;
+    }
+
+    if(cadena[i]=='\0')//Si llegó al final de la cadena
+    {
+        flag=1;//Es numero
+    }
+
+    return flag;
+}
+
+/*
+//Obtener numero y validar con punteros
 int getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
 {
     int flag;
@@ -279,3 +340,6 @@ int esNumerica(char* cadena)
 
     return retorno;
 }
+*/
+
+
