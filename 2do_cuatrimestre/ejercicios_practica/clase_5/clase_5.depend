@@ -1,5 +1,15 @@
 # depslib dependency file v1.0
-1540064005 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_5\main.c
+1540080668 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_5\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1540080748 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_5\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1540080833 c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_5\funciones.h
 
