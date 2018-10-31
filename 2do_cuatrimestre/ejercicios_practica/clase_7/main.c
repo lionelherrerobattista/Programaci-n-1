@@ -19,8 +19,7 @@ b- Mostrar un listado ordenado por Apellido
 
 */
 
-int cargarCadena(char mensaje[], char cadena[]);
-int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo);
+
 
 int main()
 {
@@ -40,8 +39,7 @@ int main()
         printf("4-Listar\n");
         printf("5-Salir\n");
         printf("---------------------------------\n");
-        printf("Ingrese una opcion: ");
-        scanf("%d",&opcion);
+        getEntero(&opcion,"Ingrese una opcion", 1, 5);
         printf("---------------------------------\n");
 
         switch(opcion)
@@ -63,7 +61,7 @@ int main()
                 break;
 
             case 4:
-                legajo=getInt("Ingrese el legajo");
+                getEntero(&legajo,"Ingrese el legajo",1,200);
                 printf("---------------------------------");
                 printf("\nLegajo: %d", legajo);
                 printf("\nNombre: %s",nombre[legajo-1]);
@@ -78,54 +76,5 @@ int main()
     return 0;
 }
 
-int cargarCadena(char mensaje[], char cadena[])
-{
-    int flag=0;//No está cargada
-
-    printf("%s: ", mensaje);
-    fflush(stdin);
-    gets(cadena);
-
-    if(strlen(cadena)>0)
-    {
-        flag=1;
-    }
-
-    return flag;
-}
-
-int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo)
-{
-    int flag=0;//No esta cargado
-    char auxiliar[50]={};
-
-    do
-    {
-        cargarCadena(mensaje, auxiliar);
-
-        while(esNumero(auxiliar)!=1)
-        {
-            printf("Error. No es un numero valido.\n");
-            cargarCadena(mensaje, auxiliar);
-        }
-
-        *numeroEntero=atoi(auxiliar);
-
-        if(*numeroEntero>=minimo && *numeroEntero<=maximo)
-        {
-            flag=1;//Cumple con las condiciones. Sale de la iteracion.
-        }
-        else
-        {
-            printf("Fuera de rango.\n");
-        }
-
-
-    }while(flag==0);
-
-
-    return flag;
-
-}
 
 
