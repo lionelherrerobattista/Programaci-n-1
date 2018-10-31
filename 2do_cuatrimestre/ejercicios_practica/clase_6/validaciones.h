@@ -6,7 +6,7 @@
  * \return int 1 si es int, 0 si no es int
  *
  */
-int esInt(char auxiliar[]);
+int esNumero(char auxiliar[]);
 
 /** \brief Valida si el dato ingresado es de tipo char
  *
@@ -14,7 +14,7 @@ int esInt(char auxiliar[]);
  * \return int 1 si es char, 0 si no es
  *
  */
-int esChar(char auxiliar[]);
+int esLetra(char auxiliar[]);
 
 /** \brief Valida que el dato ingresado sea alfanumérico
  *

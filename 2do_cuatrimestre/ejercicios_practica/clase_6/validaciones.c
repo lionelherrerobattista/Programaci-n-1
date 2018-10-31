@@ -3,7 +3,7 @@
 #include <strings.h>
 #include "validaciones.h"
 
-int esInt (char auxiliar[])
+int esNumero (char auxiliar[])
 {
     int i;
     int flag=1;//1 es entero
@@ -20,14 +20,14 @@ int esInt (char auxiliar[])
     return flag;
 }
 
-int esChar(char auxiliar[])
+int esLetra(char auxiliar[])
 {
     int i;
     int flag=1;//1 es char
 
     for(i=0;i<strlen(auxiliar);i++)
     {
-        if((auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z'))
+        if((auxiliar[i]!=' ') && (auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z')) //Si hay espacio tambien es valido como letra
         {
             flag=0;//0 no es char
             break;
@@ -43,14 +43,14 @@ int esAlfanumerico(char auxiliar[])
     int flag=1;//es alfanumerico
 
     //Si es todo numero o todo letras no es alfanumerico
-    if(esChar(auxiliar)==1 || esInt(auxiliar)==1)
+    if(esLetra(auxiliar)==1 || esNumero(auxiliar)==1)
     {
         flag=0;
     }
 
     for(i=0;i<strlen(auxiliar);i++)
     {
-            if(((auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z')) && (auxiliar[i]<'0' || auxiliar[i]>'9'))
+            if(((auxiliar[i]!=' ') && (auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z')) && (auxiliar[i]<'0' || auxiliar[i]>'9'))
             {
                 flag=0;//No es alfanumerico
                 break;

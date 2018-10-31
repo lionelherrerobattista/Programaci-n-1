@@ -24,14 +24,14 @@ int main()
     gets(auxiliar);
 
 
-    if(esInt(auxiliar))
+    if(esNumero(auxiliar))
     {
-        printf("\nEs entero.");
+        printf("\nEs numero.");
     }
 
-    if(esChar(auxiliar))
+    if(esLetra(auxiliar))
     {
-        printf("\nEs char.");
+        printf("\nEs letra.");
     }
 
     if(esAlfanumerico(auxiliar))
