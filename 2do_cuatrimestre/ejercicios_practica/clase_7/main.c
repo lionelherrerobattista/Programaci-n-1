@@ -39,34 +39,34 @@ int main()
         printf("4-Listar\n");
         printf("5-Salir\n");
         printf("---------------------------------\n");
-        getEntero(&opcion,"Ingrese una opcion", 1, 5);
+        getCadenaNumeros(&opcion,"Ingrese una opcion", 1, 5);
         printf("---------------------------------\n");
 
         switch(opcion)
         {
             case 1:
-                getEntero(&legajo, "Ingrese el legajo", 1, 200);
-                printf("Ingrese el nombre: ");
-                fflush(stdin);
-                gets(nombre[legajo-1]);
-                printf("Ingrese el apellido: ");
-                fflush(stdin);
-                gets(apellido[legajo-1]);
+                getCadenaNumeros(&legajo, "Ingrese el legajo", 1, 200);
+                getCadenaLetras(nombre[legajo-1],"Ingrese el nombre");
+                getCadenaLetras(apellido[legajo-1],"Ingrese el apellido");
                 break;
-
             case 2:
+                getCadenaNumeros(&legajo, "Ingrese el legajo que desea dar de baja",1,200);
+                strcpy(nombre[legajo-1]," ");
+                strcpy(apellido[legajo-1], " ");
                 break;
 
             case 3:
+                getCadenaNumeros(&legajo, "Ingrese el legajo que desea modificar", 1, 200);
+                getCadenaLetras(nombre[legajo-1], "Ingrese el nombre");
+                getCadenaLetras(apellido[legajo-1], "Ingrese el apellido");
                 break;
 
             case 4:
-                getEntero(&legajo,"Ingrese el legajo",1,200);
+                getCadenaNumeros(&legajo,"Ingrese el legajo",1,200);
                 printf("---------------------------------");
                 printf("\nLegajo: %d", legajo);
                 printf("\nNombre: %s",nombre[legajo-1]);
-                printf("\nApellido: %s",apellido[legajo-1]);
-                printf("\n---------------------------------");
+                printf("\nApellido: %s\n",apellido[legajo-1]);
                 break;
 
         }

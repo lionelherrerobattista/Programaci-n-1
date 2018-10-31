@@ -19,7 +19,16 @@ int cargarCadena(char mensaje[], char cadena[]);
  * \return int 1 si cargó, 0 si hubo error
  *
  */
-int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo);
+int getCadenaNumeros(int* numeroEntero, char mensaje[], int minimo, int maximo);
+
+/** \brief Pide que el usuario ingrese una cadena de char, la valida y la guarda
+ *
+ * \param cadena[] char donde se guarda el dato ingresado
+ * \param mensaje[] char mensaje que verá el usuario
+ * \return int 1 si cargó, 0 si hubo error
+ *
+ */
+int getCadenaLetras(char cadena[], char mensaje[]);
 
 /** \brief Valida si el dato ingresado es de tipo int
  *
@@ -28,3 +37,11 @@ int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo);
  *
  */
 int esNumero(char auxiliar[]);
+
+/** \brief Valida si el dato ingresado es de tipo char
+ *
+ * \param auxiliar[] char dato ingresado por el usuario
+ * \return int 1 si es char, 0 si no es
+ *
+ */
+int esLetra(char auxiliar[]);

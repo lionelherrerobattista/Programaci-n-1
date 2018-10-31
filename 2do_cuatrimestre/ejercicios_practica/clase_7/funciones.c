@@ -19,7 +19,7 @@ int cargarCadena(char mensaje[], char cadena[])
     return flag;
 }
 
-int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo)
+int getCadenaNumeros(int* numeroEntero, char mensaje[], int minimo, int maximo)
 {
     int flag=0;//No esta cargado
     char auxiliar[50]={};
@@ -51,6 +51,45 @@ int getEntero(int* numeroEntero, char mensaje[], int minimo, int maximo)
 
     return flag;
 
+}
+
+int getCadenaLetras(char cadena[], char mensaje[])
+{
+    int flag=0;//No esta cargado
+    char auxiliar[50]={};
+
+    cargarCadena(mensaje, auxiliar);
+
+    while(esLetra(auxiliar)!=1)
+    {
+        printf("Error. No es valido.\n");
+        cargarCadena(mensaje, auxiliar);
+    }
+
+    flag=1;
+
+    strcpy(cadena,auxiliar);
+
+
+    return flag;
+
+}
+
+int esLetra(char auxiliar[])
+{
+    int i;
+    int flag=1;//1 es char
+
+    for(i=0;i<strlen(auxiliar);i++)
+    {
+        if((auxiliar[i]!=' ') && (auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z')) //Si hay espacio tambien es valido como letra
+        {
+            flag=0;//0 no es char
+            break;
+        }
+    }
+
+    return flag;
 }
 
 
