@@ -139,6 +139,7 @@ int buscarPrimeraOcurrenciaInt(int arrayEnteros[], int longitud, int valor)
         if(arrayEnteros[i]==valor)
         {
             retorno=i;
+            break;
         }
     }
 
