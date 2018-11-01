@@ -45,3 +45,24 @@ int esNumero(char auxiliar[]);
  *
  */
 int esLetra(char auxiliar[]);
+
+
+/** \brief Inicializa un array de enteros con un valor
+ *
+ * \param arrayEnteros[] int Array a inicializar
+ * \param longitud int Longitud del array
+ * \param valor int Valor con el que se va a inicializar el array
+ * \return int 1 si inicializó correctamente, 0 si hubo error
+ *
+ */
+int inicializarArrayEnteros(int arrayEnteros[],int longitud, int valor);
+
+/** \brief Busca la primera ocurrencia de un valor determinado
+ *
+ * \param arrayEnteros[] int Array de enteros donde se va a buscar
+ * \param longitud int Longitud del Array
+ * \param valor int Valor que se va a buscar
+ * \return int devuelve la posición en el array o -1 si no se encontró
+ *
+ */
+int buscarPrimeraOcurrenciaInt(int arrayEnteros[], int longitud, int valor);

@@ -109,3 +109,43 @@ int esNumero (char auxiliar[])
 
     return flag;
 }
+
+int inicializarArrayEnteros(int arrayEnteros[],int longitud, int valor)
+{
+    int i;
+    int flag=0;//No esta cargado
+
+    for(i=0;i<longitud;i++)
+    {
+        arrayEnteros[i]=valor;
+    }
+
+    if(i==longitud)
+    {
+        flag=1;//Está cargado
+    }
+
+    return flag;
+
+}
+
+int buscarPrimeraOcurrenciaInt(int arrayEnteros[], int longitud, int valor)
+{
+    int i;
+    int retorno=-1;
+
+    for(i=0;i<longitud;i++)
+    {
+        if(arrayEnteros[i]==valor)
+        {
+            retorno=i;
+        }
+    }
+
+    return retorno;
+}
+
+
+
+
+
