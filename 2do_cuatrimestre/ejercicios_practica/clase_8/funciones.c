@@ -167,6 +167,47 @@ int agenda_mostrarLista(ePersona listaPersonas[], int longitud)
     return flag;
 }
 
+int agenda_ordenarListaApellidos(ePersona listaPersonas[], int longitud)
+{
+    int i;
+    int j;
+    int flag=0;//No está ordenado
+
+    //Creo una estructura auxiliar
+    ePersona auxiliarLista;
+
+
+
+    for(i=1;i<longitud;i++)
+    {
+        if(listaPersonas[i].legajo==-1)//Si está vacío
+        {
+            continue;//Paso a la proxima iteración
+        }
+
+        //Empiezo en indice 1 y voy avanzando hacia la derecha con cada iteración
+        auxiliarLista=listaPersonas[i];
+        j=i-1;
+
+        //Comparo con el de la izquierda
+        while(j>=0 && stricmp(auxiliarLista.apellido,listaPersonas[j].apellido)<0)//Apellido A-Z
+        {
+            listaPersonas[j+1] = listaPersonas[j];//muevo todo para la derecha
+            j--;
+        }
+
+        //inserto en la ultima posición a la izquierda
+        listaPersonas[j+1]=auxiliarLista;
+    }
+
+    if(i==longitud)
+    {
+        flag=1;
+    }
+
+    return flag;
+}
+
 
 
 

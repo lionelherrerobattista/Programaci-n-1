@@ -83,3 +83,12 @@ int agenda_buscarPrimeraOcurrencia(ePersona listaPersonas[], int longitud, int v
  *
  */
 int agenda_mostrarLista(ePersona listaPersonas[], int longitud);
+
+/** \brief Ordena una estructura por método de inserción por apellido A-Z
+ *
+ * \param listaPersonas[] ePersona Estructura a ordenar
+ * \param longitud int Longitud de la estructura
+ * \return int 1 si ordenó, 0 si hubo error
+ *
+ */
+int agenda_ordenarListaApellidos(ePersona listaPersonas[], int longitud);

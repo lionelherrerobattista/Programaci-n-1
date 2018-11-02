@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include "funciones.h"
 #define TAM_AGENDA 200
 
-int agenda_mostrarLista(ePersona listaPersonas[], int longitud);
 
 /*
 1) Realizar una agenda para guardar los datos de hasta 200 personas de las cuales se toman los siguientes datos (utilizar una estructura para representar a la persona.):
@@ -15,7 +15,6 @@ a- Realizar un programa con un menú de opciones para hacer altas , bajas y modif
 
 b- Mostrar un listado ordenado por Apellido
 */
-
 
 int main()
 {
@@ -83,6 +82,7 @@ int main()
                 if(indiceEstructura!=-1)
                 {
                     agendaPersonas[indiceEstructura].legajo=-1;//lo doy de baja (lógica)
+                    printf("Se dio de baja.\n");
                 }
                 else
                 {
@@ -113,6 +113,7 @@ int main()
                     //Pido los datos que faltan:
                     getCadenaLetras(agendaPersonas[indiceLibre].nombre,"Ingrese el nombre");
                     getCadenaLetras(agendaPersonas[indiceLibre].apellido,"Ingrese el apellido");
+                    printf("Se modifico el dato.\n");
                 }
                 else
                 {
@@ -123,47 +124,15 @@ int main()
             case 4:
                 printf("%-15s %-15s %-15s\n", "LEGAJO", "NOMBRE", "APELLIDO");
                 agenda_mostrarLista(agendaPersonas, TAM_AGENDA);
-
                 break;
 
-/*
             case 5:
                 //Inserción
-                for(i=1;i<TAM_AGENDA;i++)
-                {
-                    if(legajos[i]==-1)//Si está vacío
-                    {
-                        continue;//Paso a la proxima iteración
-                    }
-                    //Empiezo en indice 1 y voy avanzando hacia la derecha con cada iteración
-                    strcpy(auxiliarApellido,apellido[i]);
-                    strcpy(auxiliarNombre,nombre[i]);
-                    auxiliarLegajo=legajos[i];
-                    j=i-1;
-
-                    //Comparo con el de la izquierda
-                    while(j>=0 && stricmp(auxiliarApellido,apellido[j])<0)//Apellido A-Z
-                    {
-                        legajos[j+1] = legajos[j];//muevo todo para la derecha
-                        strcpy(apellido[j+1],apellido[j]);
-                        strcpy(nombre[j+1],nombre[j]);
-
-
-                        j--;
-                    }
-
-                    legajos[j+1]=auxiliarLegajo;//inserto al final a la izquierda
-                    strcpy(nombre[j+1], auxiliarNombre);
-                    strcpy(apellido[j+1], auxiliarApellido);
-                }
+                agenda_ordenarListaApellidos(agendaPersonas, TAM_AGENDA);
                 printf("Se ordeno alfabeticamente por apellido.\n");
-
-                break;*/
-
+                break;
         }
     }
     return 0;
 }
-
-
 

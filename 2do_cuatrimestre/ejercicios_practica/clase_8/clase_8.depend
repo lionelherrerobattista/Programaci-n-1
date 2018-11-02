@@ -1,14 +1,15 @@
 # depslib dependency file v1.0
-1541167429 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\funciones.c
+1541169882 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
 	"funciones.h"
 
-1541167429 c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\funciones.h
+1541170017 c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\funciones.h
 
-1541167061 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\main.c
+1541170025 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_8\main.c
 	<stdio.h>
 	<stdlib.h>
+	<strings.h>
 	"funciones.h"
 
