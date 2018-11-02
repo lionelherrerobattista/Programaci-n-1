@@ -89,28 +89,37 @@ int main()
                     printf("No se encuentra el legajo\n");
                 }
                 break;
-/*
+
             case 3:
                 //Modificación:
                 getCadenaNumeros(&auxiliarLegajo, "Ingrese el legajo que desea modificar", 1, 9999);
-                //Busco el legajo:
-                indicelegajo=buscarPrimeraOcurrenciaInt(legajos, TAM_AGENDA, auxiliarLegajo);
+                //Busco el indice de la estructura:
+                indiceEstructura=agenda_buscarPrimeraOcurrencia(agendaPersonas, TAM_AGENDA, auxiliarLegajo);
 
-                //Pido todo de nuevo:
-                getCadenaNumeros(&auxiliarLegajo, "Ingrese el nuevo legajo", 1, 9999);
-
-                //Busco que no se repita el numero de legajo:
-                while(buscarPrimeraOcurrenciaInt(legajos, TAM_AGENDA, auxiliarLegajo)!=-1)
+                if(indiceEstructura!=-1)
                 {
-                    printf("El legajo ya existe.\n");
-                    getCadenaNumeros(&auxiliarLegajo, "Ingrese el legajo", 1, 9999);
-                }
+                    //Pido todo de nuevo:
+                    getCadenaNumeros(&auxiliarLegajo, "Ingrese el nuevo legajo", 1, 9999);
 
-                legajos[indiceLibre]=auxiliarLegajo;
-                getCadenaLetras(nombre[indiceLibre],"Ingrese el nombre");
-                getCadenaLetras(apellido[indiceLibre],"Ingrese el apellido");
+                    //Busco que no se repita el numero de legajo:
+                    while(agenda_buscarPrimeraOcurrencia(agendaPersonas, TAM_AGENDA, auxiliarLegajo)!=-1)
+                    {
+                        printf("El legajo ya existe.\n");
+                        getCadenaNumeros(&auxiliarLegajo, "Ingrese el nuevo legajo", 1, 9999);
+                    }
+
+                    //Copio el legajo en la estructura:
+                    agendaPersonas[indiceLibre].legajo=auxiliarLegajo;
+                    //Pido los datos que faltan:
+                    getCadenaLetras(agendaPersonas[indiceLibre].nombre,"Ingrese el nombre");
+                    getCadenaLetras(agendaPersonas[indiceLibre].apellido,"Ingrese el apellido");
+                }
+                else
+                {
+                    printf("No se encuentra el legajo\n");
+                }
                 break;
-*/
+
             case 4:
                 printf("%-15s %-15s %-15s\n", "LEGAJO", "NOMBRE", "APELLIDO");
                 agenda_mostrarLista(agendaPersonas, TAM_AGENDA);
@@ -157,23 +166,4 @@ int main()
 }
 
 
-int agenda_mostrarLista(ePersona listaPersonas[], int longitud)
-{
-    int i;
-    int flag=0;//No mostró todo
 
-    for(i=0;i<longitud; i++)
-    {
-        if(listaPersonas[i].legajo!=-1)
-        {
-            printf("%-15d %-15s %-15s\n",listaPersonas[i].legajo, listaPersonas[i].nombre, listaPersonas[i].apellido);
-        }
-    }
-
-    if(i==longitud)
-    {
-        flag=1;//Mostró todo
-    }
-
-    return flag;
-}

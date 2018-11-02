@@ -146,6 +146,26 @@ int agenda_buscarPrimeraOcurrencia(ePersona listaPersonas[], int longitud, int v
     return retorno;
 }
 
+int agenda_mostrarLista(ePersona listaPersonas[], int longitud)
+{
+    int i;
+    int flag=0;//No mostró todo
+
+    for(i=0;i<longitud; i++)
+    {
+        if(listaPersonas[i].legajo!=-1)
+        {
+            printf("%-15d %-15s %-15s\n",listaPersonas[i].legajo, listaPersonas[i].nombre, listaPersonas[i].apellido);
+        }
+    }
+
+    if(i==longitud)
+    {
+        flag=1;//Mostró todo
+    }
+
+    return flag;
+}
 
 
 

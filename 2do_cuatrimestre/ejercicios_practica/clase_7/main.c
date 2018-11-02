@@ -101,20 +101,26 @@ int main()
                 getCadenaNumeros(&auxiliarLegajo, "Ingrese el legajo que desea modificar", 1, 9999);
                 //Busco el legajo:
                 indicelegajo=buscarPrimeraOcurrenciaInt(legajos, TAM_AGENDA, auxiliarLegajo);
-
-                //Pido todo de nuevo:
-                getCadenaNumeros(&auxiliarLegajo, "Ingrese el nuevo legajo", 1, 9999);
-
-                //Busco que no se repita el numero de legajo:
-                while(buscarPrimeraOcurrenciaInt(legajos, TAM_AGENDA, auxiliarLegajo)!=-1)
+                if(indicelegajo!=-1)
                 {
-                    printf("El legajo ya existe.\n");
-                    getCadenaNumeros(&auxiliarLegajo, "Ingrese el legajo", 1, 9999);
-                }
+                    //Pido todo de nuevo:
+                    getCadenaNumeros(&auxiliarLegajo, "Ingrese el nuevo legajo", 1, 9999);
 
-                legajos[indiceLibre]=auxiliarLegajo;
-                getCadenaLetras(nombre[indiceLibre],"Ingrese el nombre");
-                getCadenaLetras(apellido[indiceLibre],"Ingrese el apellido");
+                    //Busco que no se repita el numero de legajo:
+                    while(buscarPrimeraOcurrenciaInt(legajos, TAM_AGENDA, auxiliarLegajo)!=-1)
+                    {
+                        printf("El legajo ya existe.\n");
+                        getCadenaNumeros(&auxiliarLegajo, "Ingrese el legajo", 1, 9999);
+                    }
+
+                    legajos[indiceLibre]=auxiliarLegajo;
+                    getCadenaLetras(nombre[indiceLibre],"Ingrese el nombre");
+                    getCadenaLetras(apellido[indiceLibre],"Ingrese el apellido");
+                }
+                else
+                {
+                    printf("No se encuentra el legajo\n");
+                }
                 break;
 
             case 4:

@@ -65,4 +65,21 @@ int esLetra(char auxiliar[]);
 int inicializarArrayEstructura(ePersona listaPersonas[],int longitud, int valor);
 
 
+/** \brief Busca la primera ocurrencia de un valor determinado en un array de estructuras
+ *
+ * \param listaPersonas[] ePersona array de estructuras
+ * \param longitud int Longitud del array
+ * \param valor int Valor a buscar
+ * \return int Devuleve el indice donde encontro el valor, -1 si no lo encontró
+ *
+ */
 int agenda_buscarPrimeraOcurrencia(ePersona listaPersonas[], int longitud, int valor);
+
+/** \brief Imprime un array de estructuras por pantalla
+ *
+ * \param listaPersonas[] ePersona Array de estructuras a imprimir
+ * \param longitud int Longitud del array
+ * \return int 1 si imprimió todo, 0 si hubo error
+ *
+ */
+int agenda_mostrarLista(ePersona listaPersonas[], int longitud);
