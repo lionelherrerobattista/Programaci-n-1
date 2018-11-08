@@ -17,25 +17,17 @@ typedef struct
  */
 int cargarCadena(char mensaje[], char cadena[]);
 
-/** \brief Pide un numero al usuario, lo valida y lo guarda
- *
- * \param numeroEntero int* puntero a la variable donde se guarda el número ingresado
- * \param mensaje[] char mensaje para el usuario
- * \param minimo int número mínimo que puede ingresar el usuario inclusive
- * \param maximo int número máximo que puede ingrear el usuario inclusive
- * \return int 1 si cargó, 0 si hubo error
- *
- */
-int getCadenaNumeros(int* numeroEntero, char mensaje[], int minimo, int maximo);
+//Getters
+int getCadenaInt(char mensaje[], int minimo, int maximo);
+float getCadenaFloat(char mensaje[], float minimo, float maximo);
 
-/** \brief Pide que el usuario ingrese una cadena de char, la valida y la guarda
- *
- * \param cadena[] char donde se guarda el dato ingresado
- * \param mensaje[] char mensaje que verá el usuario
- * \return int 1 si cargó, 0 si hubo error
- *
- */
-int getCadenaLetras(char cadena[], char mensaje[]);
+int getCadenaLetras(char mensaje[], char cadena[]);
+
+//Setters
+int productos_setCodigo(eProducto listaProductos[], int indice, int codigo);
+int productos_setDescripcion(eProducto listaProductos[], int indice, char descripcion[]);
+int productos_setCantidad(eProducto listaProductos[], int indice, int cantidad);
+int productos_setImporte(eProducto listaProductos[], int indice, float importe);
 
 /** \brief Valida si el dato ingresado es de tipo int
  *
@@ -44,6 +36,8 @@ int getCadenaLetras(char cadena[], char mensaje[]);
  *
  */
 int esNumero(char auxiliar[]);
+
+int esNumeroFloat (char auxiliar[]);
 
 /** \brief Valida si el dato ingresado es de tipo char
  *
@@ -65,13 +59,8 @@ int esLetra(char auxiliar[]);
  */
 int productos_inicializarArrayEstructura(eProducto listaProductos[],int longitud, int valor);
 
+int productos_buscarEstado(eProducto listaProductos[], int longitud, int valor);
+int productos_buscarCodigo(eProducto listaProductos[], int longitud, int codigo);
 
-/** \brief Busca la primera ocurrencia de un valor determinado en un array de estructuras
- *
- * \param listaProductos[] eProducto array de estructuras
- * \param longitud int Longitud del array
- * \param valor int Valor a buscar
- * \return int Devuleve el indice donde encontro el valor, -1 si no lo encontró
- *
- */
-int productos_buscarPrimeraOcurrencia(eProducto listaProductos[], int longitud, int valor);
+
+void productos_mostrarLista(eProducto listaProductos[], int longitud);

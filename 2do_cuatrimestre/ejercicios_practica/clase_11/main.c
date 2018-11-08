@@ -28,6 +28,12 @@ int main()
 {
     int opcion;
     int indiceLibre;
+    char baja;
+
+    int codigo;
+    float importe;
+    char descripcion[50];
+    int cantidad;
 
     eProducto listaProductos[TAM_PRODUCTOS];
 
@@ -35,8 +41,9 @@ int main()
 
 
 
-    while(opcion != 6)
+    while(opcion != 5)
     {
+
         printf("---------------------------------\n");
         printf("1-Alta\n");
         printf("2-Modificar\n");
@@ -44,28 +51,84 @@ int main()
         printf("4-Listar\n");
         printf("5-Salir\n");
         printf("---------------------------------\n");
-        getCadenaNumeros(&opcion,"Ingrese una opcion", 1, 5);
+        opcion=getCadenaInt("Ingrese una opcion", 1, 5);
         printf("---------------------------------\n");
 
 
         switch(opcion)
         {
             case 1:
-                indiceLibre=productos_buscarPrimeraOcurrencia(listaProductos, TAM_PRODUCTOS, -1);
+                indiceLibre=productos_buscarEstado(listaProductos, TAM_PRODUCTOS, -1);
                 if(indiceLibre==-1)
                 {
                     printf("No hay espacio libre.\n");
                 }
-               /* else
+                else
                 {
-                    getCadenaLetras(listaProductos.);
-                }*/
+                    codigo=getCadenaInt("Ingrese el codigo del producto", 1, 9999);
+                    productos_setCodigo(listaProductos, indiceLibre, codigo);
+
+                    getCadenaLetras("Ingrese la descripcion", descripcion);
+                    productos_setDescripcion(listaProductos, indiceLibre, descripcion);
+
+                    importe=getCadenaFloat("Ingrese el importe", 0, 99999);
+                    productos_setImporte(listaProductos, indiceLibre, importe);
+
+                    cantidad=getCadenaInt("Ingrese la cantidad", 0, 99999);
+                    productos_setCantidad(listaProductos, indiceLibre, cantidad);
+
+                    //Cambiar estado
+                    listaProductos[indiceLibre].estado=1;
+                }
                 break;
             case 2:
+                codigo=getCadenaInt("Ingrese el codigo del producto a modificar", 1, 9999);
+                indiceLibre=productos_buscarCodigo(listaProductos, TAM_PRODUCTOS, codigo);
+
+                if(indiceLibre==-1)
+                {
+                    printf("---------------------------------\n");
+                    printf("No es un indice valido.\n");
+                }
+                else
+                {
+                    printf("---------------------------------\n");
+                    codigo=getCadenaInt("Ingrese el nuevo codigo", 1, 9999);
+                    productos_setCodigo(listaProductos, indiceLibre, codigo);
+
+                    getCadenaLetras("Ingrese la descripcion", descripcion);
+                    productos_setDescripcion(listaProductos, indiceLibre, descripcion);
+
+                    importe=getCadenaFloat("Ingrese el importe", 0, 99999);
+                    productos_setImporte(listaProductos, indiceLibre, importe);
+
+                    cantidad=getCadenaInt("Ingrese la cantidad", 0, 99999);
+                    productos_setCantidad(listaProductos, indiceLibre, cantidad);
+                }
                 break;
             case 3:
+                codigo=getCadenaInt("Ingrese el codigo del producto a dar de baja", 1, 9999);
+                indiceLibre=productos_buscarCodigo(listaProductos, TAM_PRODUCTOS, codigo);
+                if(indiceLibre==-1)
+                {
+                    printf("---------------------------------\n");
+                    printf("No es un indice valido.\n");
+                }
+                else
+                {
+                    printf("Esta seguro que desea darlo de baja?(s/n)\n");
+                    fflush(stdin);
+                    scanf("%c", &baja);
+                    if(baja=='s')
+                    {
+                        listaProductos[indiceLibre].estado=-1;
+                        printf("---------------------------------\n");
+                        printf("Se dio de baja!\n");
+                    }
+                }
                 break;
             case 4:
+                productos_mostrarLista(listaProductos, TAM_PRODUCTOS);
                 break;
 
         }
