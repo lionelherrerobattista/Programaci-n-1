@@ -37,6 +37,7 @@ int main()
 
     eProducto listaProductos[TAM_PRODUCTOS];
 
+    //Inicializo el array de Productos en -1(libre)
     productos_inicializarArrayEstructura(listaProductos, TAM_PRODUCTOS, -1);
 
 
@@ -51,7 +52,7 @@ int main()
         printf("4-Listar\n");
         printf("5-Salir\n");
         printf("---------------------------------\n");
-        opcion=getCadenaInt("Ingrese una opcion", 1, 5);
+        opcion=pedirCadenaInt("Ingrese una opcion", 1, 5);
         printf("---------------------------------\n");
 
 
@@ -65,24 +66,24 @@ int main()
                 }
                 else
                 {
-                    codigo=getCadenaInt("Ingrese el codigo del producto", 1, 9999);
+                    codigo=pedirCadenaInt("Ingrese el codigo del producto", 1, 9999);
                     productos_setCodigo(listaProductos, indiceLibre, codigo);
 
-                    getCadenaLetras("Ingrese la descripcion", descripcion);
+                    pedirCadenaLetras("Ingrese la descripcion", descripcion);
                     productos_setDescripcion(listaProductos, indiceLibre, descripcion);
 
-                    importe=getCadenaFloat("Ingrese el importe", 0, 99999);
+                    importe=pedirCadenaFloat("Ingrese el importe", 0, 99999);
                     productos_setImporte(listaProductos, indiceLibre, importe);
 
-                    cantidad=getCadenaInt("Ingrese la cantidad", 0, 99999);
+                    cantidad=pedirCadenaInt("Ingrese la cantidad", 0, 99999);
                     productos_setCantidad(listaProductos, indiceLibre, cantidad);
 
-                    //Cambiar estado
-                    listaProductos[indiceLibre].estado=1;
+                    //Cambiar estado ocupado (estado=1)
+                    productos_setEstado(listaProductos, indiceLibre, 1);
                 }
                 break;
             case 2:
-                codigo=getCadenaInt("Ingrese el codigo del producto a modificar", 1, 9999);
+                codigo=pedirCadenaInt("Ingrese el codigo del producto a modificar", 1, 9999);
                 indiceLibre=productos_buscarCodigo(listaProductos, TAM_PRODUCTOS, codigo);
 
                 if(indiceLibre==-1)
@@ -93,21 +94,19 @@ int main()
                 else
                 {
                     printf("---------------------------------\n");
-                    codigo=getCadenaInt("Ingrese el nuevo codigo", 1, 9999);
-                    productos_setCodigo(listaProductos, indiceLibre, codigo);
 
-                    getCadenaLetras("Ingrese la descripcion", descripcion);
+                    pedirCadenaLetras("Ingrese la descripcion", descripcion);
                     productos_setDescripcion(listaProductos, indiceLibre, descripcion);
 
-                    importe=getCadenaFloat("Ingrese el importe", 0, 99999);
+                    importe=pedirCadenaFloat("Ingrese el importe", 0, 99999);
                     productos_setImporte(listaProductos, indiceLibre, importe);
 
-                    cantidad=getCadenaInt("Ingrese la cantidad", 0, 99999);
+                    cantidad=pedirCadenaInt("Ingrese la cantidad", 0, 99999);
                     productos_setCantidad(listaProductos, indiceLibre, cantidad);
                 }
                 break;
             case 3:
-                codigo=getCadenaInt("Ingrese el codigo del producto a dar de baja", 1, 9999);
+                codigo=pedirCadenaInt("Ingrese el codigo del producto a dar de baja", 1, 9999);
                 indiceLibre=productos_buscarCodigo(listaProductos, TAM_PRODUCTOS, codigo);
                 if(indiceLibre==-1)
                 {
@@ -128,6 +127,7 @@ int main()
                 }
                 break;
             case 4:
+                productos_ordenarListaDescripcion(listaProductos, TAM_PRODUCTOS);
                 productos_mostrarLista(listaProductos, TAM_PRODUCTOS);
                 break;
 

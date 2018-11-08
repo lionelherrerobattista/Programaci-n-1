@@ -84,9 +84,8 @@ int cargarCadena(char mensaje[], char cadena[])
     return flag;
 }
 
-//Getters
 
-int getCadenaInt(char mensaje[], int minimo, int maximo)
+int pedirCadenaInt(char mensaje[], int minimo, int maximo)
 {
     int flag=0;//No esta cargado
     char auxiliar[50]={};
@@ -122,7 +121,7 @@ int getCadenaInt(char mensaje[], int minimo, int maximo)
 }
 
 
-float getCadenaFloat(char mensaje[], float minimo, float maximo)
+float pedirCadenaFloat(char mensaje[], float minimo, float maximo)
 {
     int flag=0;//No esta cargado
     //int i;
@@ -209,7 +208,7 @@ float getCadenaFloat(char mensaje[], float minimo, float maximo)
 }
 
 
-int getCadenaLetras(char mensaje[], char cadena[])
+int pedirCadenaLetras(char mensaje[], char cadena[])
 {
     int flag=0;
     char auxiliar[50];
@@ -291,6 +290,48 @@ int productos_setCantidad(eProducto listaProductos[], int indice, int cantidad)
     return flag;
 }
 
+int productos_setEstado(eProducto listaProductos[],int indice, int estado)
+{
+    int flag=0;//No se cargo
+
+    listaProductos[indice].estado=estado;
+
+    if(listaProductos[indice].estado==estado)
+    {
+        flag=1;//Se cargó
+    }
+
+    return flag;
+}
+
+//Getters
+int persona_getCodigo(eProducto listaProductos[], int indice)
+{
+
+    return listaProductos[indice].codigo;
+}
+
+char* persona_getDescripcion(eProducto listaProductos[], int indice)
+{
+
+    return listaProductos[indice].descripcion;
+
+}
+
+int persona_getCantidad(eProducto listaProductos[], int indice)
+{
+    return listaProductos[indice].cantidad;
+
+}
+
+float persona_getImporte(eProducto listaProductos[], int indice)
+{
+
+    return listaProductos[indice].importe;
+
+}
+
+
 
 int productos_inicializarArrayEstructura(eProducto listaProductos[],int longitud, int valor)
 {
@@ -349,14 +390,58 @@ void productos_mostrarLista(eProducto listaProductos[], int longitud)
 {
     int i;
 
+    printf("%-20s| %-20s| %-20s| %-20s|\n", "Codigo", "Descripcion", "Importe", "Cantidad");
+    printf("---------------------------------------------------------------------------------------\n");
 
     for(i=0;i<longitud; i++)
     {
         if(listaProductos[i].estado!=-1)
         {
-            printf("%d %s %.2f %d\n", listaProductos[i].codigo, listaProductos[i].descripcion,
-                    listaProductos[i].importe, listaProductos[i].cantidad);
+            printf("%-20d| %-20s| %-20.2f| %-20d|\n", persona_getCodigo(listaProductos, i),persona_getDescripcion(listaProductos, i),
+                    persona_getImporte(listaProductos, i), persona_getCantidad(listaProductos, i));
         }
 
     }
 }
+
+int productos_ordenarListaDescripcion(eProducto listaProductos[], int longitud)
+{
+    int i;
+    int j;
+    int flag=0;//No está ordenado
+
+    //Creo una estructura auxiliar
+    eProducto auxiliarLista;
+
+
+
+    for(i=1;i<longitud;i++)
+    {
+        if(listaProductos[i].estado==-1)//Si está vacío
+        {
+            continue;//Paso a la proxima iteración
+        }
+
+        //Empiezo en indice 1 y voy avanzando hacia la derecha con cada iteración
+        auxiliarLista=listaProductos[i];
+        j=i-1;
+
+        //Comparo con el de la izquierda
+        while(j>=0 && stricmp(auxiliarLista.descripcion,listaProductos[j].descripcion)>0)//Productos Z-A
+        {
+            listaProductos[j+1] = listaProductos[j];//muevo todo para la derecha
+            j--;
+        }
+
+        //inserto en la ultima posición a la izquierda
+        listaProductos[j+1]=auxiliarLista;
+    }
+
+    if(i==longitud)
+    {
+        flag=1;
+    }
+
+    return flag;
+}
+
