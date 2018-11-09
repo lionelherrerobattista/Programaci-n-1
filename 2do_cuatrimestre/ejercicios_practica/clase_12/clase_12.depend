@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1541772553 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_12\comercio.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	<math.h>
+	"comercio.h"
+
+1541772284 c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_12\comercio.h
+
+1541772617 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_12\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"comercio.h"
+
