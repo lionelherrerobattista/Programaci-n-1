@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1542380820 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"texto.h"
+
+1542380711 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\texto.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"texto.h"
+
+1542376222 c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\texto.h
+

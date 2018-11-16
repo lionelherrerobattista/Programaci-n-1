@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1542378923 source:c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\prueba_puntero\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+
