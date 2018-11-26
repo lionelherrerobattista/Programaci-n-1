@@ -13,3 +13,17 @@
 
 1542376222 c:\users\alumno\desktop\nueva carpeta\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\texto.h
 
+1543260830 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"texto.h"
+
+1543260226 c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\texto.h
+
+1543260226 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_17\texto.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"texto.h"
+

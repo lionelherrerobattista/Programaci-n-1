@@ -19,7 +19,7 @@ b- Mostrar un listado ordenado por Apellido
 int main()
 {
 
-    int opcion;
+    int opcion=0;
     int indiceLibre;
     int auxiliarLegajo;
     int indiceEstructura;
@@ -27,7 +27,8 @@ int main()
 
     ePersona agendaPersonas[TAM_AGENDA];
 
-    inicializarArrayEstructura(agendaPersonas, TAM_AGENDA, -1);
+    //Inicializo con un valor conocido
+    inicializarArrayEstructura(agendaPersonas, TAM_AGENDA, -1); //-1 indica que está libre
 
 
     while(opcion != 6)
@@ -122,6 +123,7 @@ int main()
                 break;
 
             case 4:
+                //Listar
                 printf("%-15s %-15s %-15s\n", "LEGAJO", "NOMBRE", "APELLIDO");
                 agenda_mostrarLista(agendaPersonas, TAM_AGENDA);
                 break;

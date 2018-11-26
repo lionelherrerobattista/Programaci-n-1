@@ -39,7 +39,8 @@ int main()
     char auxiliarNombre[50];
     char auxiliarApellido[50];
 
-    inicializarArrayEnteros(legajos, TAM_AGENDA, -1);
+    //Cargo a los legajos con un valor conocido
+    inicializarArrayEnteros(legajos, TAM_AGENDA, -1); // -1 indica que el legajo está vacío
 
     while(opcion != 6)
     {
@@ -135,7 +136,7 @@ int main()
                 break;
 
             case 5:
-                //Inserción
+                //Método de Inserción
                 for(i=1;i<TAM_AGENDA;i++)
                 {
                     if(legajos[i]==-1)//Si está vacío

@@ -16,7 +16,7 @@ int main()
     pTexto=getDynamicString("Ingrese un mensaje", texto);
 
     printf("%s",pTexto);
-    printf("largo: %d", strlen(texto));
+
 
     return 0;
 }

@@ -9,7 +9,7 @@ int cargarCadena(char mensaje[], char cadena[])
 
     printf("%s: ", mensaje);
     fflush(stdin);
-    gets(cadena);
+    gets(cadena); //Pido la cadena y la guardo
 
     if(strlen(cadena)>0)
     {
@@ -22,10 +22,13 @@ int cargarCadena(char mensaje[], char cadena[])
 int getCadenaNumeros(int* numeroEntero, char mensaje[], int minimo, int maximo)
 {
     int flag=0;//No esta cargado
-    char auxiliar[50]={};
+    char auxiliar[50]={}; //Donde se guarda el mensaje para no alterar el contenido de mensaje
+
+
 
     do
     {
+        //Llamo a la función para cargar la cadena
         cargarCadena(mensaje, auxiliar);
 
         while(esNumero(auxiliar)!=1)
@@ -56,19 +59,21 @@ int getCadenaNumeros(int* numeroEntero, char mensaje[], int minimo, int maximo)
 int getCadenaLetras(char cadena[], char mensaje[])
 {
     int flag=0;//No esta cargado
-    char auxiliar[50]={};
+    char auxiliar[50]={}; //Donde se guarda el mensaje para no alterar el contenido de mensaje
 
+    //Llamo a la función para cargar la cadena
     cargarCadena(mensaje, auxiliar);
 
+    //Compruebo que este conformada solo por letras
     while(esLetra(auxiliar)!=1)
     {
         printf("Error. No es valido.\n");
         cargarCadena(mensaje, auxiliar);
     }
 
-    flag=1;
+    flag=1; //Validada
 
-    strcpy(cadena,auxiliar);
+    strcpy(cadena,auxiliar); //Paso los datos a la cadena
 
 
     return flag;
