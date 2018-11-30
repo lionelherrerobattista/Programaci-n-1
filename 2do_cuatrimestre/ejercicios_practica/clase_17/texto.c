@@ -62,11 +62,11 @@ int cargarCadena(char* mensaje, char* cadena)
     return flag;
 }
 
-void* getDynamicString(char* mensaje, char* texto)
+char* getDynamicString(char* mensaje)
 {
-    /*char* auxiliar;
+    char* texto;
 
-    auxiliar=(char*)malloc(sizeof(char)*TAM_BUFFER);*/
+    texto=(char*)malloc(sizeof(char)*TAM_BUFFER);
 
     cargarCadena(mensaje, texto);
 

@@ -4,6 +4,24 @@
 #include "comercio.h"
 #define TAM_PRODUCTOS 5
 
+
+/**
+1) Al ejercicio de la clase 11 incorporar la siguiente funcionalidad
+
+5. LISTAR: Realizar un solo listado de los datos ordenados por los siguientes criterios:
+
+Descripción (descendente)
+Cantidad (ascendente)
+
+6. INFORMAR:
+
+A. Los datos del/os producto/s de menor Importe.
+B. Los datos del/os producto/s que superan el valor de precio promedio
+
+7. MINIMIZAR:
+Realizar las funciones necesarias a fin de minimizar la función main()
+*/
+
 int main()
 {
     int opcion;

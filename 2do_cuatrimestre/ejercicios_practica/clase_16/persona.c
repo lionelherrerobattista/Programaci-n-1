@@ -305,7 +305,7 @@ void printPerson(S_Person* pPerson)
 {
     printf("\n|%-15s| %-15s| %-15s|\n", "Edad", "Nombre", "DNI");
     printf("---------------------------------------------------\n");
-    printf("|%-15d| %-15s| %-15d|\n", pPerson->edad, pPerson->nombre, pPerson->dni);
+    printf("|%-15d| %-15s| %-15ld|\n", pPerson->edad, pPerson->nombre, pPerson->dni);
 }
 
 

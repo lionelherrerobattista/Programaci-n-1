@@ -376,7 +376,8 @@ int productos_buscarCodigo(eProducto listaProductos[], int longitud, int codigo)
 
     for(i=0;i<longitud;i++)
     {
-        if(listaProductos[i].codigo==codigo)
+        //Busco que coincida el código y que esté dado de alta
+        if(listaProductos[i].codigo==codigo && listaProductos[i].estado == 0)
         {
             retorno=i;
             break;

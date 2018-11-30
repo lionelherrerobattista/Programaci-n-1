@@ -13,5 +13,5 @@ void* pedirCadenaLetras(char mensaje[], char* cadena);
  */
 int esLetra(char auxiliar[]);
 
-void* getDynamicString(char* mensaje, char* texto);
+char* getDynamicString(char* mensaje);
 

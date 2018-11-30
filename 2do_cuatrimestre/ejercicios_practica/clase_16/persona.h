@@ -2,7 +2,7 @@ typedef struct{
 
     int edad;
     char nombre[50];
-    int dni;
+    long int dni;
 
 }S_Person;
 
