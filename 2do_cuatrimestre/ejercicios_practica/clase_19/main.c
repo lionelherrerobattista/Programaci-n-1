@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "persona.h"
+#define CANTIDAD_PERSONAS 5
 
-void persona_cargarListaPersona(ePersona listaPersona[], int indice);
+
 
 int main()
 {
@@ -13,18 +14,24 @@ int main()
     int i=0;
     int totalPersonas=0;
 
-    ePersona listaPersonas[5];
-    ePersona* auxPersona;
+    ePersona** listaPersonas; //Lista de punteros
+    ePersona* auxPersona; //Puntero a la estructura persona
+
+    //Creo la lista
+    listaPersonas=persona_crearLista(CANTIDAD_PERSONAS);
 
     do
     {
-        persona_cargarListaPersona(listaPersonas, i);
+        //Creo una persona para cargarla a la lista
+        auxPersona=persona_crearPersona();
+        //Cargo los datos
+        persona_cargarPersona(auxPersona);
 
-        i++;
+        //Coloco la estructura dentro de la lista
+        *(listaPersonas+i)=auxPersona;// operador * y artimética de punteros !!
+        i++; //Me muevo una posición en la lista
 
-        printf("Desea continuar ingresando personas? (s/n): ");
-        scanf("%c", &respuesta);
-
+        pedirCadenaLetras("Desea continuar ingresando personas? (s/n)", &respuesta);
 
     }while(respuesta=='s');
 
@@ -33,6 +40,9 @@ int main()
     crearBinario(listaPersonas, nombreArchivo, totalPersonas);
 
     cargarCadena("Ingrese el apellido a buscar", auxApellido);
+
+    free(auxPersona);
+    auxPersona=NULL;
 
     auxPersona=persona_buscarApellido(nombreArchivo, auxApellido, totalPersonas);
     if(auxPersona!=NULL)
@@ -45,20 +55,4 @@ int main()
     }
 
     return 0;
-}
-
-void persona_cargarListaPersona(ePersona listaPersonas[], int indice)
-{
-    char auxNombre[50];
-    char auxApellido[50];
-    int auxEdad;
-
-    pedirCadenaLetras("Ingrese el nombre", auxNombre);
-    pedirCadenaLetras("Ingrese el apellido", auxApellido);
-    auxEdad=pedirCadenaInt("Ingrese la edad", 0, 100);
-
-    persona_setName(listaPersonas, auxNombre, indice);
-    persona_setSurname(listaPersonas, auxApellido, indice);
-    persona_setAge(listaPersonas, auxEdad, indice);
-
 }

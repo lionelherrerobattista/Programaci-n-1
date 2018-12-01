@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "persona.h"
+#define TAM_BUFFER 32
 
 //Pido al usuario
-int pedirCadenaLetras(char mensaje[], char cadena[])
+int pedirCadenaLetras(char* mensaje, char* cadena)
 {
     int flag=0;
     char auxiliar[50];
@@ -28,7 +29,7 @@ int pedirCadenaLetras(char mensaje[], char cadena[])
 
 }
 
-int pedirCadenaInt(char mensaje[], int minimo, int maximo)
+int pedirCadenaInt(char* mensaje, int minimo, int maximo)
 {
     int flag=0;//No esta cargado
     char auxiliar[50]={};
@@ -63,13 +64,24 @@ int pedirCadenaInt(char mensaje[], int minimo, int maximo)
 
 }
 
-int cargarCadena(char mensaje[], char cadena[])
+int cargarCadena(char* mensaje, char* cadena)
 {
     int flag=0;//No está cargada
 
     printf("%s: ", mensaje);
     fflush(stdin);
-    gets(cadena);
+
+    //Para no escribir de más en memoria uso fgets
+    //(limita lo que se puede ingresar)
+    fgets(cadena,sizeof(char)*TAM_BUFFER,stdin);
+
+    //Agregar '\0' al final cuando cadena < al buffer
+    //para que pueda validar (porque fgets escribe '\n' al final)
+    if(strlen(cadena)<TAM_BUFFER-1)
+    {
+        *(cadena+(strlen(cadena)-1))='\0';
+    }
+
 
     if(strlen(cadena)>0)
     {
@@ -115,42 +127,80 @@ int esNumero (char auxiliar[])
     return flag;
 }
 
+//Constructores
+ePersona** persona_crearLista(int cantidadPersonas)
+{
+    ePersona** listaPersonas;
+
+    listaPersonas=(ePersona**)malloc(sizeof(ePersona*)*cantidadPersonas);
+
+    return listaPersonas;
+}
+
+ePersona* persona_crearPersona()
+{
+    ePersona* persona;
+
+    persona=(ePersona*)malloc(sizeof(ePersona));
+
+    return persona;
+}
+
+
 //Setters
-void persona_setName(ePersona listaPersonas[], char name[], int index)
+void persona_cargarPersona(ePersona* persona)
 {
+    char auxNombre[50];
+    char auxApellido[50];
+    int auxEdad;
 
-    strcpy(listaPersonas[index].name, name);
+    pedirCadenaLetras("Ingrese el nombre", auxNombre);
+    pedirCadenaLetras("Ingrese el apellido", auxApellido);
+    auxEdad=pedirCadenaInt("Ingrese la edad", 0, 100);
+
+    persona_setName(persona, auxNombre);
+    persona_setSurname(persona, auxApellido);
+    persona_setAge(persona, auxEdad);
 
 }
 
-void persona_setSurname(ePersona listaPersonas[], char surname[], int index)
+
+void persona_setName(ePersona* persona, char name[])
 {
 
-    strcpy(listaPersonas[index].surname, surname);
+    strcpy(persona->name, name);
 
 }
 
-void persona_setAge(ePersona listaPersonas[], int age, int index)
+void persona_setSurname(ePersona* persona, char surname[])
 {
 
-    listaPersonas[index].age=age;
+    strcpy(persona->surname, surname);
+
+}
+
+void persona_setAge(ePersona* persona, int age)
+{
+
+    persona->age=age;
 
 }
 
 //Archivo
-int crearBinario(ePersona listaPersonas[], char nombreArchivo[], int totalPersonas)
+int crearBinario(ePersona** listaPersonas, char nombreArchivo[], int totalPersonas)
 {
     FILE* pArchivo;
     int i;
     int totalCargado;
 
-    pArchivo=fopen(nombreArchivo, "ab+"); //append binary
+    pArchivo=fopen(nombreArchivo, "wb");
 
     if(pArchivo!=NULL)
     {
         for(i=0;i<totalPersonas;i++)
         {
-            totalCargado=fwrite(&listaPersonas[i],sizeof(ePersona),totalPersonas, pArchivo);
+            totalCargado=fwrite(*(listaPersonas+i),sizeof(ePersona),1, pArchivo);
+            //Usar operador:* !!!! (Para pasar el puntero a la estructura)
         }
     }
 
@@ -183,6 +233,7 @@ ePersona* persona_buscarApellido(char nombreArchivo[], char apellido[], int cant
             if(stricmp(auxPersona->surname, apellido)==0)
             {
                 flag=1;
+                break;
             }
         }
     }
