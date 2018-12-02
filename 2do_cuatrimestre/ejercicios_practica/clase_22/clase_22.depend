@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1543772650 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_22\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"persona.h"
+
+1543769911 c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_22\persona.h
+
+1543772607 source:c:\users\lion_\desktop\practica_c\programacion-1\2do_cuatrimestre\ejercicios_practica\clase_22\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"persona.h"
+
