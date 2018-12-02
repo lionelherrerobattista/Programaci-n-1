@@ -1,0 +1,241 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+#include "persona.h"
+#define TAM_BUFFER 32
+
+//Pido al usuario
+int pedirCadenaLetras(char* mensaje, char* cadena)
+{
+    int flag=0;
+    char auxiliar[50];
+
+    cargarCadena(mensaje, auxiliar);
+
+    while(esLetra(auxiliar)!=1)
+    {
+        printf("Error. No es valido.\n");
+        cargarCadena(mensaje, auxiliar);
+    }
+
+    strcpy(cadena, auxiliar);
+
+    if(stricmp(cadena, auxiliar)==0)
+    {
+        flag=1;
+    }
+
+    return flag;
+
+}
+
+int pedirCadenaInt(char* mensaje, int minimo, int maximo)
+{
+    int flag=0;//No esta cargado
+    char auxiliar[50]={};
+    int numeroAuxiliar;
+
+    do
+    {
+        cargarCadena(mensaje, auxiliar);
+
+        while(esNumero(auxiliar)!=1)
+        {
+            printf("Error. No es un numero valido.\n");
+            cargarCadena(mensaje, auxiliar);
+        }
+
+        numeroAuxiliar=atoi(auxiliar);//*Tomo el valor
+
+        if(numeroAuxiliar>=minimo && numeroAuxiliar<=maximo)
+        {
+            flag=1;//Cumple con las condiciones. Sale de la iteracion.
+        }
+        else
+        {
+            printf("Fuera de rango.\n");
+        }
+
+
+    }while(flag==0);
+
+
+    return numeroAuxiliar;
+
+}
+
+int cargarCadena(char* mensaje, char* cadena)
+{
+    int flag=0;//No está cargada
+
+    printf("%s: ", mensaje);
+    fflush(stdin);
+
+    //Para no escribir de más en memoria uso fgets
+    //(limita lo que se puede ingresar)
+    fgets(cadena,sizeof(char)*TAM_BUFFER,stdin);
+
+    //Agregar '\0' al final cuando cadena < al buffer
+    //para que pueda validar (porque fgets escribe '\n' al final)
+    if(strlen(cadena)<TAM_BUFFER-1)
+    {
+        *(cadena+(strlen(cadena)-1))='\0';
+    }
+
+
+    if(strlen(cadena)>0)
+    {
+        flag=1;
+    }
+
+    return flag;
+}
+
+//Comprobaciones
+int esLetra(char auxiliar[])
+{
+    int i;
+    int flag=1;//1 es char
+
+    for(i=0;i<strlen(auxiliar);i++)
+    {
+        if((auxiliar[i]!=' ') && (auxiliar[i]<'A' || auxiliar[i]>'Z') && (auxiliar[i]<'a' || auxiliar[i]>'z')) //Si hay espacio tambien es valido como letra
+        {
+            flag=0;//0 no es char
+            break;
+        }
+    }
+
+    return flag;
+}
+
+int esNumero (char auxiliar[])
+{
+    int i;
+    int flag=1;//1 es entero
+
+    for(i=0; i<strlen(auxiliar); i++)
+    {
+        if(auxiliar[i]<'0' || auxiliar[i]>'9')
+        {
+            flag=0;
+            break;
+        }
+    }
+
+    return flag;
+}
+
+//Setters
+void persona_setName(ePersona* persona, char* nombre)
+{
+
+    strcpy(persona->nombre, nombre);
+
+}
+
+void persona_setAge(ePersona* persona, int edad)
+{
+
+    persona->edad=edad;
+
+}
+
+//Getters
+int persona_getAge(ePersona* persona)
+{
+    return persona->edad;
+}
+
+char* persona_getName(ePersona* persona)
+{
+    return persona->nombre;
+}
+
+//Mostrar
+void mostrarPersona(ePersona* persona)
+{
+    printf("-----------------------------------\n");
+    printf("Nombre:%s\nEdad:%d\n", persona_getName(persona), persona_getAge(persona));
+
+}
+
+//Constructores
+eListaPersonas* persona_inicializarLista(void)
+{
+    eListaPersonas* listaPersonas;
+
+    //Asigno memoria para 1 lista
+    listaPersonas= (eListaPersonas*) malloc(sizeof(listaPersonas));
+
+    listaPersonas->index=0;//Indice de personas en la lista
+    listaPersonas->totalLista=2; //Tamaño total de personas en la lista
+    //Creo la lista asignando memoria dinámica;
+    listaPersonas->lista= persona_crearLista(listaPersonas->totalLista);
+
+    return listaPersonas;
+}
+ePersona** persona_crearLista(int totalPersonas)
+{
+    ePersona** listaPersonas;
+
+    //Array dinámico
+    listaPersonas=(ePersona**)malloc( totalPersonas * sizeof(ePersona*));
+
+    return listaPersonas;
+
+}
+
+ePersona* persona_crearPersona()
+{
+    ePersona* persona;
+
+    persona=(ePersona*)malloc(sizeof(ePersona));
+
+
+    return persona;
+}
+
+void persona_addPersona(eListaPersonas* listaPersonas, ePersona* persona)
+{
+    ePersona** auxLista;
+
+    //Compruebo que los punteros no vengan nulos
+    if(listaPersonas->lista[listaPersonas->index]!=NULL && persona!=NULL)
+    {
+        //Cargo la persona en la posición index de la lista
+        *(listaPersonas->lista+listaPersonas->index)=persona; //Usar aritmética de punteros
+        //Sumo 1 al indice (paso a la siguiente posición)
+        listaPersonas->index++;
+
+
+        if(listaPersonas->index >= listaPersonas->totalLista)//Llegué al final, lista completa
+        {
+            //Agrando la lista
+            listaPersonas->totalLista+=5;
+            printf("\nRedefino array. Total personas:%d\n",listaPersonas->totalLista);
+            //Asigno mas memoria a la lista
+            //uso aux por si devuelve NULL
+            auxLista=(ePersona**) realloc(listaPersonas->lista, listaPersonas->totalLista * sizeof(ePersona*));
+
+            if(auxLista!=NULL)
+            {
+                listaPersonas->lista=auxLista;
+            }
+            else
+            {
+                printf("No hay memoria.");
+            }
+
+        }
+    }
+    else
+    {
+        printf("Puntero nulo.");
+    }
+
+
+
+}
+
+
