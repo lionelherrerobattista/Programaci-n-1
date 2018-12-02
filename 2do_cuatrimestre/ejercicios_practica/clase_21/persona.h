@@ -43,7 +43,7 @@ char* persona_getName(ePersona* persona);
 void mostrarPersona(ePersona* persona);
 
 //Constructores
-eListaPersonas* persona_inicializarLista(void);
+eListaPersonas* persona_inicializarArrayList(void);
 ePersona** persona_crearLista(int totalPersonas);
 ePersona* persona_crearPersona();
-void persona_addPersona(eListaPersonas* listaPersonas, ePersona* persona);
+int persona_addPersona(eListaPersonas* listaPersonas, ePersona* persona);

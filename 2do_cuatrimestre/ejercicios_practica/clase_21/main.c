@@ -22,7 +22,7 @@ int main()
     ePersona* auxPersona;
 
     //Creo array dinámico y lo inicializo
-    listaPersonas=persona_inicializarLista();
+    listaPersonas=persona_inicializarArrayList();
 
 
     do
@@ -44,8 +44,11 @@ int main()
         persona_setAge(auxPersona, auxiliarEdad);
 
         //Agrego la persona a la lista dinámica
-        persona_addPersona(listaPersonas, auxPersona);
-        printf("Nombre:%s\nEdad:%d\n", persona_getName(*(listaPersonas->lista)), persona_getAge(*(listaPersonas->lista)));
+        if(persona_addPersona(listaPersonas, auxPersona)==-1)//Si no hay espacio en memoria
+        {
+            break;//Sino error
+        }
+
 
     }while(listaPersonas->index!=-1);
 
