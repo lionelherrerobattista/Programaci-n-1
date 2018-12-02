@@ -190,7 +190,7 @@ eListaPersonas* persona_inicializarArrayList(void)
     eListaPersonas* listaPersonas;
 
     //Asigno memoria para 1 lista
-    listaPersonas= (eListaPersonas*) malloc(sizeof(listaPersonas));
+    listaPersonas= (eListaPersonas*) malloc(sizeof(eListaPersonas));
 
     listaPersonas->index=0;//Indice de personas en la lista
     listaPersonas->totalLista=2; //Tamaño total de personas en la lista
