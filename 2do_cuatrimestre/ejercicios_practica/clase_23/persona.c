@@ -180,17 +180,42 @@ ePersona* lista_getPersona(ePersona** listaPersonas, int index)
 
 }
 
-int lista_getSize(eArrayList* listaPersonas)
+int lista_getSize(eArrayList* arrayList)
 {
     int sizeLista=-1;
 
-    if(listaPersonas!=NULL)
+    if(arrayList!=NULL)
     {
-        sizeLista=listaPersonas->index;
+        sizeLista=arrayList->index;
     }
 
     return sizeLista;
 }
+
+int lista_getIndex(eArrayList* arrayList)
+{
+    int indexLista=-1;
+
+    if(arrayList!=NULL)
+    {
+        indexLista=arrayList->index;
+    }
+
+    return indexLista;
+}
+
+int lista_getMaxPersonas(eArrayList* arrayList)
+{
+    int maxPersonas=-1;
+
+    if(arrayList!=NULL)
+    {
+        maxPersonas=arrayList->totalPersonas;
+    }
+
+    return maxPersonas;
+}
+
 
 int persona_getAge(ePersona* persona)
 {
@@ -290,7 +315,7 @@ int persona_cargarPersona(ePersona* persona)
 int lista_addPersona(eArrayList* arrayList, ePersona* persona)
 {
     ePersona** auxLista=NULL;//Si no apunta a ningun lado puede generar problemas al hacer realloc(?)
-    //auxLista=lista_crearLista(arrayList->totalPersonas);
+    //auxLista=lista_crearLista(arrayList->totalPersonas); //Otra solución?
 
     int flag=0;//No hay espacio
 
@@ -298,21 +323,21 @@ int lista_addPersona(eArrayList* arrayList, ePersona* persona)
     if(arrayList!=NULL && persona!=NULL)
     {
 
-        if(arrayList->lista+arrayList->index!=NULL)
+        if(lista_getLista(arrayList,lista_getIndex(arrayList))!=NULL)
         {
             //Cargo la persona en la posición index de la lista
-            *(arrayList->lista+arrayList->index)=persona; //Usar aritmética de punteros
+            *(lista_getLista(arrayList,lista_getIndex(arrayList)))=persona; //Usar aritmética de punteros
             //Sumo 1 al indice (paso a la siguiente posición)
             arrayList->index++;
 
             //Compruebo que la lista no esté completa
-            if(arrayList->index >= arrayList->totalPersonas)//Llegué al final, lista completa
+            if(lista_getIndex(arrayList) >= lista_getMaxPersonas(arrayList))//Llegué al final, lista completa
             {
                 //Asigno más memoria a la lista
                 arrayList->totalPersonas+=5;
-                printf("\nRedefino array... Total personas:%d\n",arrayList->totalPersonas);
+                printf("\nRedefino array... Total personas:%d\n",lista_getMaxPersonas(arrayList));
                 //uso aux por si devuelve NULL
-                auxLista=(ePersona**) realloc(arrayList->lista, arrayList->totalPersonas * sizeof(ePersona*));
+                auxLista=(ePersona**) realloc(lista_getLista(arrayList, 0), lista_getMaxPersonas(arrayList) * sizeof(ePersona*));
 
                 if(auxLista!=NULL)
                 {

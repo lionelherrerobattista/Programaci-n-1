@@ -31,13 +31,16 @@ int esNumero (char auxiliar[]);
 void persona_setName(ePersona* persona, char* nombre);
 void persona_setAge(ePersona* persona, int edad);
 
+
+
 //Getters
-//Getters
+ePersona** lista_getLista(eArrayList* arrayList, int index);
+ePersona* lista_getPersona(ePersona** listaPersonas, int index);
+int lista_getSize(eArrayList* listaPersonas);
+int lista_getMaxPersonas(eArrayList* arrayList);
+int lista_getIndex(eArrayList* arrayList);
 int persona_getAge(ePersona* persona);
-
 char* persona_getName(ePersona* persona);
-
-
 
 //Mostrar
 void persona_mostrarPersona(ePersona* persona);
@@ -46,11 +49,9 @@ void persona_mostrarPersona(ePersona* persona);
 eArrayList* lista_inicializarArrayList(void);
 ePersona** lista_crearLista(int totalPersonas);
 ePersona* persona_crearPersona();
+int persona_cargarPersona(ePersona*);
 int lista_addPersona(eArrayList* listaPersonas, ePersona* persona);
 
 
-int lista_getSize(eArrayList* listaPersonas);
-int persona_cargarPersona(ePersona*);
-ePersona** lista_getLista(eArrayList* arrayList, int index);
-ePersona* lista_getPersona(ePersona** listaPersonas, int index);
+//Free
 void lista_free(eArrayList* arrayList);

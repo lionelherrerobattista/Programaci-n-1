@@ -50,15 +50,15 @@ int main()
     //Muestro solo hasta la cantidad de personas que cargué (uso el index)
     for(i=0;i<lista_getSize(listaPersonas);i++)
     {
-        persona_mostrarPersona(lista_getPersona(listaPersonas->lista, i));
+        persona_mostrarPersona(lista_getPersona(lista_getLista(listaPersonas, 0), i));
     }
 
     //Libero las personas
     for(i=0;i<lista_getSize(listaPersonas);i++)
     {
-        if(lista_getPersona(listaPersonas->lista, i)!=NULL)
+        if(lista_getPersona(lista_getLista(listaPersonas, 0), i)!=NULL)
         {
-            free(lista_getPersona(listaPersonas->lista, i));
+            free(lista_getPersona(lista_getLista(listaPersonas, 0), i));
         }
 
     }
