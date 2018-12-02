@@ -8,11 +8,7 @@
  y agregar a la biblioteca la posibilidad de crear más de una lista.
 */
 
-int lista_getSize(eArrayList* listaPersonas);
-int persona_cargarPersona(ePersona*);
-ePersona** lista_getLista(eArrayList* arrayList, int index);
-ePersona* lista_getPersona(ePersona** listaPersonas, int index);
-void lista_free(eArrayList* arrayList);
+
 
 int main()
 {
@@ -20,8 +16,8 @@ int main()
     int i;
 
     //Creo los punteros
-    eArrayList* listaPersonas;
-    ePersona* auxPersona;
+    eArrayList* listaPersonas=NULL;
+    ePersona* auxPersona=NULL;
 
     //Creo array dinámico y lo inicializo
     listaPersonas=lista_inicializarArrayList();
@@ -71,79 +67,4 @@ int main()
     lista_free(listaPersonas);
 
     return 0;
-}
-
-int lista_getSize(eArrayList* listaPersonas)
-{
-    int sizeLista=-1;
-
-    if(listaPersonas!=NULL)
-    {
-        sizeLista=listaPersonas->index;
-    }
-
-    return sizeLista;
-}
-
-ePersona** lista_getLista(eArrayList* arrayList, int index)
-{
-    ePersona** listaPersonas;
-
-    if(arrayList!=NULL)
-    {
-        listaPersonas=arrayList->lista+index;
-    }
-
-    return listaPersonas;
-}
-
-ePersona* lista_getPersona(ePersona** listaPersonas, int index)
-{
-    ePersona* persona=NULL;
-
-    if(listaPersonas!=NULL)
-    {
-        persona=*(listaPersonas+index);
-    }
-
-    return persona;
-
-}
-
-int persona_cargarPersona(ePersona* persona)
-{
-    //Auxiliares para los datos
-    char auxiliarNombre[32];
-    int auxiliarEdad;
-    int flag=0;
-
-    if(persona!=NULL)
-    {
-
-        pedirCadenaLetras("Ingrese el nombre", auxiliarNombre);
-        //Si escribe salir, termina de ingresar las personas
-        if(stricmp(auxiliarNombre,"salir")==0)
-        {
-            flag=-1;
-        }
-        else
-        {
-            auxiliarEdad=pedirCadenaInt("Ingrese la edad",1, 100);
-            //Cargo el auxiliar con los datos
-            persona_setName(persona, auxiliarNombre);
-            persona_setAge(persona, auxiliarEdad);
-            flag=1;
-        }
-    }
-
-    return flag;
-}
-
-void lista_free(eArrayList* arrayList)
-{
-    if(arrayList!=NULL)
-    {
-        free(arrayList);
-    }
-
 }

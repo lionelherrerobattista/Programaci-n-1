@@ -47,3 +47,10 @@ eArrayList* lista_inicializarArrayList(void);
 ePersona** lista_crearLista(int totalPersonas);
 ePersona* persona_crearPersona();
 int lista_addPersona(eArrayList* listaPersonas, ePersona* persona);
+
+
+int lista_getSize(eArrayList* listaPersonas);
+int persona_cargarPersona(ePersona*);
+ePersona** lista_getLista(eArrayList* arrayList, int index);
+ePersona* lista_getPersona(ePersona** listaPersonas, int index);
+void lista_free(eArrayList* arrayList);

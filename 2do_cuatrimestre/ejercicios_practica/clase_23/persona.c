@@ -155,6 +155,43 @@ void persona_setAge(ePersona* persona, int edad)
 }
 
 //Getters
+ePersona** lista_getLista(eArrayList* arrayList, int index)
+{
+    ePersona** listaPersonas;
+
+    if(arrayList!=NULL)
+    {
+        listaPersonas=arrayList->lista+index;
+    }
+
+    return listaPersonas;
+}
+
+ePersona* lista_getPersona(ePersona** listaPersonas, int index)
+{
+    ePersona* persona=NULL;
+
+    if(listaPersonas!=NULL)
+    {
+        persona=*(listaPersonas+index);
+    }
+
+    return persona;
+
+}
+
+int lista_getSize(eArrayList* listaPersonas)
+{
+    int sizeLista=-1;
+
+    if(listaPersonas!=NULL)
+    {
+        sizeLista=listaPersonas->index;
+    }
+
+    return sizeLista;
+}
+
 int persona_getAge(ePersona* persona)
 {
     int retorno=-1;
@@ -187,7 +224,7 @@ void persona_mostrarPersona(ePersona* persona)
 //Constructores
 eArrayList* lista_inicializarArrayList(void)
 {
-    eArrayList* listaPersonas;
+    eArrayList* listaPersonas=NULL;
 
     //Asigno memoria para 1 lista
     listaPersonas= (eArrayList*) malloc(sizeof(listaPersonas));
@@ -202,7 +239,7 @@ eArrayList* lista_inicializarArrayList(void)
 
 ePersona** lista_crearLista(int totalPersonas)
 {
-    ePersona** listaPersonas;
+    ePersona** listaPersonas=NULL;
 
     //Array dinámico
     listaPersonas=(ePersona**)malloc( totalPersonas * sizeof(ePersona*));
@@ -213,41 +250,73 @@ ePersona** lista_crearLista(int totalPersonas)
 
 ePersona* persona_crearPersona()
 {
-    ePersona* persona;
+    ePersona* persona=NULL;
 
     persona=(ePersona*)malloc(sizeof(ePersona));
 
     return persona;
 }
 
-int lista_addPersona(eArrayList* listaPersonas, ePersona* persona)
+//Cargo datos
+int persona_cargarPersona(ePersona* persona)
 {
-    ePersona** auxLista;
+    //Auxiliares para los datos
+    char auxiliarNombre[32];
+    int auxiliarEdad;
+    int flag=0;
+
+    if(persona!=NULL)
+    {
+
+        pedirCadenaLetras("Ingrese el nombre", auxiliarNombre);
+        //Si escribe salir, termina de ingresar las personas
+        if(stricmp(auxiliarNombre,"salir")==0)
+        {
+            flag=-1;
+        }
+        else
+        {
+            auxiliarEdad=pedirCadenaInt("Ingrese la edad",1, 100);
+            //Cargo el auxiliar con los datos
+            persona_setName(persona, auxiliarNombre);
+            persona_setAge(persona, auxiliarEdad);
+            flag=1;
+        }
+    }
+
+    return flag;
+}
+
+int lista_addPersona(eArrayList* arrayList, ePersona* persona)
+{
+    ePersona** auxLista=NULL;//Si no apunta a ningun lado puede generar problemas al hacer realloc(?)
+    //auxLista=lista_crearLista(arrayList->totalPersonas);
+
     int flag=0;//No hay espacio
 
     //Compruebo que los punteros no vengan nulos
-    if(listaPersonas!=NULL && persona!=NULL)
+    if(arrayList!=NULL && persona!=NULL)
     {
 
-        if(listaPersonas->lista[listaPersonas->index]!=NULL)
+        if(arrayList->lista+arrayList->index!=NULL)
         {
             //Cargo la persona en la posición index de la lista
-            *(listaPersonas->lista+listaPersonas->index)=persona; //Usar aritmética de punteros
+            *(arrayList->lista+arrayList->index)=persona; //Usar aritmética de punteros
             //Sumo 1 al indice (paso a la siguiente posición)
-            listaPersonas->index++;
+            arrayList->index++;
 
             //Compruebo que la lista no esté completa
-            if(listaPersonas->index >= listaPersonas->totalPersonas)//Llegué al final, lista completa
+            if(arrayList->index >= arrayList->totalPersonas)//Llegué al final, lista completa
             {
                 //Asigno más memoria a la lista
-                listaPersonas->totalPersonas+=5;
-                printf("\nRedefino array. Total personas:%d\n",listaPersonas->totalPersonas);
+                arrayList->totalPersonas+=5;
+                printf("\nRedefino array... Total personas:%d\n",arrayList->totalPersonas);
                 //uso aux por si devuelve NULL
-                auxLista=(ePersona**) realloc(listaPersonas->lista, listaPersonas->totalPersonas * sizeof(ePersona*));
+                auxLista=(ePersona**) realloc(arrayList->lista, arrayList->totalPersonas * sizeof(ePersona*));
 
                 if(auxLista!=NULL)
                 {
-                    listaPersonas->lista=auxLista;
+                    arrayList->lista=auxLista;
                     flag=1;//hay espacio
                 }
                 else
@@ -267,5 +336,17 @@ int lista_addPersona(eArrayList* listaPersonas, ePersona* persona)
     return flag;
 
 }
+
+
+//Liberar memoria
+void lista_free(eArrayList* arrayList)
+{
+    if(arrayList!=NULL)
+    {
+        free(arrayList);
+    }
+
+}
+
 
 
