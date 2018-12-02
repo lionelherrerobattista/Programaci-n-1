@@ -8,11 +8,11 @@
 int pedirCadenaLetras(char* mensaje, char* cadena)
 {
     int flag=0;
-    char auxiliar[50];
+    char* auxiliar;
 
     if(cadena!=NULL)
     {
-
+        auxiliar=(char*)malloc(sizeof(char)*TAM_BUFFER);
 
         cargarCadena(mensaje, auxiliar);
 
@@ -24,10 +24,13 @@ int pedirCadenaLetras(char* mensaje, char* cadena)
 
         strcpy(cadena, auxiliar);
 
+
         if(stricmp(cadena, auxiliar)==0)
         {
             flag=1;
         }
+
+        free(auxiliar);
 
     }
 
@@ -38,8 +41,10 @@ int pedirCadenaLetras(char* mensaje, char* cadena)
 int pedirCadenaInt(char* mensaje, int minimo, int maximo)
 {
     int flag=0;//No esta cargado
-    char auxiliar[50]={};
+    char* auxiliar;
     int numeroAuxiliar;
+
+    auxiliar=(char*)malloc(sizeof(char)*TAM_BUFFER);
 
     do
     {
@@ -64,6 +69,8 @@ int pedirCadenaInt(char* mensaje, int minimo, int maximo)
 
 
     }while(flag==0);
+
+    free(auxiliar);
 
 
     return numeroAuxiliar;
@@ -119,7 +126,7 @@ int esLetra(char auxiliar[])
     return flag;
 }
 
-int esNumero (char auxiliar[])
+int esNumero (char* auxiliar)
 {
     int i;
     int flag=1;//1 es entero
@@ -248,19 +255,19 @@ void persona_mostrarPersona(ePersona* persona)
 }
 
 //Constructores
-eArrayList* lista_inicializarArrayList(void)
+eArrayList* lista_inicializarArrayList()
 {
-    eArrayList* listaPersonas=NULL;
+    eArrayList* arrayList=NULL;
 
     //Asigno memoria para 1 lista
-    listaPersonas= (eArrayList*) malloc(sizeof(listaPersonas));
+    arrayList= (eArrayList*) malloc(sizeof(eArrayList));
 
-    listaPersonas->index=0;//Indice de personas en la lista
-    listaPersonas->totalPersonas=2; //Tamaño total de personas en la lista
+    arrayList->index=0;//Indice de personas en la lista
+    arrayList->totalPersonas=2; //Tamaño total de personas en la lista
     //Creo la lista asignando memoria dinámica;
-    listaPersonas->lista= lista_crearLista(listaPersonas->totalPersonas);
+    arrayList->lista= lista_crearLista(arrayList->totalPersonas);
 
-    return listaPersonas;
+    return arrayList;
 }
 
 ePersona** lista_crearLista(int totalPersonas)
@@ -287,12 +294,13 @@ ePersona* persona_crearPersona()
 int persona_cargarPersona(ePersona* persona)
 {
     //Auxiliares para los datos
-    char auxiliarNombre[32];
+    char* auxiliarNombre;
     int auxiliarEdad;
     int flag=0;
 
     if(persona!=NULL)
     {
+        auxiliarNombre=(char*)malloc(sizeof(char)*TAM_BUFFER);
 
         pedirCadenaLetras("Ingrese el nombre", auxiliarNombre);
         //Si escribe salir, termina de ingresar las personas
@@ -335,20 +343,22 @@ int lista_addPersona(eArrayList* arrayList, ePersona* persona)
             if(lista_getIndex(arrayList) >= lista_getMaxPersonas(arrayList))//Llegué al final, lista completa
             {
                 //Asigno más memoria a la lista
-                arrayList->totalPersonas+=5;
+                arrayList->totalPersonas+=2;
                 printf("\nRedefino array... Total personas:%d\n",lista_getMaxPersonas(arrayList));
                 //uso aux por si devuelve NULL
                 auxLista=(ePersona**) realloc(lista_getLista(arrayList, 0), lista_getMaxPersonas(arrayList) * sizeof(ePersona*));
 
-                if(auxLista!=NULL)
+                if(auxLista==NULL)
                 {
-                    arrayList->lista=auxLista;
-                    flag=1;//hay espacio
+                    printf("No hay memoria.");
+                    arrayList->index--;
+                    flag=-1;
                 }
                 else
                 {
-                    printf("No hay memoria.");
-                    flag=-1;
+
+                    arrayList->lista=auxLista;
+                    flag=1;//hay espacio
                 }
 
             }
@@ -374,25 +384,28 @@ void lista_free(eArrayList* arrayList)
 
 }
 
-/*
-void lista_borrarPersona(eArrayList* arrayList)
+void lista_borrarPersona(eArrayList* arrayList, int indice_a_borrar)
 {
-    int indice_a_borrar;
     int i;
+    int tamLista;
 
-    //Le pregunto al usuario el indice
-    indice_a_borrar=pedirCadenaInt("Ingrese el indice", 0, lista_getIndex(arrayList));
+    tamLista=lista_getIndex(arrayList);
 
-    //A partir de ese indice muevo todo un lugar a la izquierda
-    for(i=indice_a_borrar;i<lista_getIndex(arrayList);i++)
+    if(arrayList!=NULL && tamLista>0)
     {
-        *(arrayList->lista+i)=*(arrayList->lista+(i+1));
+
+        //A partir de ese indice muevo todo un lugar a la izquierda
+        for(i=indice_a_borrar;i<(tamLista-1);i++)
+        {
+            *(arrayList->lista+i)=*(arrayList->lista+(i+1));
+            printf("%d",i);
+        }
+
+        //Achico el indice en 1
+        arrayList->index--;
     }
 
-    //Achico el indice en 1
-    arrayList->index--;
-
-}*/
+}
 
 
 

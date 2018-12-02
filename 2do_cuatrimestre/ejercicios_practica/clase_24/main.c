@@ -3,17 +3,11 @@
 #include <strings.h>
 #include "persona.h"
 
-/**
-1) Tomar el ejercicio de la clase 24
- y agregar a la biblioteca la posibilidad de crear más de una lista.
-*/
-
-
-
 int main()
 {
 
     int i;
+    int indice_a_borrar;
 
     //Creo los punteros
     eArrayList* listaPersonas=NULL;
@@ -53,7 +47,9 @@ int main()
         persona_mostrarPersona(lista_getPersona(lista_getLista(listaPersonas, 0), i));
     }
 
-    lista_borrarPersona(listaPersonas);
+    //Pregunto por el indice que quiero borrar
+    indice_a_borrar=pedirCadenaInt("Ingrese el indice a borrar", 0, lista_getIndex(listaPersonas));
+    lista_borrarPersona(listaPersonas,indice_a_borrar);
 
     for(i=0;i<lista_getSize(listaPersonas);i++)
     {

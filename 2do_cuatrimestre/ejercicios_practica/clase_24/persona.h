@@ -46,7 +46,7 @@ char* persona_getName(ePersona* persona);
 void persona_mostrarPersona(ePersona* persona);
 
 //Constructores
-eArrayList* lista_inicializarArrayList(void);
+eArrayList* lista_inicializarArrayList();
 ePersona** lista_crearLista(int totalPersonas);
 ePersona* persona_crearPersona();
 int persona_cargarPersona(ePersona*);
@@ -56,4 +56,4 @@ int lista_addPersona(eArrayList* listaPersonas, ePersona* persona);
 //Free
 void lista_free(eArrayList* arrayList);
 
-void lista_borrarPersona(eArrayList* arrayList);
+void lista_borrarPersona(eArrayList* arrayList, int indice_a_borrar);
