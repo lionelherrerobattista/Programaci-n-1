@@ -26,7 +26,7 @@
 
 int main(void)
 {
-        startTesting(7);  // ll_set
+        startTesting(10); // ll_deleteLinkedList
 
  /*       startTesting(1);  // ll_newLinkedList
         startTesting(2);  // ll_len
