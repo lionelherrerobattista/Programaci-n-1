@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1544063383 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\main.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"LinkedList.h"
+	"logs.h"
+
+1544060478 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"LinkedList.h"
+	<string.h>
+	"logs.h"
+
+1544061850 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\parser.h
+	"LinkedList.h"
+
+1544060834 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\linkedlist.h
+
+1544061070 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\logs.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"LinkedList.h"
+	"logs.h"
+
+1544061053 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\logs.h
+
+1544063452 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\new folder\final_2017\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"LinkedList.h"
+	"logs.h"
+
