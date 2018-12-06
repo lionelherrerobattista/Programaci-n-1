@@ -3,24 +3,47 @@
 #include "parser.h"
 #include "LinkedList.h"
 #include "logs.h"
+#include "services.h"
+#include "validaciones.h"
 
 
 int main()
 {
+    int respuesta=0;
+
     LinkedList* listaLogs;
+    LinkedList* listaServices;
+
 
     listaLogs=ll_newLinkedList();
-
-    S_LogEntry* auxLog;
+    listaServices=ll_newLinkedList();
 
     archivo_cargarLog(listaLogs);
+    archivo_cargarService(listaServices);
 
-    auxLog=ll_get(listaLogs, 0);
+    do
+    {
+        printf("---------------------------\n");
+        printf("1-Leer Log\n");
+        printf("2-Procesar informacion\n");
+        printf("3-Mostrar estadisticas\n");
+        printf("4-Salir\n");
+        printf("---------------------------\n");
+        respuesta=pedirCadenaInt("Opcion", 1, 4);
 
 
-    printf("%s-----%s------%d\n", auxLog->date, auxLog->time,auxLog->serviceId);
-    auxLog=ll_get(listaLogs, 1);
-    printf("%s-----%s------%d", auxLog->date, auxLog->time,auxLog->serviceId);
+
+        switch(respuesta)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+
+        }
+    }while(respuesta!=4);
 
 
 
