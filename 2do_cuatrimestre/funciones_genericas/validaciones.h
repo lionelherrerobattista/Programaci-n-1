@@ -74,4 +74,12 @@ float pedirCadenaFloat(char* mensaje, int minimo, int maximo);
  */
 int cargarCadena(char* mensaje, char* cadena);
 
+/** \brief Valida si es un teléfono válido. Formato: 4xxx-xxxx
+ *
+ * \param auxiliar char* dato ingresado por el usuario
+ * \return int 1 es válido, 0 no es válido
+ *
+ */
+int esTelefonoFijo(char* auxiliar);
+
 

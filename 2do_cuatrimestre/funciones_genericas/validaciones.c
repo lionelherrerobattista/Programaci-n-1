@@ -105,6 +105,32 @@ int esAlfanumerico(char* auxiliar)
     return flag;
 }
 
+int esTelefonoFijo(char* auxiliar)
+{
+    int i;
+    int flag=1;//Es telefono
+
+    //Si el telefono no empieza con 4
+    if((*(auxiliar+0)!='4' || strlen(auxiliar)!=9) || *(auxiliar+4)!='-')
+    {
+        flag=0;//No es telefono
+    }
+    else
+    {
+        for(i=0;i<strlen(auxiliar);i++)
+        {
+            if((*(auxiliar+i)<'0' || *(auxiliar+i)>'9') && (*(auxiliar+i)!='-'))
+            {
+                flag=0;//No es telefono
+                break;
+            }
+        }
+    }
+
+
+    return flag;
+}
+
 
 
 //Pido al usuario
