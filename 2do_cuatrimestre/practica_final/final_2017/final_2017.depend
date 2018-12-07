@@ -45,7 +45,7 @@
 	<string.h>
 	"logs.h"
 
-1544106897 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\parser.h
+1544193462 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\parser.h
 	"LinkedList.h"
 
 1544060834 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\linkedlist.h
@@ -60,7 +60,7 @@
 	"LinkedList.h"
 	"logs.h"
 
-1544107681 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\parser.c
+1544193462 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -69,13 +69,15 @@
 	"logs.h"
 	"services.h"
 
-1544107248 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\main.c
+1544194060 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\main.c
 	<stdio.h>
 	<stdlib.h>
 	"parser.h"
 	"LinkedList.h"
 	"logs.h"
 	"services.h"
+	"validaciones.h"
+	"informacion.h"
 
 1544107121 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\services.c
 	<stdio.h>
@@ -98,4 +100,16 @@
 	<strings.h>
 
 1544108301 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\validaciones.h
+
+1544193997 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\informacion.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"LinkedList.h"
+	"logs.h"
+	"services.h"
+	"validaciones.h"
+	"informacion.h"
+
+1544193462 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_2017\informacion.h
 
