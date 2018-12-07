@@ -1,5 +1,3 @@
-#include "LinkedList.h"
-
 
 //Leer desde archivo:
 

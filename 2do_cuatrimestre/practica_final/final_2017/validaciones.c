@@ -127,9 +127,7 @@ int esNumero (char auxiliar[])
 
     return flag;
 }
-#include <stdio.h>
-#include <stdlib.h>
-#include <strings.h>
+
 
 
 

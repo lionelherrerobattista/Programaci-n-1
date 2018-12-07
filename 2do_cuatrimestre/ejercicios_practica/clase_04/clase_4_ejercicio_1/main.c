@@ -2,18 +2,22 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#define TAM_BUFFER 8
 
-float pedirFloat(char mensaje[], float min, float max);
-float validarFloat(float numero, float min, float max, char mensaje []);
-float esFloat(char auxiliar[]);
+float pedirCadenaFloat(char* mensaje, int minimo, int maximo);
+int cargarCadena(char* mensaje, char* cadena);
+int esFloat(char* auxiliar);
 
 int main()
 {
     float numero;
+    char numeroDos[4]="4.36";
+    float numeroDosFloat;
 
-    numero=pedirFloat("Ingrese un numero entre 1 y 10", 1, 10);
+    numero=pedirCadenaFloat("Ingrese un numero entre -23 y 10", -23, 10);
+    numeroDosFloat=atof(numeroDos);
 
-    printf("El numero ingresado es: %.2f", numero);
+    printf("El numero ingresado es: %.2f    %.2f", numero, numeroDosFloat);
 
 
     return 0;
@@ -21,63 +25,108 @@ int main()
 
 
 
-float pedirFloat(char mensaje[], float min, float max)
+float pedirCadenaFloat(char* mensaje, int minimo, int maximo)
 {
-    float numero;
-    char auxiliar[10]={};
+    int flag=0;//No esta cargado
+    char* auxiliar;
+    float numeroAuxiliar;
 
-    printf("%s: ",mensaje);
-    fgets(auxiliar,sizeof(auxiliar),stdin); //Limito el dato ingresado al tamaño del auxiliar
-    auxiliar[strlen(auxiliar)-1]='\0';
 
-    numero = validarFloat(esFloat(auxiliar), min, max, mensaje);
-
-    return numero;
-}
-
-float validarFloat(float numero, float min, float max, char mensaje [])
-{
-    while(numero < min || numero > max)
-    {
-        printf("Error. Ingrese %s nuevamente: ",mensaje);
-        scanf("%f", &numero);
-    }
-
-    return numero;
-}
-
-float esFloat(char auxiliar[])
-{
-    int i;
-    int flagEsInt;
-
-    float numero;
+    auxiliar=(char*)malloc(sizeof(char)*TAM_BUFFER);
 
     do
     {
-        flagEsInt=1;
+        cargarCadena(mensaje, auxiliar);
 
-        while(auxiliar[i]!='\0')
+        while(esFloat(auxiliar)!=1)
         {
-            if(auxiliar[i]<'0' || auxiliar[i]>'9')
-            {
-                if(auxiliar[i]!='.')
-                {
-                    printf("Error. Debe ingresar un numero: ");
-                    fgets(auxiliar,strlen(auxiliar),stdin);
-                    auxiliar[strlen(auxiliar)-1]='\0';
-                    flagEsInt=0; //No es int
-                    break;
-                }
-
-            }
-            i++;
+            printf("Error. No es un numero valido.\n");
+            cargarCadena(mensaje, auxiliar);
         }
 
-    }while(flagEsInt==0);
+        numeroAuxiliar=atof(auxiliar);//*Tomo el valor
 
-    numero=atof(auxiliar);
+        if(numeroAuxiliar>=minimo && numeroAuxiliar<=maximo)
+        {
+            flag=1;//Cumple con las condiciones. Sale de la iteracion.
+        }
+        else
+        {
+            printf("Fuera de rango.\n");
+        }
 
-    return numero;
 
+    }while(flag==0);
+
+    free(auxiliar);
+
+
+    return numeroAuxiliar;
+
+}
+
+
+int cargarCadena(char* mensaje, char* cadena)
+{
+    int flag=0;//No está cargada
+
+    if(cadena!=NULL)
+    {
+
+        printf("%s: ", mensaje);
+        fflush(stdin);
+
+        //Para no escribir de más en memoria uso fgets
+        //(limita lo que se puede ingresar)
+        fgets(cadena,sizeof(char)*TAM_BUFFER,stdin);
+
+        //Agregar '\0' al final cuando cadena < al buffer
+        //para que pueda validar (porque fgets escribe '\n' al final)
+        if(strlen(cadena)<TAM_BUFFER-1)
+        {
+            *(cadena+(strlen(cadena)-1))='\0';
+        }
+
+
+        if(strlen(cadena)>0)
+        {
+            flag=1;
+        }
+    }
+
+    return flag;
+}
+
+int esFloat(char* auxiliar)
+{
+    int i;
+    int flag=1;//1 es entero
+    int contadorPunto=0;
+    int contadorNegativo=0;
+
+    for(i=0; i<strlen(auxiliar); i++)
+    {
+        if(*(auxiliar+i)<'0' || *(auxiliar+i)>'9')
+        {
+            if(*(auxiliar+i)=='.')
+            {
+                contadorPunto++;
+            }
+
+            if(*(auxiliar+i)=='-')
+            {
+                contadorNegativo++;
+            }
+
+            if((*(auxiliar+i)!='.' && *(auxiliar+i)!='-')
+                || (contadorPunto>1 || contadorNegativo>1))
+            {
+
+                flag=0;
+                break;
+            }
+        }
+    }
+
+    return flag;
 }

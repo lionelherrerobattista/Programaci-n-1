@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "parser.h"
-#include "LinkedList.h"
-#include "logs.h"
-#include "services.h"
+
 
 
 //Parser logs
