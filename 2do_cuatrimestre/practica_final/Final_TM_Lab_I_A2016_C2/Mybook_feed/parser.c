@@ -6,7 +6,7 @@
 #include "posts.h"
 #include "LinkedList.h"
 
-int ordenarPorNombre(void* pElementoI, void* pElementoJ);
+
 
 int archivo_cargarUsuarios(char* nombreArchivo, LinkedList* listaUsuarios)
 {
@@ -281,9 +281,10 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
             }
 
 
-
+            //Prueba función sort
+            /*
             ll_sort(listaUsuarios, ordenarPorNombre, 1);
-
+            */
             i=0;
             //escribo los datos de la lista
             while(i<ll_len(listaUsuarios))
@@ -322,6 +323,7 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
 
 }
 
+//Función sort para pasar a ll_sort
 int ordenarPorNombre(void* pElementoI, void* pElementoJ)
 {
     int retorno;
