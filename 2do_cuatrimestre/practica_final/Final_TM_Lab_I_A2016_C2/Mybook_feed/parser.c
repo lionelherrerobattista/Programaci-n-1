@@ -217,13 +217,13 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
 
             for(i=0;i<(ll_len(listaUsuarios)-1);i++)
             {
-                auxUsuarioI=ll_get(listaUsuarios, i);
+                auxUsuarioI=ll_get(listaUsuarios, i);//Guardo usuario en posc i
 
                 for(j=i+1;j<ll_len(listaUsuarios);j++)
                 {
-                    auxUsuarioJ=ll_get(listaUsuarios, j);
+                    auxUsuarioJ=ll_get(listaUsuarios, j);//Guardo usuario en posc j
 
-                    if(auxUsuarioI->popularidad<=auxUsuarioJ->popularidad)
+                    if(auxUsuarioI->popularidad <= auxUsuarioJ->popularidad)
                     {
                         if(auxUsuarioI->popularidad==auxUsuarioJ->popularidad)
                         {
@@ -253,17 +253,24 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
 
                             if(auxPostI->popularidad<auxPostJ->popularidad)
                             {
-                                pAuxUsuario=ll_get(listaUsuarios, i);
-                                ll_set(listaUsuarios, i, auxUsuarioJ);
-                                ll_set(listaUsuarios, j, pAuxUsuario);
+                                pAuxUsuario=auxUsuarioI;
+                                auxUsuarioI=auxUsuarioJ;
+                                auxUsuarioJ=pAuxUsuario;
+                                //pAuxUsuario=ll_get(listaUsuarios, i);
+                                ll_set(listaUsuarios, i, auxUsuarioI);
+                                ll_set(listaUsuarios, j, auxUsuarioJ);
+
 
                             }
                         }
                         else
                         {
-                                pAuxUsuario=ll_get(listaUsuarios, i);
-                                ll_set(listaUsuarios, i, auxUsuarioJ);
-                                ll_set(listaUsuarios, j, pAuxUsuario);
+                                pAuxUsuario=auxUsuarioI;
+                                auxUsuarioI=auxUsuarioJ;
+                                auxUsuarioJ=pAuxUsuario;
+                                //pAuxUsuario=ll_get(listaUsuarios, i);
+                                ll_set(listaUsuarios, i, auxUsuarioI);
+                                ll_set(listaUsuarios, j, auxUsuarioJ);
 
                         }
                     }
