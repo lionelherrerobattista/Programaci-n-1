@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1544468587 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\feed.c
+
+1544468576 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\posts.c
+	<stdio.h>
+	<stdlib.h>
+	"posts.h"
+
+1544474228 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\posts.h
+
+1544468640 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"parser.h"
+	"LinkedList.h"
+	<string.h>
+
+1544472262 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\parser.h
+	"LinkedList.h"
+
+1544466365 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\linkedlist.h
+
+1544467514 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\usuarios.c
+	<stdio.h>
+	<stdlib.h>
+	"usuarios.h"
+
+1544468575 c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\usuarios.h
+
+1544474250 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"usuarios.h"
+	"posts.h"
+	"LinkedList.h"
+
+1544477688 source:c:\users\lio\desktop\workspace\programacion-1\2do_cuatrimestre\practica_final\final_tm_lab_i_a2016_c2\mybook_feed\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"usuarios.h"
+	"posts.h"
+	"LinkedList.h"
+
