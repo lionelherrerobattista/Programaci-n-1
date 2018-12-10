@@ -6,7 +6,7 @@
 #include "posts.h"
 #include "LinkedList.h"
 
-
+int ordenarPorNombre(void* pElementoI, void* pElementoJ);
 
 int archivo_cargarUsuarios(char* nombreArchivo, LinkedList* listaUsuarios)
 {
@@ -253,22 +253,25 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
 
                             if(auxPostI->popularidad<auxPostJ->popularidad)
                             {
+                                //Cambiar a donde apuntan los punteros
                                 pAuxUsuario=auxUsuarioI;
                                 auxUsuarioI=auxUsuarioJ;
                                 auxUsuarioJ=pAuxUsuario;
-                                //pAuxUsuario=ll_get(listaUsuarios, i);
+
+                               //Pasarlos de nuevo a la lista
                                 ll_set(listaUsuarios, i, auxUsuarioI);
                                 ll_set(listaUsuarios, j, auxUsuarioJ);
 
 
                             }
                         }
-                        else
+                        else//Si no son iguales y el de la izquiera es menos popular
                         {
+                                //Cambiar a donde apuntan los punteros
                                 pAuxUsuario=auxUsuarioI;
                                 auxUsuarioI=auxUsuarioJ;
                                 auxUsuarioJ=pAuxUsuario;
-                                //pAuxUsuario=ll_get(listaUsuarios, i);
+
                                 ll_set(listaUsuarios, i, auxUsuarioI);
                                 ll_set(listaUsuarios, j, auxUsuarioJ);
 
@@ -278,6 +281,8 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
             }
 
 
+
+            ll_sort(listaUsuarios, ordenarPorNombre, 1);
 
             i=0;
             //escribo los datos de la lista
@@ -314,5 +319,21 @@ int archivo_crearArchivoTexto(char* nombreArchivo, LinkedList* listaUsuarios, Li
     }
 
     return retorno;
+
+}
+
+int ordenarPorNombre(void* pElementoI, void* pElementoJ)
+{
+    int retorno;
+    eUsuario* pUsuarioEnI;
+    eUsuario* pUsuarioEnJ;
+
+    pUsuarioEnI=pElementoI;
+    pUsuarioEnJ=pElementoJ;
+
+    retorno=stricmp(pUsuarioEnI->nick, pUsuarioEnJ->nick);
+
+    return retorno;
+
 
 }
