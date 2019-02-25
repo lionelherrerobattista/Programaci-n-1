@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1551105935 source:c:\users\lion_\desktop\final_2019\final_2017\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"logs.h"
+	"services.h"
+	"parser.h"
+	"filtros.h"
+	"LinkedList.h"
+
+1551033842 source:c:\users\lion_\desktop\final_2019\final_2017\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"funciones.h"
+	"LinkedList.h"
+	"parser.h"
+	"logs.h"
+
+1551033842 c:\users\lion_\desktop\final_2019\final_2017\funciones.h
+
+1551020321 source:c:\users\lion_\desktop\final_2019\final_2017\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1551017349 c:\users\lion_\desktop\final_2019\final_2017\linkedlist.h
+
+1551033878 source:c:\users\lion_\desktop\final_2019\final_2017\logs.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"logs.h"
+
+1551033938 c:\users\lion_\desktop\final_2019\final_2017\logs.h
+	"LinkedList.h"
+
+1551038787 c:\users\lion_\desktop\final_2019\final_2017\parser.h
+	"LinkedList.h"
+
+1551038867 source:c:\users\lion_\desktop\final_2019\final_2017\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"LinkedList.h"
+	"logs.h"
+	"services.h"
+
+1551034335 source:c:\users\lion_\desktop\final_2019\final_2017\services.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"logs.h"
+	"services.h"
+
+1551039900 c:\users\lion_\desktop\final_2019\final_2017\services.h
+
+1551107547 source:c:\users\lion_\desktop\final_2019\final_2017\filtros.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"logs.h"
+	"services.h"
+	"parser.h"
+	"LinkedList.h"
+
+1551105928 c:\users\lion_\desktop\final_2019\final_2017\filtros.h
+	"LinkedList.h"
+
