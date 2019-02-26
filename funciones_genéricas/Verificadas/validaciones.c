@@ -1,4 +1,8 @@
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+#include "validaciones.h"
+#define TAM_BUFFER 30 //ultimo elemento se reemplaza por /0
 
 
 int esInt(char* auxiliar)
