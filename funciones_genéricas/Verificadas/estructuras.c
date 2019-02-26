@@ -1,4 +1,44 @@
+//Estructuras con memoria dinámica:
+S_TramiteRegular* newTramiteRegular()
+{
+	//Creo un puntero del tipo estructura
+    S_TramiteRegular* pTramiteRegular=NULL;
 
+	//Asigno espacio en memoria
+    pTramiteRegular = (S_TramiteRegular*)malloc(sizeof(S_TramiteRegular)); //casteo
+
+	//retorna el puntero
+    return pTramiteRegular;
+}
+
+int cargarTramiteRegular(LinkedList* listaTramitesRegulares)
+{
+    long dni;
+    int retorno=0;//no cargo
+
+    //Puntero al nuevo trámite
+    S_TramiteRegular* pAuxTramite;
+
+    if(listaTramitesRegulares != NULL)
+    {
+        //Asigno espacio en memoria
+        pAuxTramite = newTramiteRegular();
+
+        //Pido datos:
+        dni = pedirCadenaInt("Ingrese su DNI", 0, 99999999);
+
+        //Guardo datos en la estructura
+        regular_setDni(pAuxTramite, dni);
+        regular_setId(pAuxTramite, listaTramitesRegulares);
+
+        //Agrego puntero a la lista
+        ll_add(listaTramitesRegulares, pAuxTramite);
+
+        retorno = 1;//cargó
+    }
+
+    return retorno;
+}
 
 //Estructuras:
 int inicializarArrayEstructura(ePersona listaPersonas[],int longitud, int valor)
