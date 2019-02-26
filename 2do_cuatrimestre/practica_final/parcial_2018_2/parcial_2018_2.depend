@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1551134839 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\regular.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"urgente.h"
+	"funciones.h"
+	"LinkedList.h"
+	"regular.h"
+
+1551134839 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\urgente.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"urgente.h"
+	"funciones.h"
+	"LinkedList.h"
+
+1551134839 c:\users\lion_\desktop\final_2019\parcial_2018_2\urgente.h
+	"LinkedList.h"
+
+1551138307 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	<string.h>
+
+1551017349 c:\users\lion_\desktop\final_2019\parcial_2018_2\linkedlist.h
+
+1551135090 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"funciones.h"
+
+1551134839 c:\users\lion_\desktop\final_2019\parcial_2018_2\funciones.h
+
+1551138875 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"urgente.h"
+	"funciones.h"
+	"regular.h"
+	"LinkedList.h"
+	"listado.h"
+
+1551134839 c:\users\lion_\desktop\final_2019\parcial_2018_2\regular.h
+
+1551138820 source:c:\users\lion_\desktop\final_2019\parcial_2018_2\listado.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"urgente.h"
+	"regular.h"
+	"funciones.h"
+	"LinkedList.h"
+	"listado.h"
+
+1551138514 c:\users\lion_\desktop\final_2019\parcial_2018_2\listado.h
+	"LinkedList.h"
+
