@@ -1,0 +1,72 @@
+# depslib dependency file v1.0
+1551225423 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"validaciones.h"
+	"parser.h"
+	"usuarios.h"
+	"temas.h"
+
+1551017349 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\linkedlist.h
+
+1551216756 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\validaciones.h
+
+1551204656 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	<string.h>
+
+1551225455 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"parser.h"
+	"LinkedList.h"
+	"usuarios.h"
+	"temas.h"
+	"estadistica.h"
+
+1551216756 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"validaciones.h"
+
+1551223861 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\usuarios.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"usuarios.h"
+	"LinkedList.h"
+	"validaciones.h"
+
+1551223818 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\usuarios.h
+	"LinkedList.h"
+
+1551225423 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\parser.h
+	"LinkedList.h"
+
+1551224151 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\temas.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"temas.h"
+	"LinkedList.h"
+	"validaciones.h"
+
+1551223909 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\temas.h
+	"LinkedList.h"
+
+1551225139 source:c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\estadistica.c
+	<stdio.h>
+	<stdlib.h>
+	<strings.h>
+	"temas.h"
+	"LinkedList.h"
+	"validaciones.h"
+	"estadistica.h"
+
+1551225139 c:\users\lion_\desktop\final_2019\reproductor_musica\reproductor_musica\estadistica.h
+

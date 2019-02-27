@@ -100,3 +100,67 @@ void mostrarProximoTurno(LinkedList* listaTramitesUrgentes, LinkedList* listaTra
 
     }
 }
+
+///buscar repeticiones en una lista
+void tema_mostrarAutorConMasTemas(LinkedList* listaTemas)
+{
+    int i;
+    int j;
+    int contadorRepeticiones;
+    int maxRepeticiones;
+    int flag=0;
+
+    S_Tema* pAuxTema;
+    S_Tema* pAuxTemaSiguiente;
+
+    printf("Autor con mas temas en el catalogo: ");
+    if(listaTemas != NULL)
+    {
+        for(i = 0; i < ll_len(listaTemas)-1; i++)
+        {
+            pAuxTema = (S_Tema*)ll_get(listaTemas, i);
+
+            contadorRepeticiones = 1;
+
+            for( j = i+1; j < ll_len(listaTemas); j++) //Comparar con el que sigue a i (i+1)
+            {
+                pAuxTemaSiguiente = (S_Tema*)ll_get(listaTemas, j);
+
+                if(stricmp(pAuxTema->artista, pAuxTemaSiguiente->artista) == 0)
+                {
+                    contadorRepeticiones++;
+                }
+            }
+
+            if(flag == 0 || maxRepeticiones < contadorRepeticiones)
+            {
+                maxRepeticiones = contadorRepeticiones;
+                flag = 1;
+            }
+        }
+
+        //Muestro los artistas que mas se repiten:
+        for(i = 0; i < ll_len(listaTemas)-1; i++)
+        {
+            pAuxTema = (S_Tema*)ll_get(listaTemas, i);
+
+            contadorRepeticiones = 1;
+
+            for(j = i+1; j < ll_len(listaTemas); j++)//Comparar con el que sigue a i (i+1)
+            {
+                pAuxTemaSiguiente = (S_Tema*)ll_get(listaTemas, j);
+
+                if(stricmp(pAuxTema->artista, pAuxTemaSiguiente->artista) == 0)
+                {
+                    contadorRepeticiones++;
+                }
+            }
+
+            if(maxRepeticiones == contadorRepeticiones)
+            {
+                printf("%s Cantidad de canciones:%d\n", pAuxTema->artista, maxRepeticiones);
+            }
+        }
+
+    }
+}

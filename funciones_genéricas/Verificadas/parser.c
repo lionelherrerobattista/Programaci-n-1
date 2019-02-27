@@ -12,7 +12,7 @@ int archivo_cargarDesdeTexto(char* nombreArchivo, LinkedList* nombreLista)
     //Estructura auxiliar
     S_LogEntry* pAuxEstructura;
 
-    retorno=-1;//No cargó
+    int retorno=-1;//No cargó
 
     //Variables auxiliares de estructura
     char auxFecha[32];
@@ -44,7 +44,7 @@ int archivo_cargarDesdeTexto(char* nombreArchivo, LinkedList* nombreLista)
                 /*
                 if(cantidadDatos==5 && flag==0)
                 {
-                    flag==1
+                    flag=1;
 
                 }*/
 

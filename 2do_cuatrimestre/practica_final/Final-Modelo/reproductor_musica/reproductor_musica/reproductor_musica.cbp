@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="LinkedList.h" />
+		<Unit filename="estadistica.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="estadistica.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -50,11 +54,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="usuarios.h" />
+		<Unit filename="validaciones.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="validaciones.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
 			<debugger />
-			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
