@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1551275236 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\ingrediente.c
+1551277112 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\ingrediente.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
@@ -7,7 +7,7 @@
 	"validaciones.h"
 	"receta.h"
 
-1551274808 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\ingrediente.h
+1551277112 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\ingrediente.h
 	"LinkedList.h"
 
 1551269102 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\linkedlist.c
@@ -22,7 +22,7 @@
 
 1551268345 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\linkedlist.h
 
-1551276006 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\main.c
+1551279441 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -30,6 +30,7 @@
 	"parser.h"
 	"ingrediente.h"
 	"receta.h"
+	"conio.h"
 
 1551275980 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\parser.c
 	<stdio.h>
@@ -47,12 +48,16 @@
 
 1551270756 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\validaciones.h
 
-1551275967 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\receta.h
+1551278817 d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\receta.h
+	"LinkedList.h"
 
-1551275967 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\receta.c
+1551279359 source:d:\herrero_battista\programacion-1\2do_cuatrimestre\final_laboratorioi\receta.c
 	<stdio.h>
 	<stdlib.h>
 	<strings.h>
+	<conio.h>
 	"validaciones.h"
 	"receta.h"
+	"ingrediente.h"
+	"LinkedList.h"
 

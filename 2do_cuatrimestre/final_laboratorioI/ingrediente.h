@@ -26,12 +26,14 @@ typedef struct
                                      char* auxGrasa, char* auxSodio, char* auxCarbohidratos, char* auxProteinas);
 int ingrediente_agregarIngrediente(LinkedList* listaIngredientes);
 int ingrediente_modificarIngrediente(LinkedList* listaIngredientes);
+int ingrediente_eliminarIngrediente(LinkedList* listaIngredientes, LinkedList* listaRecetas);
+int ingrediente_buscarIngredientePorNombre(LinkedList* listaIngredientes, char* nombre);
 
 ///Muestro
 void ingrediente_mostrarListaIngredientes(LinkedList* listaIngredientes);
 
 int ingrediente_ordenarIngrediente(void* ingredienteUno, void* ingredienteDos);
-int ingrediente_eliminarIngrediente(LinkedList* listaIngredientes, LinkedList* listaRecetas);
+
 
 
  ///Setters

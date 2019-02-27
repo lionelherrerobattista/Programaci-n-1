@@ -427,3 +427,23 @@ int ingrediente_eliminarIngrediente(LinkedList* listaIngredientes, LinkedList* l
 
     return retorno;
 }
+
+int ingrediente_buscarIngredientePorNombre(LinkedList* listaIngredientes, char* nombre)
+{
+    int i;
+    int retorno= -1;// no se encuentra
+    S_ingrediente* pAuxIngrediente;
+
+    for(i = 0; i < ll_len(listaIngredientes); i++)
+    {
+        pAuxIngrediente = ll_get(listaIngredientes, i);
+
+        if(stricmp(pAuxIngrediente->nombre, nombre) == 0)
+        {
+            retorno = pAuxIngrediente->id;
+            break;
+        }
+    }
+
+    return retorno;
+}
