@@ -1,5 +1,23 @@
 
+///Estructuras con memoria dinámica:
+/** \brief Crea una nueva estructura en memoria
+ *
+ * \return S_TramiteRegular* puntero a la estructura creada
+ *
+ */
+S_TramiteRegular* newTramiteRegular();
 
+
+/** \brief Carga una estructura con datos
+ *
+ * \param pTema S_Tema*
+ * \param auxId char*
+ * \param nombre_tema char*
+ * \param artista char*
+ * \return int 1 si cargó la estructura, 0 si hubo error
+ *
+ */
+int tema_cargarTema(S_Tema* pTema, char* auxId, char* nombre_tema, char* artista)
 
 /** \brief Inicializa un array de estructuras en un valor determinado
  *

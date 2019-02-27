@@ -1,4 +1,9 @@
-//Estructuras con memoria dinámica:
+///Estructuras con memoria dinámica:
+/** \brief Crea una nueva estructura en memoria
+ *
+ * \return S_TramiteRegular* puntero a la estructura creada
+ *
+ */
 S_TramiteRegular* newTramiteRegular()
 {
 	//Creo un puntero del tipo estructura
@@ -11,28 +16,21 @@ S_TramiteRegular* newTramiteRegular()
     return pTramiteRegular;
 }
 
-int cargarTramiteRegular(LinkedList* listaTramitesRegulares)
+
+
+int tema_cargarTema(S_Tema* pTema, char* auxId, char* nombre_tema, char* artista)
 {
-    long dni;
-    int retorno=0;//no cargo
+    int retorno = 0;//no cargo
+    int id;
 
-    //Puntero al nuevo trámite
-    S_TramiteRegular* pAuxTramite;
-
-    if(listaTramitesRegulares != NULL)
+    //compruebo que el puntero no sea null
+    if(pTema != NULL)
     {
-        //Asigno espacio en memoria
-        pAuxTramite = newTramiteRegular();
-
-        //Pido datos:
-        dni = pedirCadenaInt("Ingrese su DNI", 0, 99999999);
-
-        //Guardo datos en la estructura
-        regular_setDni(pAuxTramite, dni);
-        regular_setId(pAuxTramite, listaTramitesRegulares);
-
-        //Agrego puntero a la lista
-        ll_add(listaTramitesRegulares, pAuxTramite);
+        id = atoi(auxId);
+        //Seteo los datos en la estructura
+        tema_setId(pTema, id);
+        tema_setNombre(pTema, nombre_tema);
+        tema_setArtista(pTema, artista);
 
         retorno = 1;//cargó
     }

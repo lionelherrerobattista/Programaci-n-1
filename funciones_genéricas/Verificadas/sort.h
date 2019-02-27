@@ -9,4 +9,11 @@
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 
 //Función con criterio de ordenamiento
+/** \brief Ordena los datos de acuerdo a un criterio determinado
+ *
+ * \param tramiteUno void* primer dato
+ * \param tramiteDos void* segundo dato
+ * \return int valor según el criterio de ordenamiento
+ *
+ */
 int ordenar(void* tramiteUno, void* tramiteDos);
